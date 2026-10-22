@@ -1,0 +1,35 @@
+{% extends "common/base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_v 'css/documentation.css' %}">
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block content %}
+<div class="docs-manual">
+  <div class="docs-intro">
+    <h1>{% block docs_title %}{% trans "Documentation" %}{% endblock %}</h1>
+    <p class="lead">{% block docs_lead %}{% endblock %}</p>
+  </div>
+
+  <nav class="docs-section-nav" aria-label="{% trans 'Documentation sections' %}">
+    <a href="{% url 'documentation:hub' %}">{% trans "Overview" %}</a>
+    <a href="{% url 'documentation:visual_guide' %}">{% trans "Picture guide" %}</a>
+    <a href="{% url 'wallet_gui:app' %}">{% trans "Wallet" %}</a>
+    <a href="{% url 'documentation:user_guide_payments' %}">{% trans "Payments and mining" %}</a>
+    <a href="{% url 'documentation:using_system' %}">{% trans "Using the system" %}</a>
+    <a href="{% url 'documentation:developer_api' %}">{% trans "Developer API" %}</a>
+    <a href="{% url 'documentation:smart_contracts' %}">{% trans "Smart contracts" %}</a>
+    <a href="{% url 'documentation:wallet_architecture' %}">{% trans "Wallet architecture" %}</a>
+    <a href="{% url 'documentation:wallets_security' %}">{% trans "Wallets and security" %}</a>
+    <a href="{% url 'documentation:features_architecture' %}">{% trans "Features" %}</a>
+    <a href="{% url 'explorer:api_help' %}">{% trans "API list" %}</a>
+  </nav>
+
+  <article class="docs-article">
+    {% block docs_content %}{% endblock %}
+  </article>
+</div>
+{% endblock %}

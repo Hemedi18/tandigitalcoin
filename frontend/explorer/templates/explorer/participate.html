@@ -1,0 +1,70 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "Pay and mine" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Send TAN, mine blocks, manage your wallet" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead">{% blocktrans trimmed %}This chain uses UTXO, like Bitcoin: you spend whole coins and receive change. There is no bank screen built in. You can use the wallet page, the JSON API, or Python to sign and send. Mining is started by hand on this demo node.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+
+<section class="card">
+  <h2>{% trans "Graphical wallet" %}</h2>
+  <p class="page-lead">{% blocktrans trimmed %}Open the wallet page to create keys, check balance, send TAN, and use the test faucet when debug mode is on.{% endblocktrans %} <a href="{% url 'wallet_gui:app' %}"><strong>{% trans "Open wallet" %}</strong></a></p>
+</section>
+
+<section class="card">
+  <h2>{% trans "Roles in one sentence" %}</h2>
+  <ul class="page-lead" style="max-width:70ch">
+    <li>{% blocktrans trimmed %}User: holds keys, builds a signed transaction that spends UTXOs and pays a receiver plus a fee to miners.{% endblocktrans %}</li>
+    <li>{% blocktrans trimmed %}Miner: collects mempool transactions, builds a block, finds proof of work, publishes the block, and collects the coinbase reward and fees.{% endblocktrans %}</li>
+    <li>{% blocktrans trimmed %}Everyone: can read the public explorer at the home, transactions, and address pages.{% endblocktrans %}</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>{% trans "Create or load a wallet" %}</h2>
+  <p class="page-lead">{% blocktrans trimmed %}A wallet is a private key stored as WIF and a Base58 address you share to receive funds.{% endblocktrans %}</p>
+  <pre><code>curl -s http://127.0.0.1:8000/api/wallet/new/</code></pre>
+  <p class="page-lead">{% blocktrans trimmed %}Store address and WIF in a password manager. Anyone with the WIF can spend your coins.{% endblocktrans %}</p>
+  <p><a href="{% url 'documentation:user_guide_payments' %}">{% trans "Full payments guide" %} →</a></p>
+</section>
+
+<section class="card">
+  <h2>{% trans "Make a payment" %}</h2>
+  <ol class="page-lead" style="max-width:70ch">
+    <li>{% trans "List spendable outputs with GET /api/chain/utxo/your_address/" %}</li>
+    <li>{% blocktrans trimmed %}Pick inputs that cover amount plus fee. Values use satoshis.{% endblocktrans %}</li>
+    <li>{% blocktrans trimmed %}Sign with Python Chain.create_transfer and Wallet, then POST /api/chain/tx/submit/.{% endblocktrans %}</li>
+    <li>{% trans "Wait for a miner or mine yourself." %}</li>
+  </ol>
+  <p><a href="{% url 'documentation:user_guide_payments' %}#pay">{% trans "Detailed walkthrough" %} →</a></p>
+</section>
+
+<section class="card">
+  <h2>{% trans "Act as a miner" %}</h2>
+  <p class="page-lead">{% blocktrans trimmed %}Mining builds the next block from the mempool and runs proof of work. Fees go to the miner_wif you send, or to the genesis wallet if you omit the body.{% endblocktrans %}</p>
+  <pre><code>curl -s -X POST http://127.0.0.1:8000/api/chain/mine/ \
+  -H "Content-Type: application/json" \
+  -d '{"miner_wif":"YOUR_WIF_HERE"}'</code></pre>
+  <p><a href="{% url 'documentation:user_guide_payments' %}#mine">{% trans "More on mining" %} →</a></p>
+</section>
+
+<section class="stat-grid" style="margin-top:1.5rem">
+  <a class="card" href="{% url 'documentation:user_guide_payments' %}" style="text-decoration:none;color:inherit;display:block">
+    <h2>{% trans "Full guide" %}</h2>
+    <p>{% trans "Payments, mining, wallet lifecycle, and security." %}</p>
+  </a>
+  <a class="card" href="{% url 'explorer:api_help' %}" style="text-decoration:none;color:inherit;display:block">
+    <h2>{% trans "API cheat sheet" %}</h2>
+    <p>{% trans "All JSON routes in one table." %}</p>
+  </a>
+  <a class="card" href="{% url 'documentation:wallets_security' %}" style="text-decoration:none;color:inherit;display:block">
+    <h2>{% trans "Wallets and security" %}</h2>
+    <p>{% trans "Keys, genesis wallet, production checklist." %}</p>
+  </a>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "common/base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "Log in" %} — {% trans "Wallet" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/wallet_gui.css' %}">{% endblock %}
+{% block body_class %}wallet-page wallet-auth-page{% endblock %}
+{% block page_header %}{% endblock %}
+
+{% block content %}
+<div class="wallet-auth-layout">
+  <div class="wallet-auth-hero" aria-hidden="false">
+    <img class="wallet-auth-hero__mark" src="{% static 'img/tancoin.png' %}" width="72" height="72" decoding="async" alt="{% trans 'Tancoin logo' %}">
+    <h1 class="wallet-auth-hero__title">{% trans "Wallet login" %}</h1>
+    <p class="wallet-auth-hero__lead">{% trans "Sign in to unlock the dashboard, send TAN, and view your on-chain history on this device." %}</p>
+  </div>
+  <div class="wallet-auth-panel">
+    <form method="post" action="" class="wallet-auth-form" id="wallet-login-form">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <ul class="wallet-auth-errors" role="alert">
+          {% for err in form.non_field_errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+      <div class="wallet-field">
+        <label for="id_username">{% trans "Username" %}</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+      <div class="wallet-field">
+        <label for="id_password">{% trans "Password" %}</label>
+        {{ form.password }}
+        {{ form.password.errors }}
+      </div>
+      {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+      <div class="wallet-auth-actions">
+        <button type="submit" class="wallet-btn wallet-auth-submit" id="wallet-login-submit">
+          {% trans "Sign in" %}
+        </button>
+      </div>
+    </form>
+    <p class="wallet-auth-links">
+      <a href="{% url 'wallet_gui:account_register' %}">{% trans "Create an account" %}</a>
+      ·
+      <a href="{% url 'wallet_gui:app' %}">{% trans "Back to wallet" %}</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+{% load explorer_extras %}
+
+{% block title %}{% trans "Blocks" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "All blocks" %}{% endblock %}
+{% block page_subtitle %}<p class="page-lead">{% trans "Public list from tip to genesis. Click a hash to see that block’s transactions." %}</p>{% endblock %}
+
+{% block content %}
+<div class="table-wrap">
+  <table class="data-table">
+    <thead>
+      <tr><th>{% trans "Height" %}</th><th>{% trans "Hash" %}</th><th>{% trans "Miner (coinbase)" %}</th><th>{% trans "Transaction count" %}</th><th>{% trans "Difficulty bits" %}</th><th>{% trans "Timestamp" %}</th></tr>
+    </thead>
+    <tbody>
+      {% for row in page_obj %}
+      <tr>
+        <td class="mono">{{ row.height }}</td>
+        <td><a class="mono-link mono" href="{% url 'explorer:block' row.block.block_hash.hex %}">{{ row.block.block_hash.hex|short_hash:20 }}</a></td>
+        <td class="mono">{% if row.miner_address %}<a class="mono-link" href="{% url 'explorer:address' address=row.miner_address %}">{{ row.miner_short }}</a>{% else %}—{% endif %}</td>
+        <td>{{ row.block.transactions|length }}</td>
+        <td class="mono">{{ row.block.difficulty_bits }}</td>
+        <td class="mono">{{ row.block.timestamp }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">{% trans "No blocks." %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<nav class="pagination" aria-label="{% trans 'Pagination' %}">
+  {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a>
+  {% endif %}
+  <span class="current">{% blocktrans with n=page_obj.number t=page_obj.paginator.num_pages %}Page {{ n }} of {{ t }}{% endblocktrans %}</span>
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a>
+  {% endif %}
+</nav>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'js/explorer.js' %}"></script>{% endblock %}

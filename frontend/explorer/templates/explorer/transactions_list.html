@@ -1,0 +1,42 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+{% load explorer_extras %}
+
+{% block title %}{% trans "Transactions" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "All transactions" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead">{% blocktrans with total=total_tx %}Public feed: unconfirmed first, then confirmed newest first. Total: {{ total }}.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+<div class="table-wrap">
+  <table class="data-table">
+    <thead>
+      <tr><th>{% trans "Transaction id" %}</th><th>{% trans "Status" %}</th><th>{% trans "Block" %}</th><th>{% trans "Fee (TAN)" %}</th><th>{% trans "Inputs / outputs" %}</th></tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td><a class="mono-link mono" href="{% url 'explorer:transaction' row.txid %}">{{ row.txid|short_hash:20 }}</a></td>
+        <td>{% if row.mempool %}<span class="badge badge-mempool">{% trans "Unconfirmed" %}</span>{% else %}<span class="badge badge-transfer">{% trans "Confirmed" %}</span>{% endif %}</td>
+        <td class="mono">{% if row.mempool %}—{% else %}<a href="{% url 'explorer:block' row.block_hash %}">#{{ row.block_height }}</a>{% endif %}</td>
+        <td class="mono">{% if row.fee_satoshis is not None %}{{ row.fee_satoshis|tan_amount }}{% else %}—{% endif %}</td>
+        <td>{{ row.tx.inputs|length }} / {{ row.tx.outputs|length }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5">{% trans "No transactions yet." %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<nav class="pagination" aria-label="{% trans 'Pagination' %}">
+  {% if has_prev %}<a href="?page={{ page|add:-1 }}">{% trans "Previous" %}</a>{% endif %}
+  <span class="current">{% blocktrans with p=page tp=total_pages %}Page {{ p }} / {{ tp }}{% endblocktrans %}</span>
+  {% if has_next %}<a href="?page={{ page|add:1 }}">{% trans "Next" %}</a>{% endif %}
+</nav>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'js/explorer.js' %}"></script>{% endblock %}

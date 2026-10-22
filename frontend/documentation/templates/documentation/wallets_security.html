@@ -1,0 +1,37 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Wallets and security" %}{% endblock %}
+{% block docs_title %}{% trans "Wallets and security" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}A wallet is a key pair. The address is safe to share. The WIF is a secret that can spend everything. Protect it like a password.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<p>{% blocktrans trimmed %}For how wallet programs split signing, networking, and key distribution—and for HD and BIP39 concepts—see the architecture guide.{% endblocktrans %} <a href="{% url 'documentation:wallet_architecture' %}">{% trans "Wallet architecture" %}</a></p>
+
+<h2 id="wif">{% trans "Protecting secrets" %}</h2>
+<ul>
+  <li>{% trans "Never store WIF in git, screenshots, or chat." %}</li>
+  <li>{% trans "Use environment variables or a secrets manager in production." %}</li>
+  <li>{% trans "If a key leaks, move funds to a new address with a new key." %}</li>
+</ul>
+
+<h2 id="genesis">{% trans "Genesis wallet" %}</h2>
+<p>{% blocktrans trimmed %}On first start the node writes data/genesis_wallet.json. The /api/dev/genesis-wallet/ route only works when DEBUG is True. Turn DEBUG off in production and block that route.{% endblocktrans %}</p>
+<div class="callout-warn">{% blocktrans trimmed %}The genesis wallet receives the first large reward. Treat it as a mint key with very high privilege.{% endblocktrans %}</div>
+
+<h2 id="csrf">{% trans "CSRF and browser clients" %}</h2>
+<p>{% blocktrans trimmed %}Some JSON POST routes skip CSRF so command-line tools work. Browser apps that talk to the same routes should use CSRF tokens or send writes through your own backend.{% endblocktrans %}</p>
+
+<h2 id="network">{% trans "Network" %}</h2>
+<p>{% blocktrans trimmed %}Use HTTPS in production, set ALLOWED_HOSTS correctly, and put the node behind a proxy with rate limits. This build has no peer-to-peer layer.{% endblocktrans %}</p>
+
+<h2 id="audit">{% trans "Checklist" %}</h2>
+<ol>
+  <li>{% trans "DEBUG off, strong SECRET_KEY, real database if you add accounts." %}</li>
+  <li>{% trans "Encrypt backups of TANCOIN_DATA_DIR." %}</li>
+  <li>{% trans "Watch /api/chain/mine/ for abuse." %}</li>
+  <li>{% trans "Scale reads separately if the explorer grows." %}</li>
+</ol>
+{% endblock %}

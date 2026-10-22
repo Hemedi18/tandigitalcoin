@@ -1,0 +1,573 @@
+/*
+ * Documentation — single readable column + horizontal section links.
+ * No side column; avoids cramped “sidebar + text” layout on many screens.
+ */
+
+.docs-manual {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.docs-intro {
+  margin-bottom: 1.75rem;
+}
+
+.docs-intro h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.docs-intro .lead {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* Horizontal “manual” navigation — scrolls on small screens */
+.docs-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.docs-section-nav a {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.docs-section-nav a:hover {
+  background: var(--bg-elevated);
+  color: var(--accent);
+}
+
+.docs-section-nav a.is-current {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+  border-color: transparent;
+}
+
+/* Article body */
+.docs-article {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.docs-article h1 {
+  margin: 0 0 1rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.docs-article h2 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.docs-article h2:first-of-type {
+  margin-top: 0;
+}
+
+.docs-article h3 {
+  margin: 1.35rem 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.docs-article p {
+  margin: 0 0 1rem;
+}
+
+.docs-article ul,
+.docs-article ol {
+  margin: 0 0 1rem;
+  padding-inline-start: 1.35rem;
+}
+
+.docs-article li {
+  margin-bottom: 0.35rem;
+}
+
+.docs-article pre,
+.docs-article code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.docs-article pre {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow-x: auto;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.docs-article code {
+  background: var(--bg-elevated);
+  padding: 0.12rem 0.4rem;
+  border-radius: 5px;
+}
+
+.docs-article pre code {
+  background: none;
+  padding: 0;
+}
+
+.callout {
+  margin: 1.25rem 0;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-inline-start: 4px solid var(--accent);
+}
+
+.callout-warn {
+  border-color: rgba(255, 193, 7, 0.4);
+  background: rgba(255, 193, 7, 0.08);
+  border-inline-start-color: #ffc107;
+}
+
+[dir="rtl"] .docs-article ul,
+[dir="rtl"] .docs-article ol {
+  padding-inline-start: 1.35rem;
+}
+
+/* In-page TOC (long guides such as wallet architecture) */
+.docs-onpage {
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.15rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.docs-onpage strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.docs-onpage ol {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.docs-onpage a {
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.docs-onpage a:hover {
+  text-decoration: underline;
+}
+
+.docs-onpage a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Documentation hub: full-width hero + responsive card grid --- */
+body.docs-hub-page main.site-main > .wrap {
+  max-width: none;
+  width: 100%;
+  padding-inline: 0;
+}
+
+.docs-hub {
+  width: 100%;
+  min-height: min(70vh, 720px);
+}
+
+.docs-hub-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem) clamp(2.25rem, 5vw, 3.25rem);
+  background:
+    radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--accent) 45%, transparent) 0%, transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, color-mix(in srgb, #22c55e 35%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 50% 120%, color-mix(in srgb, #a855f7 28%, transparent), transparent),
+    linear-gradient(165deg, var(--bg-card) 0%, color-mix(in srgb, var(--bg) 88%, var(--accent)) 45%, var(--bg) 100%);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, var(--accent) 30%);
+}
+
+.docs-hub-hero__glow {
+  position: absolute;
+  inset: -40% -20%;
+  background: conic-gradient(
+    from 210deg at 50% 50%,
+    color-mix(in srgb, var(--accent) 25%, transparent),
+    transparent 25%,
+    color-mix(in srgb, #38bdf8 20%, transparent) 45%,
+    transparent 55%,
+    color-mix(in srgb, #f472b6 22%, transparent) 72%,
+    transparent 88%,
+    color-mix(in srgb, var(--accent) 18%, transparent)
+  );
+  opacity: 0.55;
+  animation: docs-hub-hero-spin 48s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.docs-hub-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.docs-hub-hero__brand {
+  flex: 0 0 auto;
+}
+
+.docs-hub-hero__logo {
+  display: block;
+  width: clamp(72px, 14vw, 112px);
+  height: auto;
+  border-radius: 22%;
+  box-shadow:
+    0 12px 40px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 0 1px color-mix(in srgb, #fff 12%, transparent);
+  filter: saturate(1.08);
+}
+
+.docs-hub-hero__copy {
+  flex: 1 1 min(100%, 320px);
+  min-width: 0;
+}
+
+.docs-hub-hero__title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+  background: linear-gradient(105deg, var(--text) 0%, var(--accent) 55%, color-mix(in srgb, var(--accent) 70%, #fff) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.docs-hub-hero__lead {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1rem, 2.2vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.docs-hub-hero__sub {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--text-muted) 92%, var(--accent));
+  max-width: 48ch;
+}
+
+.docs-hub-main {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1rem, 3vw, 1.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.docs-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 272px), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.docs-hub-card {
+  --hub-hue: 0deg;
+  --hub-accent: var(--accent);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0;
+  border-radius: 18px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg-card);
+  border: 1px solid color-mix(in srgb, var(--border) 85%, var(--hub-accent) 15%);
+  box-shadow: 0 4px 24px color-mix(in srgb, #000 6%, transparent);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.docs-hub-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 14px 36px color-mix(in srgb, var(--hub-accent) 22%, transparent),
+    0 4px 12px color-mix(in srgb, #000 8%, transparent);
+  border-color: color-mix(in srgb, var(--hub-accent) 45%, var(--border));
+}
+
+.docs-hub-card:focus-visible {
+  outline: 3px solid var(--hub-accent);
+  outline-offset: 3px;
+}
+
+.docs-hub-card__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: 1rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--hub-accent) 18%, var(--bg-elevated)) 0%,
+    var(--bg-elevated) 55%,
+    color-mix(in srgb, var(--hub-accent) 8%, var(--bg-card)) 100%
+  );
+}
+
+.docs-hub-card__blob {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at 40% 40%,
+    color-mix(in srgb, var(--hub-accent) 45%, transparent) 0%,
+    transparent 55%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.docs-hub-card__mark {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px color-mix(in srgb, #000 25%, transparent)) hue-rotate(var(--hub-hue)) saturate(1.12);
+}
+
+.docs-hub-card__body {
+  padding: 1rem 1.15rem 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.docs-hub-card__title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.docs-hub-card__desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+/* Per-topic accent + hue on mark (decorative only) */
+.docs-hub-card--wallet {
+  --hub-hue: -6deg;
+  --hub-accent: #38bdf8;
+}
+.docs-hub-card--mine {
+  --hub-hue: 18deg;
+  --hub-accent: #f59e0b;
+}
+.docs-hub-card--payments {
+  --hub-hue: 32deg;
+  --hub-accent: #fb923c;
+}
+.docs-hub-card--explorer {
+  --hub-hue: 140deg;
+  --hub-accent: #34d399;
+}
+.docs-hub-card--api {
+  --hub-hue: 200deg;
+  --hub-accent: #60a5fa;
+}
+.docs-hub-card--tvm {
+  --hub-hue: 280deg;
+  --hub-accent: #c084fc;
+}
+.docs-hub-card--arch {
+  --hub-hue: 165deg;
+  --hub-accent: #2dd4bf;
+}
+.docs-hub-card--shield {
+  --hub-hue: 350deg;
+  --hub-accent: #f472b6;
+}
+.docs-hub-card--features {
+  --hub-hue: 95deg;
+  --hub-accent: #a3e635;
+}
+.docs-hub-card--routes {
+  --hub-hue: 220deg;
+  --hub-accent: #818cf8;
+}
+.docs-hub-card--visualguide {
+  --hub-hue: 310deg;
+  --hub-accent: #e879f9;
+}
+
+.docs-hub-card__mark--scene {
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes docs-hub-hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .docs-hub-hero__glow {
+    animation: none;
+    opacity: 0.35;
+  }
+
+  .docs-hub-card {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .docs-hub-card:hover {
+    transform: none;
+  }
+}
+
+/* --- Picture-first documentation (/docs/picture-guide/) --- */
+.docs-visual-guide-page .docs-visual-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.docs-visual-intro {
+  padding: 1rem 1.15rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.docs-visual-intro__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.docs-visual-intro__text {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.docs-visual-intro__text:last-child {
+  margin-bottom: 0;
+}
+
+.docs-visual-panel {
+  margin: 0;
+  border-radius: calc(var(--radius) + 4px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.docs-visual-panel__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.docs-visual-panel__cap {
+  margin: 0;
+  padding: 1rem 1.2rem 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.docs-visual-panel__cap strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.docs-visual-panel__cap a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.docs-visual-panel__cap a:hover {
+  text-decoration: underline;
+}
+
+.docs-visual-panel__cap a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -1,0 +1,534 @@
+{% extends "common/base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "Wallet" %}{% endblock %}
+{% block body_class %}wallet-page{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_v 'css/wallet_gui.css' %}">
+{% endblock %}
+{% block page_header %}{% endblock %}
+
+{% block content %}
+<div class="wallet-app" id="wallet-app" data-auth="{% if user.is_authenticated %}1{% else %}0{% endif %}">
+  <div id="wallet-toast-stack" aria-live="polite" aria-relevant="additions"></div>
+
+  {% if user.is_authenticated %}
+  {# Guided setup — stays in the browser; keys never sent except over HTTPS for API actions you choose. #}
+  <div class="wallet-onboarding" id="wallet-onboarding" role="dialog" aria-modal="true" aria-labelledby="wallet-onboard-title" hidden>
+    <div class="wallet-onboarding__card">
+      <button type="button" class="wallet-onboarding__close" id="wallet-onboard-close" aria-label="{% trans 'Close' %}">×</button>
+      <h2 id="wallet-onboard-title" class="wallet-onboarding__title">{% trans "Set up your wallet" %}</h2>
+
+      <div class="wallet-onboard-step" data-onboard-step="1">
+        <p class="wallet-onboard__lead">{% blocktrans trimmed %}Follow these short steps. Your keys stay in this browser session unless you send a transaction (then the WIF is sent once over HTTPS to sign). We never upload your profile photo to a server from this page.{% endblocktrans %}</p>
+        <ol class="wallet-onboard__steps">
+          <li>{% trans "Learn privacy basics" %}</li>
+          <li>{% trans "Create or import a key" %}</li>
+          <li>{% trans "Review your dashboard" %}</li>
+        </ol>
+        <div class="wallet-actions wallet-actions--end">
+          <button type="button" class="wallet-btn" id="wallet-onboard-to-2">{% trans "Continue" %}</button>
+        </div>
+      </div>
+
+      <div class="wallet-onboard-step" data-onboard-step="2" hidden>
+        <p class="wallet-onboard__lead">{% blocktrans trimmed %}For anonymity: use only addresses on-chain, avoid linking your real name to your keys, and be careful with photos (metadata and face recognition on other sites can reduce privacy).{% endblocktrans %}</p>
+        <div class="wallet-actions wallet-actions--end">
+          <button type="button" class="wallet-btn wallet-btn--ghost" id="wallet-onboard-back-1">{% trans "Back" %}</button>
+          <button type="button" class="wallet-btn" id="wallet-onboard-to-3">{% trans "Continue" %}</button>
+        </div>
+      </div>
+
+      <div class="wallet-onboard-step" data-onboard-step="3" hidden>
+        <p class="wallet-onboard__lead">{% trans "Choose how to add your first key to this browser." %}</p>
+        <div class="wallet-onboard__choice">
+          <button type="button" class="wallet-btn" id="wallet-onboard-create">{% trans "Generate new keys" %}</button>
+          <button type="button" class="wallet-btn wallet-btn--ghost" id="wallet-onboard-import-focus">{% trans "I already have a WIF" %}</button>
+        </div>
+        <div class="wallet-field wallet-onboard__import" id="wallet-onboard-import-box" hidden>
+          <label for="wallet-onboard-wif">WIF</label>
+          <textarea id="wallet-onboard-wif" rows="2" autocomplete="off"></textarea>
+          <button type="button" class="wallet-btn wallet-btn--sm" id="wallet-onboard-import-save">{% trans "Save key to this browser" %}</button>
+        </div>
+        <p class="wallet-onboard__hint" id="wallet-onboard-create-hint" hidden>{% blocktrans trimmed %}Click below to call the server once to generate a keypair.{% endblocktrans %}</p>
+        <div class="wallet-actions wallet-actions--end">
+          <button type="button" class="wallet-btn wallet-btn--ghost" id="wallet-onboard-back-2">{% trans "Back" %}</button>
+          <button type="button" class="wallet-btn" id="wallet-onboard-do-create" hidden>{% trans "Generate now" %}</button>
+        </div>
+      </div>
+
+      <div class="wallet-onboard-step" data-onboard-step="4" hidden>
+        <p class="wallet-onboard__lead">{% trans "You are ready. Open the dashboard to see balance, super key, super public key, and all keys in this browser." %}</p>
+        <div class="wallet-actions wallet-actions--end">
+          <button type="button" class="wallet-btn" id="wallet-onboard-finish">{% trans "Open dashboard" %}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="wallet-shell">
+    <aside class="wallet-sidebar" aria-label="{% trans 'Wallet navigation' %}">
+      <div class="wallet-sidebar__mark" aria-hidden="true"></div>
+      <nav class="wallet-sidebar__nav" role="tablist" aria-label="{% trans 'Wallet sections' %}">
+        <button type="button" class="wallet-navbtn {% if not user.is_authenticated %}is-active{% endif %}" role="tab" data-tab="session" id="wallet-tab-session" aria-selected="{% if not user.is_authenticated %}true{% else %}false{% endif %}">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>{% trans "Account" %}</span>
+        </button>
+        {% if user.is_authenticated %}
+        <button type="button" class="wallet-navbtn is-active" role="tab" data-tab="dashboard" id="wallet-tab-dashboard" aria-selected="true">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          <span>{% trans "Dashboard" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="history" id="wallet-tab-history" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/><circle cx="9" cy="9" r="2"/></svg>
+          <span>{% trans "History" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="miner" id="wallet-tab-miner" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.5 2L3 13.5l4 4L18.5 6l-4-4z"/><path d="M10 18l-4 4"/><path d="m13 5 4 4"/></svg>
+          <span>{% trans "Miner" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="fund" id="wallet-tab-fund" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+          <span>{% trans "Top up / Buy" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="cashout" id="wallet-tab-cashout" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+          <span>{% trans "Cash out" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="send" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <span>{% trans "Send" %}</span>
+        </button>
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="setup" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
+          <span>{% trans "Add keys" %}</span>
+        </button>
+        {% if faucet_enabled %}
+        <button type="button" class="wallet-navbtn" role="tab" data-tab="faucet" aria-selected="false">
+          <svg class="wallet-navbtn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h8"/></svg>
+          <span>{% trans "Test coins" %}</span>
+        </button>
+        {% endif %}
+        {% endif %}
+      </nav>
+      {% if faucet_enabled and user.is_authenticated %}
+      <p class="wallet-sidebar__note">{% trans "Test faucet (debug)" %}</p>
+      {% endif %}
+    </aside>
+
+    <div class="wallet-workspace">
+      <header class="wallet-topbar">
+        <div>
+          <h1 class="wallet-topbar__title">{% trans "Wallet" %}</h1>
+          <p class="wallet-topbar__sub">{% if user.is_authenticated %}{% trans "Signed in — keys stay in this browser (sessionStorage) under your user." %}{% else %}{% trans "Sign in on the Account tab to unlock the wallet." %}{% endif %}</p>
+        </div>
+        <div class="wallet-topbar__actions">
+          {% if user.is_authenticated %}
+          <button type="button" class="wallet-btn wallet-btn--ghost wallet-btn--sm" id="wallet-open-setup-wizard" hidden>{% trans "Guided setup" %}</button>
+          {% endif %}
+        </div>
+      </header>
+
+      <section class="wallet-panel {% if not user.is_authenticated %}is-visible{% endif %}" data-panel="session" role="tabpanel" aria-labelledby="wallet-tab-session">
+        <div class="wallet-card wallet-card--account">
+          <h2>{% trans "Account" %}</h2>
+          {% if user.is_authenticated %}
+            <div class="wallet-account-section wallet-account-section--site">
+              <p class="page-lead">{% blocktrans trimmed %}You are signed in. Wallet keys in this browser are stored under your user name in sessionStorage; wallet APIs on the server reject requests until you authenticate.{% endblocktrans %}</p>
+              <p class="wallet-session-user"><strong>{% trans "Username" %}</strong>: <span class="mono">{{ user.get_username }}</span></p>
+              <form class="wallet-session-logout" method="post" action="{% url 'wallet_gui:account_logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="wallet-btn wallet-btn--ghost">{% trans "Log out" %}</button>
+              </form>
+              <p class="page-lead page-lead--tight">{% blocktrans trimmed %}After logging out, use "Forget all keys" on the dashboard if this device is shared.{% endblocktrans %}</p>
+            </div>
+            <div class="wallet-account-section wallet-account-section--profile">
+              <h3 class="wallet-card__eyebrow">{% trans "How you appear on cards" %}</h3>
+              <div class="wallet-field">
+                <label for="wallet-display-name">{% trans "Display name (optional)" %}</label>
+                <input type="text" id="wallet-display-name" maxlength="48" autocomplete="name" placeholder="{% trans 'Shown on identity cards' %}">
+              </div>
+              <h3 class="wallet-card__eyebrow">{% trans "Account image (optional)" %}</h3>
+              <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Image stays in this browser only. Below is a simple local check — not a cloud security scan.{% endblocktrans %}</p>
+              <div class="wallet-profile__row">
+                <div class="wallet-avatar" aria-hidden="true">
+                  <img src="" alt="" id="wallet-avatar-preview" width="72" height="72" hidden>
+                  <span class="wallet-avatar__ph" id="wallet-avatar-placeholder">?</span>
+                </div>
+                <div class="wallet-profile__meta">
+                  <input type="file" id="wallet-avatar-input" accept="image/*" class="visually-hidden">
+                  <label for="wallet-avatar-input" class="wallet-btn wallet-btn--sm wallet-btn--ghost">{% trans "Choose image" %}</label>
+                  <button type="button" class="wallet-btn wallet-btn--sm wallet-btn--ghost" id="wallet-avatar-clear">{% trans "Remove image" %}</button>
+                </div>
+              </div>
+              <div class="wallet-privacy-scan" id="wallet-privacy-scan" hidden>
+                <h3 class="wallet-privacy-scan__h">{% trans "Privacy and exposure hints" %}</h3>
+                <ul class="wallet-privacy-scan__list" id="wallet-privacy-list"></ul>
+              </div>
+            </div>
+          {% else %}
+            <p class="page-lead">{% blocktrans trimmed %}Log in or create an account so private material (keys, WIF, balances) is only available after authentication. Wallet APIs are disabled until you sign in.{% endblocktrans %}</p>
+            <div class="wallet-actions wallet-actions--stack">
+              <a class="wallet-btn" href="{% url 'wallet_gui:account_login' %}?next={% url 'wallet_gui:app' %}">{% trans "Log in" %}</a>
+              <a class="wallet-btn wallet-btn--ghost" href="{% url 'wallet_gui:account_register' %}">{% trans "Create an account" %}</a>
+            </div>
+          {% endif %}
+        </div>
+      </section>
+
+      {% if user.is_authenticated %}
+      <section class="wallet-panel is-visible" data-panel="dashboard" role="tabpanel" aria-labelledby="wallet-tab-dashboard">
+        <div class="wallet-dash-empty" id="wallet-dash-empty">
+          <div class="wallet-card wallet-card--hero">
+            <h2>{% trans "No keys in this browser yet" %}</h2>
+            <p class="page-lead">{% blocktrans trimmed %}Add at least one key to see your dashboard. Use guided setup for step-by-step help, or add keys from the sidebar.{% endblocktrans %}</p>
+            <div class="wallet-actions">
+              <button type="button" class="wallet-btn" id="wallet-start-wizard">{% trans "Start guided setup" %}</button>
+              <button type="button" class="wallet-btn wallet-btn--ghost" data-go-tab="setup">{% trans "Add keys manually" %}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="wallet-dash-loaded" id="wallet-dash-loaded" hidden>
+          <div class="wallet-dash-toolbar" id="wallet-dash-toolbar">
+            <div class="wallet-field wallet-field--picker">
+              <label for="wallet-account-picker">{% trans "Wallet accounts" %}</label>
+              <select id="wallet-account-picker" class="wallet-account-picker" aria-describedby="wallet-account-picker-hint"></select>
+            </div>
+            <p class="wallet-dash-toolbar__hint page-lead page-lead--tight" id="wallet-account-picker-hint">{% blocktrans trimmed %}Choose one key to open its summary, send, receive, or explorer. Pick “Overview” to see all keys and balances together.{% endblocktrans %}</p>
+          </div>
+
+          <div id="wallet-dash-overview">
+          <div class="wallet-grid">
+            <article class="wallet-card wallet-card--balance">
+              <h2 class="wallet-card__eyebrow">{% trans "Primary balance" %}</h2>
+              <p class="wallet-balance__value"><span id="wallet-dash-tan">—</span> <span class="wallet-balance__unit">TAN</span></p>
+              <p class="wallet-balance__meta" id="wallet-dash-sat">—</p>
+              <p class="wallet-balance__meta" id="wallet-dash-utxo">—</p>
+              <button type="button" class="wallet-btn wallet-btn--sm" id="wallet-refresh-balance">{% trans "Refresh" %}</button>
+            </article>
+
+            <article class="wallet-card wallet-card--wide wallet-card--iddeck" id="wallet-iddeck" hidden>
+              <div class="wallet-card__headrow">
+                <h2 class="wallet-card__eyebrow">{% trans "Identity cards" %}</h2>
+              </div>
+              <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Each card shows your public address and key fingerprint. Tap or press Enter to flip — back side has a QR code for the address and a copy button.{% endblocktrans %}</p>
+              <div class="wallet-id-cards" id="wallet-id-cards" role="list"></div>
+            </article>
+
+            <article class="wallet-card wallet-card--wide">
+              <h2 class="wallet-card__eyebrow">{% trans "Super key and super public key" %}</h2>
+              <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Your primary key in this demo is the master secret (WIF) and its public key. Other keys you add are separate identities on-chain — each has its own WIF and public key.{% endblocktrans %}</p>
+              <div class="wallet-keypair-grid">
+                <div>
+                  <h3 class="wallet-card__h">{% trans "Super key (master WIF)" %}</h3>
+                  <p class="wallet-dash__warn">{% blocktrans trimmed %}Whoever holds this can spend from the primary address. Never share it.{% endblocktrans %}</p>
+                  <p class="wallet-secret-mask" id="wallet-wif-mask">••••••••••••••••••••</p>
+                  <pre class="wallet-secret-reveal" id="wallet-wif-reveal" hidden></pre>
+                  <div class="wallet-actions">
+                    <button type="button" class="wallet-btn wallet-btn--sm wallet-btn--ghost" id="wallet-toggle-wif" aria-expanded="false">{% trans "Show" %}</button>
+                    <button type="button" class="wallet-btn wallet-btn--sm" id="wallet-copy-wif">{% trans "Copy WIF" %}</button>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="wallet-card__h">{% trans "Super public key (hex)" %}</h3>
+                  <p class="page-lead page-lead--tight">{% trans "Used to receive P2PKH-style outputs for the primary address." %}</p>
+                  <pre class="wallet-pubkey" id="wallet-super-pubkey" title="">—</pre>
+                  <button type="button" class="wallet-btn wallet-btn--sm" id="wallet-copy-super-pub">{% trans "Copy public key" %}</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="wallet-card wallet-card--wide">
+              <div class="wallet-card__headrow">
+                <h2 class="wallet-card__eyebrow">{% trans "All private keys in this session" %}</h2>
+                <button type="button" class="wallet-btn wallet-btn--sm" data-go-tab="setup">{% trans "Add another key" %}</button>
+              </div>
+              <div class="wallet-table-wrap">
+                <table class="wallet-table" id="wallet-keyring-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">{% trans "Label" %}</th>
+                      <th scope="col">{% trans "Address" %}</th>
+                      <th scope="col">{% trans "Balance (TAN)" %}</th>
+                      <th scope="col">{% trans "Primary" %}</th>
+                      <th scope="col">{% trans "Actions" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody id="wallet-keyring-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <div class="wallet-actions wallet-actions--end wallet-card--flush">
+              <button type="button" class="wallet-btn wallet-btn--ghost wallet-btn--danger" id="wallet-forget-btn">{% trans "Forget all keys on this device" %}</button>
+            </div>
+          </div>
+          </div>
+
+          <div class="wallet-dash-key-page" id="wallet-dash-key-page" hidden>
+            <article class="wallet-card wallet-card--key-page">
+              <div class="wallet-key-page__head">
+                <h2 class="wallet-card__h" id="wallet-key-page-title">—</h2>
+                <span class="wallet-badge-inline" id="wallet-key-page-primary-tag" hidden>{% trans "Primary" %}</span>
+              </div>
+              <p class="page-lead page-lead--tight" id="wallet-key-page-lead"></p>
+              <div class="wallet-field">
+                <label>{% trans "Address" %}</label>
+                <div class="wallet-key-page__addr-row">
+                  <code class="mono wallet-key-page__addr" id="wallet-key-page-addr"></code>
+                  <button type="button" class="wallet-btn wallet-btn--sm" id="wallet-key-page-copy-addr">{% trans "Copy address" %}</button>
+                </div>
+              </div>
+              <p class="wallet-key-page__bal"><span class="wallet-key-page__bal-lab">{% trans "Balance" %}</span> <span class="mono" id="wallet-key-page-tan">—</span> <span class="wallet-balance__unit">TAN</span></p>
+              <p class="wallet-balance__meta mono" id="wallet-key-page-sat"></p>
+              <p class="wallet-balance__meta mono" id="wallet-key-page-utxo"></p>
+              <div class="wallet-actions wallet-actions--wrap">
+                <button type="button" class="wallet-btn" id="wallet-key-page-send">{% trans "Send from this account" %}</button>
+                <button type="button" class="wallet-btn wallet-btn--ghost" id="wallet-key-page-receive">{% trans "Receive / top up" %}</button>
+                <a class="wallet-btn wallet-btn--ghost" id="wallet-key-page-explorer" href="#">{% trans "Open in explorer" %}</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="history" role="tabpanel" aria-labelledby="wallet-tab-history">
+        <div class="wallet-card wallet-card--hero">
+          <h2>{% trans "History & analysis" %}</h2>
+          <p class="page-lead">{% blocktrans trimmed %}Confirmed transfers that touch any address saved in this browser on this node. Refresh after you send or receive; links open the public explorer.{% endblocktrans %}</p>
+          <div class="wallet-actions">
+            <button type="button" class="wallet-btn" id="wallet-history-refresh">{% trans "Refresh history" %}</button>
+            <button type="button" class="wallet-btn wallet-btn--ghost" data-go-tab="send">{% trans "Send payment" %}</button>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Summary" %}</h3>
+          <div class="wallet-history-summary" id="wallet-history-summary" aria-live="polite"></div>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Net flow over time (relative)" %}</h3>
+          <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Line chart: oldest transactions on the left, newest on the right. Height is net amount (scaled to the largest |net| in view); the dashed line is zero. Green = net received, coral = net sent.{% endblocktrans %}</p>
+          <div class="wallet-history-chart" id="wallet-history-chart"></div>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Transaction list" %}</h3>
+          <div class="wallet-table-wrap">
+            <table class="wallet-table">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Time (UTC)" %}</th>
+                  <th scope="col">{% trans "Transaction" %}</th>
+                  <th scope="col">{% trans "Block" %}</th>
+                  <th scope="col">{% trans "In (TAN)" %}</th>
+                  <th scope="col">{% trans "Out (TAN)" %}</th>
+                  <th scope="col">{% trans "Net (TAN)" %}</th>
+                  <th scope="col">{% trans "Fee (TAN)" %}</th>
+                </tr>
+              </thead>
+              <tbody id="wallet-history-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="miner" role="tabpanel" aria-labelledby="wallet-tab-miner">
+        <div class="wallet-card wallet-card--hero">
+          <h2>{% trans "Mine a block" %}</h2>
+          <p class="page-lead">{% blocktrans trimmed %}Run proof-of-work on this node: pending transactions go into the next block and the coinbase pays the miner address you select.{% endblocktrans %}</p>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Network (this node)" %}</h3>
+          <div class="wallet-miner-stats" id="wallet-miner-stats" aria-live="polite">
+            <div class="wallet-miner-stat"><span class="wallet-miner-stat__lab">{% trans "Chain height" %}</span><span class="wallet-miner-stat__val mono" id="wallet-miner-height">—</span></div>
+            <div class="wallet-miner-stat"><span class="wallet-miner-stat__lab">{% trans "Mempool transactions" %}</span><span class="wallet-miner-stat__val mono" id="wallet-miner-mempool-count">—</span></div>
+            <div class="wallet-miner-stat"><span class="wallet-miner-stat__lab">{% trans "Difficulty (bits)" %}</span><span class="wallet-miner-stat__val mono" id="wallet-miner-diff">—</span></div>
+          </div>
+          <div class="wallet-actions wallet-actions--wrap">
+            <button type="button" class="wallet-btn wallet-btn--ghost" id="wallet-miner-refresh">{% trans "Refresh mempool" %}</button>
+            <a class="wallet-btn wallet-btn--ghost" href="{% url 'explorer:mempool' %}" target="_blank" rel="noopener noreferrer">{% trans "Open mempool page" %}</a>
+            <a class="wallet-btn wallet-btn--ghost" href="{% url 'explorer:charts' %}" target="_blank" rel="noopener noreferrer">{% trans "Miner charts & leaderboard" %}</a>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Pending transactions (mempool)" %}</h3>
+          <div class="wallet-table-wrap">
+            <table class="wallet-table">
+              <thead>
+                <tr>
+                  <th scope="col">{% trans "Transaction id" %}</th>
+                  <th scope="col">{% trans "Inputs" %}</th>
+                  <th scope="col">{% trans "Outputs" %}</th>
+                </tr>
+              </thead>
+              <tbody id="wallet-miner-mempool-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h3 class="wallet-card__h">{% trans "Mine next block" %}</h3>
+          <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Choose which saved key receives the coinbase reward and fees for this block.{% endblocktrans %}</p>
+          <div class="wallet-field">
+            <label for="wallet-mine-keyselect">{% trans "Miner signing key" %}</label>
+            <select id="wallet-mine-keyselect"></select>
+          </div>
+          <div class="wallet-actions">
+            <button type="button" class="wallet-btn" id="wallet-mine-btn">{% trans "Mine next block" %}</button>
+          </div>
+          <pre class="wallet-out" id="wallet-mine-out" hidden></pre>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="send" role="tabpanel">
+        <div class="wallet-card">
+          <h2>{% trans "Send payment" %}</h2>
+          <p class="page-lead" id="wallet-send-hint">{% trans "Amounts are in TAN. Pick a saved signing key; the WIF field fills automatically. Paste a different WIF to override." %}</p>
+          <div class="wallet-field">
+            <label for="wallet-send-keyselect">{% trans "Signing key" %}</label>
+            <select id="wallet-send-keyselect"></select>
+          </div>
+          <div class="wallet-field" id="wallet-send-wif-wrap">
+            <label for="wallet-send-wif">{% trans "WIF (auto-filled from selection)" %}</label>
+            <textarea id="wallet-send-wif" rows="2" autocomplete="off" placeholder="{% trans 'Paste another WIF only if overriding the selected key' %}"></textarea>
+          </div>
+          <div class="wallet-field">
+            <label for="wallet-send-to">{% trans "Receiver address" %}</label>
+            <input type="text" id="wallet-send-to" autocomplete="off">
+          </div>
+          <div class="wallet-field">
+            <label for="wallet-send-amount">{% trans "Amount in TAN" %}</label>
+            <input type="text" id="wallet-send-amount" value="0.01" inputmode="decimal">
+          </div>
+          <div class="wallet-field">
+            <label for="wallet-send-fee">{% trans "Fee in TAN" %}</label>
+            <input type="text" id="wallet-send-fee" value="0.0005" inputmode="decimal">
+          </div>
+          <div class="wallet-field">
+            <label class="wallet-check">
+              <input type="checkbox" id="wallet-send-mine" checked>
+              {% trans "Mine one block after sending" %}
+            </label>
+          </div>
+          <div class="wallet-actions">
+            <button type="button" class="wallet-btn" id="wallet-send-btn">{% trans "Send" %}</button>
+          </div>
+          <pre class="wallet-out" id="wallet-send-out" aria-label="{% trans 'Send result' %}"></pre>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="fund" role="tabpanel" aria-labelledby="wallet-tab-fund">
+        <div class="wallet-grid wallet-grid--setup wallet-grid--fund">
+          <div class="wallet-card">
+            <h2>{% trans "Receive on-chain (top up)" %}</h2>
+            <p class="page-lead">{% blocktrans trimmed %}Share your primary public address so someone (or another wallet of yours) can send TAN to you. Only the address is needed — never share your WIF to receive funds.{% endblocktrans %}</p>
+            <div class="wallet-field">
+              <label for="wallet-fund-address-display">{% trans "Receive address" %}</label>
+              <input type="text" id="wallet-fund-address-display" class="wallet-readonly-inp mono" readonly autocomplete="off" placeholder="{% trans 'Add a key on the dashboard first' %}">
+            </div>
+            <div class="wallet-actions wallet-actions--wrap">
+              <button type="button" class="wallet-btn" id="wallet-fund-copy-address">{% trans "Copy address" %}</button>
+              <button type="button" class="wallet-btn wallet-btn--ghost" data-go-tab="dashboard">{% trans "Open dashboard" %}</button>
+            </div>
+          </div>
+          <div class="wallet-card">
+            <h2>{% trans "Buy or add test tokens" %}</h2>
+            <p class="page-lead">{% blocktrans trimmed %}On-chain TAN arrives only when a sender posts a valid transaction to the network. Card or mobile-money purchase requires a licensed partner — link below if your operator configured one.{% endblocktrans %}</p>
+            {% if wallet_buy_url %}
+            <div class="wallet-actions">
+              <a class="wallet-btn" href="{{ wallet_buy_url }}" target="_blank" rel="noopener noreferrer">{% trans "Open buy page" %}</a>
+            </div>
+            {% else %}
+            <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Set WALLET_EXTERNAL_BUY_URL in the server environment to show a “Buy” button that opens your payment provider.{% endblocktrans %}</p>
+            {% endif %}
+            {% if faucet_enabled %}
+            <div class="wallet-actions">
+              <button type="button" class="wallet-btn wallet-btn--ghost" data-go-tab="faucet">{% trans "Get test coins (faucet)" %}</button>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="cashout" role="tabpanel" aria-labelledby="wallet-tab-cashout">
+        <div class="wallet-card">
+          <h2>{% trans "Cash out (send TAN out)" %}</h2>
+          <p class="page-lead">{% blocktrans trimmed %}“Cash out” here means moving TAN to an address you control elsewhere (exchange deposit, hardware wallet, OTC counterparty). This wallet does not convert TAN to bank notes or mobile money automatically.{% endblocktrans %}</p>
+          <ul class="wallet-cashout-steps">
+            <li>{% blocktrans trimmed %}Use Send, pick the key that holds your balance, paste the destination address, set amount and fee, then confirm.{% endblocktrans %}</li>
+            <li>{% blocktrans trimmed %}For fiat, you normally send to an exchange that lists TAN (or wraps it), complete their KYC, then withdraw to your bank from their app.{% endblocktrans %}</li>
+          </ul>
+          <div class="wallet-actions wallet-actions--wrap">
+            <button type="button" class="wallet-btn" data-go-tab="send">{% trans "Go to Send" %}</button>
+            {% if wallet_cashout_partner_url %}
+            <a class="wallet-btn wallet-btn--ghost" href="{{ wallet_cashout_partner_url }}" target="_blank" rel="noopener noreferrer">{% trans "Partner / help link" %}</a>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      <section class="wallet-panel" data-panel="setup" role="tabpanel">
+        <div class="wallet-grid wallet-grid--setup">
+          <div class="wallet-card">
+            <h2>{% trans "Generate another key" %}</h2>
+            <p class="page-lead">{% blocktrans trimmed %}Creates a new independent keypair and adds it to this browser. Each key has its own address and balance.{% endblocktrans %}</p>
+            <div class="wallet-actions">
+              <button type="button" class="wallet-btn" id="wallet-create-btn">{% trans "Generate" %}</button>
+            </div>
+            <pre class="wallet-out" id="wallet-create-out" hidden></pre>
+          </div>
+          <div class="wallet-card">
+            <h2>{% trans "Import WIF" %}</h2>
+            <p class="page-lead">{% blocktrans trimmed %}Adds an existing key to this browser session.{% endblocktrans %}</p>
+            <div class="wallet-field">
+              <label for="wallet-import-wif">WIF</label>
+              <textarea id="wallet-import-wif" rows="2" autocomplete="off"></textarea>
+            </div>
+            <div class="wallet-actions">
+              <button type="button" class="wallet-btn" id="wallet-import-btn">{% trans "Import" %}</button>
+            </div>
+            <pre class="wallet-out" id="wallet-import-out" hidden></pre>
+          </div>
+        </div>
+      </section>
+
+      {% if faucet_enabled %}
+      <section class="wallet-panel" data-panel="faucet" role="tabpanel">
+        <div class="wallet-card">
+          <h2>{% trans "Request test coins" %}</h2>
+          <p class="page-lead">{% blocktrans trimmed %}Genesis sends demo TAN (debug only).{% endblocktrans %}</p>
+          <div class="wallet-field">
+            <label for="wallet-faucet-address">{% trans "Receiving address" %}</label>
+            <input type="text" id="wallet-faucet-address" autocomplete="off">
+          </div>
+          <div class="wallet-field">
+            <label for="wallet-faucet-amount">{% trans "Amount in TAN" %}</label>
+            <input type="text" id="wallet-faucet-amount" value="2" inputmode="decimal">
+          </div>
+          <div class="wallet-actions">
+            <button type="button" class="wallet-btn" id="wallet-faucet-btn">{% trans "Send test coins" %}</button>
+          </div>
+          <pre class="wallet-out" id="wallet-faucet-out"></pre>
+        </div>
+      </section>
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ wallet_boot|json_script:"wallet-boot-json" }}
+<script>
+  (function () {
+    var el = document.getElementById("wallet-boot-json");
+    if (!el) return;
+    var w = JSON.parse(el.textContent);
+    window.WALLET_KEYRING_NS = w.keyringNs || null;
+    window.WALLET_URLS = w.urls;
+    window.WALLET_I18N = w.i18n;
+  })();
+</script>
+<script src="{% static_v 'js/wallet_gui.js' %}"></script>
+{% endblock %}

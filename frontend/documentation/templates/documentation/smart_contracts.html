@@ -1,0 +1,29 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Smart contracts" %}{% endblock %}
+{% block docs_title %}{% trans "Smart contracts (TVM)" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}Tancoin uses UTXO for the coin, like Bitcoin. Contracts add stored bytecode and storage, run by the Tancoin Virtual Machine (TVM).{% endblocktrans %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<h2 id="not-evm">{% trans "Not the same as Ethereum EVM" %}</h2>
+<p>{% blocktrans trimmed %}TVM bytecode is not compatible with Solidity. You cannot paste Ethereum compiler output here. The goal is a small, clear machine you can read and extend.{% endblocktrans %}</p>
+
+<h2 id="lifecycle">{% trans "Deploy and call" %}</h2>
+<ol>
+  <li>{% blocktrans trimmed %}Deploy: an output of type contract_deploy carries bytecode in payload. After the block is applied, the contract id is derived from the transaction id and output index.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}Call: a contract_call output points at that id and passes calldata. The VM runs when the block is applied and may update storage.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}Fees: many contract outputs have value zero. The miner still collects fees from the difference between inputs and outputs, like normal transfers.{% endblocktrans %}</li>
+</ol>
+
+<h2 id="gas">{% trans "Gas and limits" %}</h2>
+<p>{% blocktrans trimmed %}Each opcode costs gas. Storage writes cost more. If gas runs out, the call fails and storage does not stay in a half-updated state for that call.{% endblocktrans %}</p>
+
+<h2 id="context">{% trans "Execution context" %}</h2>
+<p>{% blocktrans trimmed %}Contracts can read block time from an opcode and the caller hash from the first input’s public key script. This is similar in idea to msg.sender and block.timestamp on Ethereum.{% endblocktrans %}</p>
+
+<h2 id="testing">{% trans "Testing" %}</h2>
+<p>{% blocktrans trimmed %}Deploy with POST /api/contracts/deploy/, then mine a block. List contracts with GET /api/contracts/. Call with POST /api/contracts/call/ and hex calldata.{% endblocktrans %}</p>
+{% endblock %}

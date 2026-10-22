@@ -1,0 +1,103 @@
+{% extends "documentation/base_docs.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Picture guide" %}{% endblock %}
+{% block body_class %}docs-visual-guide-page{% endblock %}
+
+{% block docs_title %}{% trans "Picture guide" %}{% endblock %}
+{% block docs_lead %}
+{% blocktrans trimmed %}Visual overview of the main ideas. Each illustration is decorative; follow the links for the full text guides. You can replace these SVG files in static/img/ with high-resolution art exported from Figma.{% endblocktrans %}
+{% endblock %}
+
+{% block docs_content %}
+<div class="docs-visual-guide">
+  <section class="docs-visual-intro" aria-labelledby="visual-bg-title">
+    <h2 id="visual-bg-title" class="docs-visual-intro__title">{% trans "Full-site background" %}</h2>
+    <p class="docs-visual-intro__text">
+      {% blocktrans trimmed %}Every page uses a fixed ambient layer behind the header and content: a wide vector scene plus the existing grid, orbs, and shine. The image slowly drifts for depth; motion is reduced automatically when the browser requests less animation.{% endblocktrans %}
+    </p>
+    <p class="docs-visual-intro__text">
+      {% blocktrans trimmed %}To use a Figma export instead, save a WebP or PNG (for example 1920×1080 or wider) as frontend/static/img/site-bg-ambient.webp or .png and point the img src in common/base.html to that file, or swap the path in CSS if you prefer a pure background-image rule.{% endblocktrans %}
+    </p>
+  </section>
+
+  <figure class="docs-visual-panel">
+    <img
+      class="docs-visual-panel__img"
+      src="{% static 'img/docs-visual-wallet.svg' %}"
+      width="480"
+      height="360"
+      decoding="async"
+      alt="{% trans 'Illustration: wallet device and verification motif' %}">
+    <figcaption class="docs-visual-panel__cap">
+      <strong>{% trans "Wallet" %}</strong>
+      {% blocktrans trimmed %}Keys live in the wallet program; the explorer wallet page helps you create addresses and move coins when the node allows it.{% endblocktrans %}
+      <a href="{% url 'wallet_gui:app' %}">{% trans "Open wallet" %}</a>
+      ·
+      <a href="{% url 'documentation:wallet_architecture' %}">{% trans "Wallet architecture" %}</a>
+    </figcaption>
+  </figure>
+
+  <figure class="docs-visual-panel">
+    <img
+      class="docs-visual-panel__img"
+      src="{% static 'img/docs-visual-payments.svg' %}"
+      width="480"
+      height="360"
+      decoding="async"
+      alt="{% trans 'Illustration: network nodes and value flow' %}">
+    <figcaption class="docs-visual-panel__cap">
+      <strong>{% trans "Payments" %}</strong>
+      {% blocktrans trimmed %}Transactions propagate across the network until they are included in a block.{% endblocktrans %}
+      <a href="{% url 'documentation:user_guide_payments' %}">{% trans "Payments and mining" %}</a>
+    </figcaption>
+  </figure>
+
+  <figure class="docs-visual-panel">
+    <img
+      class="docs-visual-panel__img"
+      src="{% static 'img/docs-visual-mining.svg' %}"
+      width="480"
+      height="360"
+      decoding="async"
+      alt="{% trans 'Illustration: stacked blocks and mining motif' %}">
+    <figcaption class="docs-visual-panel__cap">
+      <strong>{% trans "Mining" %}</strong>
+      {% blocktrans trimmed %}Miners assemble candidate blocks and compete to extend the chain the node follows.{% endblocktrans %}
+      <a href="{% url 'explorer:participate' %}">{% trans "Pay and mine" %}</a>
+    </figcaption>
+  </figure>
+
+  <figure class="docs-visual-panel">
+    <img
+      class="docs-visual-panel__img"
+      src="{% static 'img/docs-visual-explorer.svg' %}"
+      width="480"
+      height="360"
+      decoding="async"
+      alt="{% trans 'Illustration: explorer dashboard abstraction' %}">
+    <figcaption class="docs-visual-panel__cap">
+      <strong>{% trans "Explorer" %}</strong>
+      {% blocktrans trimmed %}Browse blocks, transactions, and mempool state in the browser without logging in.{% endblocktrans %}
+      <a href="{% url 'documentation:using_system' %}">{% trans "Using the system" %}</a>
+    </figcaption>
+  </figure>
+
+  <figure class="docs-visual-panel">
+    <img
+      class="docs-visual-panel__img"
+      src="{% static 'img/docs-visual-api.svg' %}"
+      width="480"
+      height="360"
+      decoding="async"
+      alt="{% trans 'Illustration: structured lines suggesting JSON API' %}">
+    <figcaption class="docs-visual-panel__cap">
+      <strong>{% trans "Developer API" %}</strong>
+      {% blocktrans trimmed %}Integrate with the same JSON routes the explorer uses for automation and backends.{% endblocktrans %}
+      <a href="{% url 'documentation:developer_api' %}">{% trans "Developer API" %}</a>
+      ·
+      <a href="{% url 'explorer:api_help' %}">{% trans "API list" %}</a>
+    </figcaption>
+  </figure>
+</div>
+{% endblock %}

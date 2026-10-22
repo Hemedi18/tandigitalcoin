@@ -1,0 +1,26 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Using the system" %}{% endblock %}
+{% block docs_title %}{% trans "Using the system" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% trans "This chapter is for anyone who uses the public explorer or runs a demo node. You do not need programming experience for the first sections." %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<h2 id="explorer">{% trans "What the explorer shows" %}</h2>
+<p>{% blocktrans trimmed %}The home page shows chain height, the latest block hash, mempool size, and a reference price in US dollars. That price is not a live market feed. It is a simple field for demos. Replace it with a real feed in production.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}The blocks page lists every block from newest to oldest. Each row opens a block page with all transactions inside. The first transaction in most blocks is the coinbase. It has no inputs and pays the miner the reward plus fees.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}The transactions page lists every transaction the node knows. Mempool items appear first. Confirmed items follow, newest first. Open a row to see a clear flow view of inputs and outputs.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}The address page lists unspent outputs for that address and a simple history of outputs that paid it. For full history of spends, follow links into each transaction.{% endblocktrans %}</p>
+
+<h2 id="mempool">{% trans "Mempool and confirmed" %}</h2>
+<p>{% blocktrans trimmed %}When someone submits a signed transaction through the API, it enters the mempool until a miner adds it to a block. The explorer labels these as unconfirmed. After mining, they become confirmed and show a block height and time.{% endblocktrans %}</p>
+<div class="callout">{% blocktrans trimmed %}On this reference node, mining is started by hand with a POST request or your own script. There is no automatic global miner network unless you add one.{% endblocktrans %}</div>
+
+<h2 id="chart">{% trans "Bar chart on the home page" %}</h2>
+<p>{% blocktrans trimmed %}The chart shows how many transactions were in each recent block. Taller bars mean more activity. It uses plain CSS so it stays light and easy to audit.{% endblocktrans %}</p>
+
+<h2 id="operators">{% trans "For operators" %}</h2>
+<p>{% blocktrans trimmed %}Chain data lives under TANCOIN_DATA_DIR, usually data/chain.json and data/genesis_wallet.json. Back up this folder if you care about continuity. Deleting it starts a new chain from genesis.{% endblocktrans %}</p>
+{% endblock %}

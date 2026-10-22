@@ -1,0 +1,45 @@
+{% extends "common/base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "Register" %} — {% trans "Wallet" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/wallet_gui.css' %}">{% endblock %}
+{% block body_class %}wallet-page wallet-auth-page{% endblock %}
+{% block page_header %}{% endblock %}
+
+{% block content %}
+<div class="wallet-auth-layout">
+  <div class="wallet-auth-hero">
+    <img class="wallet-auth-hero__mark" src="{% static 'img/tancoin.png' %}" width="72" height="72" decoding="async" alt="{% trans 'Tancoin logo' %}">
+    <h1 class="wallet-auth-hero__title">{% trans "Create wallet account" %}</h1>
+    <p class="wallet-auth-hero__lead">{% trans "Choose a username and password. This account only gates access on this site; keys still stay in your browser storage after you log in." %}</p>
+  </div>
+  <div class="wallet-auth-panel">
+    <form method="post" action="" class="wallet-auth-form" id="wallet-register-form">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <ul class="wallet-auth-errors" role="alert">
+          {% for err in form.non_field_errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+      {% for field in form %}
+      <div class="wallet-field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {{ field.errors }}
+        {% if field.help_text %}<p class="wallet-field__hint">{{ field.help_text }}</p>{% endif %}
+      </div>
+      {% endfor %}
+      <div class="wallet-auth-actions">
+        <button type="submit" class="wallet-btn wallet-auth-submit" id="wallet-register-submit">
+          {% trans "Create account" %}
+        </button>
+      </div>
+    </form>
+    <p class="wallet-auth-links">
+      <a href="{% url 'wallet_gui:account_login' %}?next={% url 'wallet_gui:app' %}">{% trans "Already have an account? Log in" %}</a>
+      ·
+      <a href="{% url 'wallet_gui:app' %}">{% trans "Back to wallet" %}</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

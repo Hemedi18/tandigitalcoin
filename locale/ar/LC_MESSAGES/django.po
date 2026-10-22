@@ -1,0 +1,4019 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tancoin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-03 19:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: frontend/common/templates/common/base.html:19
+#: frontend/common/templates/common/base.html:50
+#: frontend/explorer/templates/explorer/dash_base.html:23
+msgid "Tancoin"
+msgstr "تانكوين"
+
+#: frontend/common/templates/common/base.html:19
+msgid "Public chain"
+msgstr "سلسلة عامة"
+
+#: frontend/common/templates/common/base.html:50
+#: frontend/documentation/templates/documentation/features_architecture.html:29
+#: frontend/documentation/templates/documentation/visual_guide.html:80
+#: frontend/explorer/templates/explorer/dash_base.html:23
+#: frontend/explorer/templates/explorer/mempool.html:4
+msgid "Explorer"
+msgstr "إكسبلورر"
+
+#: frontend/common/templates/common/base.html:52
+#: frontend/explorer/templates/explorer/dash_base.html:17
+msgid "Main navigation"
+msgstr "الملاحة الرئيسية"
+
+#: frontend/common/templates/common/base.html:53
+#: frontend/explorer/templates/explorer/charts.html:453
+#: frontend/explorer/templates/explorer/dash_base.html:31
+#: frontend/explorer/templates/explorer/home.html:7
+msgid "Home"
+msgstr "بيت"
+
+#: frontend/common/templates/common/base.html:54
+#: frontend/explorer/templates/explorer/blocks_list.html:5
+#: frontend/explorer/templates/explorer/dash_base.html:35
+msgid "Blocks"
+msgstr "كتل"
+
+#: frontend/common/templates/common/base.html:55
+#: frontend/explorer/templates/explorer/block_detail.html:27
+#: frontend/explorer/templates/explorer/charts.html:400
+#: frontend/explorer/templates/explorer/dash_base.html:39
+#: frontend/explorer/templates/explorer/home.html:131
+#: frontend/explorer/templates/explorer/transactions_list.html:5
+msgid "Transactions"
+msgstr "المعاملات"
+
+#: frontend/common/templates/common/base.html:56
+#: frontend/documentation/templates/documentation/base_docs.html:20
+#: frontend/documentation/templates/documentation/hub.html:47
+#: frontend/documentation/templates/documentation/visual_guide.html:33
+#: frontend/explorer/templates/explorer/dash_base.html:57
+#: frontend/explorer/templates/explorer/home.html:43
+#: frontend/explorer/templates/explorer/mempool.html:56
+#: frontend/wallet_gui/templates/wallet_gui/app.html:4
+#: frontend/wallet_gui/templates/wallet_gui/app.html:123
+#: frontend/wallet_gui/templates/wallet_gui/login.html:4
+#: frontend/wallet_gui/templates/wallet_gui/register.html:4
+msgid "Wallet"
+msgstr "محفظة"
+
+#: frontend/common/templates/common/base.html:57
+#: frontend/documentation/templates/documentation/hub.html:58
+#: frontend/documentation/templates/documentation/user_guide_payments.html:93
+#: frontend/documentation/templates/documentation/visual_guide.html:67
+#: frontend/explorer/templates/explorer/dash_base.html:53
+#: frontend/explorer/templates/explorer/participate.html:4
+msgid "Pay and mine"
+msgstr "الدفع لي"
+
+#: frontend/common/templates/common/base.html:58
+#: frontend/common/templates/common/base.html:102
+#: frontend/documentation/templates/documentation/base_docs.html:13
+#: frontend/documentation/templates/documentation/hub.html:4
+#: frontend/documentation/templates/documentation/hub.html:21
+#: frontend/explorer/templates/explorer/dash_base.html:63
+msgid "Documentation"
+msgstr "التوثيق"
+
+#: frontend/common/templates/common/base.html:59
+#: frontend/common/templates/common/base.html:103
+#: frontend/documentation/templates/documentation/base_docs.html:25
+#: frontend/documentation/templates/documentation/hub.html:113
+#: frontend/documentation/templates/documentation/visual_guide.html:37
+#: frontend/documentation/templates/documentation/wallet_architecture.html:4
+#: frontend/documentation/templates/documentation/wallet_architecture.html:5
+#: frontend/documentation/templates/documentation/wallets_security.html:11
+#: frontend/explorer/templates/explorer/dash_base.html:67
+msgid "Wallet architecture"
+msgstr "بنية المحفظة"
+
+#: frontend/common/templates/common/base.html:60
+#: frontend/explorer/templates/explorer/charts.html:455
+#: frontend/explorer/templates/explorer/dash_base.html:71
+msgid "API (JSON)"
+msgstr "واجهة برمجة التطبيقات (JSON)"
+
+#: frontend/common/templates/common/base.html:61
+#: frontend/common/templates/common/base.html:106
+#: frontend/explorer/templates/explorer/charts.html:6
+#: frontend/explorer/templates/explorer/dash_base.html:47
+#: frontend/explorer/templates/explorer/home.html:42
+msgid "Charts"
+msgstr "المخططات"
+
+#: frontend/common/templates/common/base.html:63
+#: frontend/explorer/templates/explorer/dash_base.html:96
+msgid "Menu"
+msgstr ""
+
+#: frontend/common/templates/common/base.html:68
+#: frontend/common/templates/common/base.html:71
+#: frontend/explorer/templates/explorer/dash_base.html:78
+#: frontend/explorer/templates/explorer/dash_base.html:81
+msgid "Language"
+msgstr "لغة"
+
+#: frontend/common/templates/common/base.html:82
+#: frontend/explorer/templates/explorer/dash_base.html:16
+msgid "Close menu"
+msgstr ""
+
+#: frontend/common/templates/common/base.html:89
+#: frontend/explorer/templates/explorer/dash_base.html:110
+msgid "Page"
+msgstr "صفحة"
+
+#: frontend/common/templates/common/base.html:100
+msgid ""
+"Tancoin reference node. Public blockchain data. No login required to browse."
+msgstr ""
+"العقدة المرجعية تانكوين. بيانات blockchain العامة. لا يلزم تسجيل الدخول "
+"للتصفح."
+
+#: frontend/common/templates/common/base.html:104
+msgid "Payments guide"
+msgstr "دليل المدفوعات"
+
+#: frontend/common/templates/common/base.html:105
+#: frontend/explorer/templates/explorer/charts.html:421
+#: frontend/explorer/templates/explorer/charts.html:454
+#: frontend/explorer/templates/explorer/home.html:40
+#: frontend/explorer/templates/explorer/transactions_list.html:8
+msgid "All transactions"
+msgstr "كل الحركات المالية"
+
+#: frontend/common/templates/common/base.html:112
+msgid "Copied to clipboard"
+msgstr "تم النسخ إلى الحافظة"
+
+#: frontend/common/templates/common/base.html:113
+#: frontend/common/templates/common/theme_picker.html:28
+#: frontend/wallet_gui/templates/wallet_gui/app.html:19
+msgid "Close"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:10
+#: frontend/common/templates/common/theme_picker.html:16
+msgid "Appearance"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:22
+msgid "Choose appearance"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:27
+msgid "Themes"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:35
+msgid "Dark"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:39
+msgid "Light"
+msgstr "ارتفاع"
+
+#: frontend/common/templates/common/theme_picker.html:43
+msgid "Gold"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:47
+msgid "Ocean"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:51
+msgid "Pink"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:55
+msgid "Aurora"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:59
+msgid "Sunset"
+msgstr ""
+
+#: frontend/common/templates/common/theme_picker.html:63
+msgid "Midnight"
+msgstr "ارتفاع السلسلة"
+
+#: frontend/common/templates/common/theme_picker.html:67
+msgid "Forest"
+msgstr ""
+
+#: frontend/documentation/templates/documentation/base_docs.html:17
+msgid "Documentation sections"
+msgstr "أقسام التوثيق"
+
+#: frontend/documentation/templates/documentation/base_docs.html:18
+msgid "Overview"
+msgstr "ملخص"
+
+#: frontend/documentation/templates/documentation/base_docs.html:19
+#: frontend/documentation/templates/documentation/hub.html:36
+#: frontend/documentation/templates/documentation/visual_guide.html:4
+#: frontend/documentation/templates/documentation/visual_guide.html:7
+msgid "Picture guide"
+msgstr "دليل مصوّر"
+
+#: frontend/documentation/templates/documentation/base_docs.html:21
+#: frontend/documentation/templates/documentation/hub.html:69
+#: frontend/documentation/templates/documentation/user_guide_payments.html:4
+#: frontend/documentation/templates/documentation/visual_guide.html:52
+msgid "Payments and mining"
+msgstr "المدفوعات والتعدين"
+
+#: frontend/documentation/templates/documentation/base_docs.html:22
+#: frontend/documentation/templates/documentation/hub.html:80
+#: frontend/documentation/templates/documentation/using_system.html:4
+#: frontend/documentation/templates/documentation/using_system.html:5
+#: frontend/documentation/templates/documentation/visual_guide.html:82
+msgid "Using the system"
+msgstr "استخدام النظام"
+
+#: frontend/documentation/templates/documentation/base_docs.html:23
+#: frontend/documentation/templates/documentation/developer_api.html:4
+#: frontend/documentation/templates/documentation/developer_api.html:5
+#: frontend/documentation/templates/documentation/hub.html:91
+#: frontend/documentation/templates/documentation/user_guide_payments.html:95
+#: frontend/documentation/templates/documentation/visual_guide.html:95
+#: frontend/documentation/templates/documentation/visual_guide.html:97
+msgid "Developer API"
+msgstr "واجهة برمجة تطبيقات المطور"
+
+#: frontend/documentation/templates/documentation/base_docs.html:24
+#: frontend/documentation/templates/documentation/features_architecture.html:31
+#: frontend/documentation/templates/documentation/hub.html:102
+#: frontend/documentation/templates/documentation/smart_contracts.html:4
+msgid "Smart contracts"
+msgstr "العقود الذكية"
+
+#: frontend/documentation/templates/documentation/base_docs.html:26
+#: frontend/documentation/templates/documentation/hub.html:124
+#: frontend/documentation/templates/documentation/user_guide_payments.html:94
+#: frontend/documentation/templates/documentation/wallets_security.html:4
+#: frontend/documentation/templates/documentation/wallets_security.html:5
+#: frontend/explorer/templates/explorer/participate.html:66
+msgid "Wallets and security"
+msgstr "المحافظ والأمن"
+
+#: frontend/documentation/templates/documentation/base_docs.html:27
+#: frontend/documentation/templates/documentation/features_architecture.html:4
+#: frontend/documentation/templates/documentation/hub.html:135
+msgid "Features"
+msgstr "سمات"
+
+#: frontend/documentation/templates/documentation/base_docs.html:28
+#: frontend/documentation/templates/documentation/hub.html:146
+#: frontend/documentation/templates/documentation/visual_guide.html:99
+msgid "API list"
+msgstr "قائمة واجهة برمجة التطبيقات"
+
+#: frontend/documentation/templates/documentation/developer_api.html:7
+msgid ""
+"The HTTP API under /api/ matches the explorer. Responses are JSON with an ok "
+"field when the call succeeds."
+msgstr ""
+"واجهة برمجة تطبيقات HTTP ضمن /api/ تتطابق مع المستكشف. الردود هي JSON مع حقل "
+"موافق عند نجاح المكالمة."
+
+#: frontend/documentation/templates/documentation/developer_api.html:11
+msgid "Amounts and precision"
+msgstr "المقادير والدقة"
+
+#: frontend/documentation/templates/documentation/developer_api.html:12
+msgid ""
+"All money fields use whole numbers in satoshis. One TAN is one hundred "
+"million satoshis. Do not use float types for money in your code."
+msgstr ""
+"تستخدم جميع حقول المال أرقامًا صحيحة في ساتوشي. TAN الواحد يساوي مائة مليون "
+"ساتوشي. لا تستخدم الأنواع العائمة للحصول على المال في التعليمات البرمجية "
+"الخاصة بك."
+
+#: frontend/documentation/templates/documentation/developer_api.html:15
+msgid "Read-only endpoints"
+msgstr "نقاط النهاية للقراءة فقط"
+
+#: frontend/documentation/templates/documentation/developer_api.html:17
+msgid "height, tip, mempool count, reference price, difficulty"
+msgstr "الارتفاع، الحافة، عدد الذاكرة، السعر المرجعي، الصعوبة"
+
+#: frontend/documentation/templates/documentation/developer_api.html:18
+msgid "recent blocks as JSON"
+msgstr "الكتل الأخيرة مثل JSON"
+
+#: frontend/documentation/templates/documentation/developer_api.html:19
+msgid "one block with transactions"
+msgstr "كتلة واحدة مع المعاملات"
+
+#: frontend/documentation/templates/documentation/developer_api.html:20
+msgid "transaction plus confirmed flag"
+msgstr "المعاملة بالإضافة إلى العلم المؤكد"
+
+#: frontend/documentation/templates/documentation/developer_api.html:21
+msgid "spendable outputs for an address"
+msgstr "مخرجات يمكن إنفاقها للحصول على عنوان"
+
+#: frontend/documentation/templates/documentation/developer_api.html:22
+msgid "pending transactions"
+msgstr "المعاملات المعلقة"
+
+#: frontend/documentation/templates/documentation/developer_api.html:23
+msgid "deployed contracts list"
+msgstr "قائمة العقود المنشورة"
+
+#: frontend/documentation/templates/documentation/developer_api.html:26
+msgid "Write endpoints (POST)"
+msgstr "كتابة نقاط النهاية (POST)"
+
+#: frontend/documentation/templates/documentation/developer_api.html:27
+msgid ""
+"Submitting transactions and mining changes local data. In production, add "
+"authentication, rate limits, and network rules."
+msgstr ""
+"تقديم المعاملات والتعدين يغير البيانات المحلية. في الإنتاج، أضف المصادقة "
+"وحدود الأسعار وقواعد الشبكة."
+
+#: frontend/documentation/templates/documentation/developer_api.html:29
+msgid "body includes transaction object"
+msgstr "يتضمن الجسم كائن المعاملة"
+
+#: frontend/documentation/templates/documentation/developer_api.html:30
+msgid "optional miner_wif for who receives fees"
+msgstr "Miner_wif اختياري لمن يتلقى الرسوم"
+
+#: frontend/documentation/templates/documentation/developer_api.html:31
+msgid "set reference_price_usd"
+msgstr "تعيين مرجع_السعر_دولار"
+
+#: frontend/documentation/templates/documentation/developer_api.html:32
+msgid "deployer_wif, fee_satoshis, bytecode_hex"
+msgstr "Publisher_wif،fee_satoshis،bytecode_hex"
+
+#: frontend/documentation/templates/documentation/developer_api.html:33
+msgid "caller_wif, contract_id_hex, calldata_hex, fee_satoshis"
+msgstr "caller_wif, Contract_id_hex, calldata_hex,fee_satoshis"
+
+#: frontend/documentation/templates/documentation/developer_api.html:35
+msgid ""
+"POST routes use csrf_exempt for simple JSON tools. Real browser apps should "
+"send CSRF tokens or hide writes behind your own backend."
+msgstr ""
+"تستخدم مسارات POST csrf_exempt لأدوات JSON البسيطة. يجب أن ترسل تطبيقات "
+"المتصفح الحقيقية رموز CSRF أو تخفي عمليات الكتابة خلف الواجهة الخلفية الخاصة "
+"بك."
+
+#: frontend/documentation/templates/documentation/developer_api.html:37
+msgid "Python integration"
+msgstr "التكامل بايثون"
+
+#: frontend/documentation/templates/documentation/developer_api.html:38
+msgid ""
+"Inside the same Django project you can import chain_api.services.node and "
+"call get_chain() without HTTP. Remote services should use HTTPS and the JSON "
+"API."
+msgstr ""
+"داخل نفس مشروع Django، يمكنك استيراد chain_api.services.node واستدعاء "
+"get_chain() بدون HTTP. يجب أن تستخدم الخدمات البعيدة HTTPS وJSON API."
+
+#: frontend/documentation/templates/documentation/developer_api.html:40
+msgid "Errors"
+msgstr "أخطاء"
+
+#: frontend/documentation/templates/documentation/developer_api.html:41
+msgid ""
+"Errors return HTTP 4xx with ok false and an error string you can show to "
+"users."
+msgstr "تُرجع الأخطاء HTTP 4xx مع ok false وسلسلة خطأ يمكنك إظهارها للمستخدمين."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:5
+msgid "Features and architecture"
+msgstr "الميزات والهندسة المعمارية"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:7
+msgid ""
+"The code is split so the chain core, HTTP API, and web front can evolve on "
+"their own."
+msgstr ""
+"يتم تقسيم الكود بحيث يمكن أن يتطور جوهر السلسلة وHTTP API وواجهة الويب من "
+"تلقاء نفسها."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:11
+msgid "Main packages"
+msgstr "الحزم الرئيسية"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:13
+msgid "tancoin_core: pure Python chain and TVM. No Django import."
+msgstr "tancoin_core: سلسلة Python النقية وTVM. لا يوجد استيراد جانغو."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:14
+msgid "chain_api: JSON under /api/ and on-disk chain state."
+msgstr "chain_api: JSON ضمن /api/ وحالة السلسلة على القرص."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:15
+msgid "frontend.common: shared layout."
+msgstr "frontend.common: تخطيط مشترك."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:16
+msgid "frontend.explorer: block explorer pages."
+msgstr "frontend.explorer: حظر صفحات المستكشف."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:17
+msgid "frontend.documentation: these guides."
+msgstr "frontend.documentation: هذه الأدلة."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:18
+msgid "frontend.wallet_gui: wallet web UI."
+msgstr "frontend.wallet_gui: واجهة مستخدم الويب للمحفظة."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:21
+msgid "Feature matrix"
+msgstr "مصفوفة الميزة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:24
+msgid "Feature"
+msgstr "ميزة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:24
+#: frontend/explorer/templates/explorer/transactions_list.html:17
+msgid "Status"
+msgstr "حالة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:24
+msgid "Notes"
+msgstr "ملحوظات"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:26
+msgid "UTXO transfers"
+msgstr "نقل UTXO"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:26
+#: frontend/documentation/templates/documentation/features_architecture.html:27
+#: frontend/documentation/templates/documentation/features_architecture.html:28
+#: frontend/documentation/templates/documentation/features_architecture.html:29
+#: frontend/documentation/templates/documentation/features_architecture.html:30
+msgid "Yes"
+msgstr "نعم"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:26
+msgid "Addresses and signatures"
+msgstr "العناوين والتوقيعات"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:27
+msgid "Proof of work"
+msgstr "إثبات العمل"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:27
+msgid "Local mining"
+msgstr "التعدين المحلي"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:28
+#: frontend/explorer/templates/explorer/dash_base.html:43
+#: frontend/explorer/templates/explorer/home.html:46
+#: frontend/explorer/templates/explorer/mempool.html:4
+#: frontend/explorer/templates/explorer/transaction_detail.html:11
+msgid "Mempool"
+msgstr "ميمبول"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:28
+msgid "Cleared when a block is mined"
+msgstr "يتم مسحه عندما يتم تعدين الكتلة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:29
+msgid "Blocks, transactions, addresses"
+msgstr "الكتل والمعاملات والعناوين"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:30
+#: frontend/explorer/templates/explorer/api_help.html:4
+msgid "JSON API"
+msgstr "واجهة برمجة تطبيقات جسون"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:30
+msgid "Same data as the explorer"
+msgstr "نفس البيانات مثل المستكشف"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:31
+msgid "Not Solidity compatible"
+msgstr "غير متوافق مع الصلابة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:32
+msgid "Peer to peer network"
+msgstr "شبكة نظير إلى نظير"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:32
+msgid "No"
+msgstr "لا"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:32
+msgid "Single node demo"
+msgstr "عرض عقدة واحدة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:33
+msgid "Market price"
+msgstr "سعر السوق"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:33
+msgid "Mock field"
+msgstr "حقل وهمي"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:33
+msgid "reference_price_usd only"
+msgstr "reference_price_usd فقط"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:38
+msgid "Static files"
+msgstr "الملفات الثابتة"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:39
+msgid ""
+"CSS and JavaScript live under frontend/static. In production run "
+"collectstatic and serve files with nginx or a CDN."
+msgstr ""
+"CSS وJavaScript موجودان ضمن الواجهة الأمامية/الثابتة. في مرحلة الإنتاج، قم "
+"بتشغيل تجميع الملفات الثابتة وتقديمها باستخدام nginx أو CDN."
+
+#: frontend/documentation/templates/documentation/features_architecture.html:41
+msgid "Extending"
+msgstr "تمديد"
+
+#: frontend/documentation/templates/documentation/features_architecture.html:42
+msgid ""
+"Add new apps under frontend for new screens. Keep chain rules inside "
+"tancoin_core or the node service instead of copying logic in views."
+msgstr ""
+"أضف تطبيقات جديدة ضمن الواجهة الأمامية للشاشات الجديدة. احتفظ بقواعد السلسلة "
+"داخل tancoin_core أو خدمة العقدة بدلاً من نسخ المنطق في طرق العرض."
+
+#: frontend/documentation/templates/documentation/hub.html:22
+msgid ""
+"Guides for users, operators, and developers who work with the Tancoin node, "
+"explorer, and smart contracts."
+msgstr ""
+"أدلة للمستخدمين والمشغلين والمطورين الذين يعملون مع عقدة Tancoin والمستكشف "
+"والعقود الذكية."
+
+#: frontend/documentation/templates/documentation/hub.html:23
+msgid ""
+"Choose a topic below. Each page uses only the language you selected in the "
+"menu."
+msgstr "اختر موضوعا أدناه. تستخدم كل صفحة اللغة التي حددتها فقط في القائمة."
+
+#: frontend/documentation/templates/documentation/hub.html:37
+msgid ""
+"Image-led tour of wallet, payments, mining, explorer, and API with links "
+"into the full guides."
+msgstr ""
+"جولة مصوّرة عن المحفظة والمدفوعات والتعدين والمستكشف وواجهة البرمجة مع روابط "
+"إلى الأدلة الكاملة."
+
+#: frontend/documentation/templates/documentation/hub.html:48
+msgid ""
+"Create keys, check balance, send TAN, and use the test faucet when debug "
+"mode is on."
+msgstr ""
+"أنشئ المفاتيح، وتحقق من الرصيد، وأرسل TAN، واستخدم صنبور الاختبار عند تشغيل "
+"وضع التصحيح."
+
+#: frontend/documentation/templates/documentation/hub.html:59
+msgid "Short guide to sending coins, mining a block, and managing keys."
+msgstr "دليل مختصر لإرسال العملات المعدنية واستخراج الكتلة وإدارة المفاتيح."
+
+#: frontend/documentation/templates/documentation/hub.html:70
+msgid "Full walkthrough: wallet, payment, miner role, and examples."
+msgstr "إرشادات كاملة: المحفظة، والدفع، ودور المُعدِّن، والأمثلة."
+
+#: frontend/documentation/templates/documentation/hub.html:81
+msgid "Explorer, mempool, confirmed blocks, and the reference price field."
+msgstr "Explorer وmempool والكتل المؤكدة وحقل السعر المرجعي."
+
+#: frontend/documentation/templates/documentation/hub.html:92
+msgid "JSON routes, bodies, errors, and how to call them from other apps."
+msgstr "مسارات JSON والهيئات والأخطاء وكيفية الاتصال بها من تطبيقات أخرى."
+
+#: frontend/documentation/templates/documentation/hub.html:103
+msgid "TVM model, deploy and call flow, and how it differs from Ethereum."
+msgstr "نموذج TVM والنشر وتدفق المكالمات وكيف يختلف عن Ethereum."
+
+#: frontend/documentation/templates/documentation/hub.html:114
+msgid ""
+"Programs vs files, full-service and signing-only setups, HD keys, BIP39, and "
+"how they relate to the explorer."
+msgstr ""
+"البرامج مقابل الملفات، وإعدادات المحفظة الكاملة والتوقيع فقط، ومفاتيح HD، "
+"وBIP39، وكيف ترتبط بالمستكشف."
+
+#: frontend/documentation/templates/documentation/hub.html:125
+msgid "Keys, WIF storage, genesis wallet, CSRF, and production checklist."
+msgstr "المفاتيح وتخزين WIF ومحفظة التكوين وCSRF وقائمة مراجعة الإنتاج."
+
+#: frontend/documentation/templates/documentation/hub.html:136
+msgid "What the software includes and how the packages fit together."
+msgstr "ما يتضمنه البرنامج وكيف تتناسب الحزم معًا."
+
+#: frontend/documentation/templates/documentation/hub.html:147
+msgid "One-page table of HTTP methods and paths."
+msgstr "جدول من صفحة واحدة لطرق ومسارات HTTP."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:5
+msgid "Smart contracts (TVM)"
+msgstr "العقود الذكية (TVM)"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:7
+msgid ""
+"Tancoin uses UTXO for the coin, like Bitcoin. Contracts add stored bytecode "
+"and storage, run by the Tancoin Virtual Machine (TVM)."
+msgstr ""
+"يستخدم Tancoin UTXO للعملة، مثل Bitcoin. تضيف العقود رمزًا بايت وتخزينًا "
+"مخزنين، يتم تشغيلهما بواسطة جهاز Tancoin الظاهري (TVM)."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:11
+msgid "Not the same as Ethereum EVM"
+msgstr "ليس مثل Ethereum EVM"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:12
+msgid ""
+"TVM bytecode is not compatible with Solidity. You cannot paste Ethereum "
+"compiler output here. The goal is a small, clear machine you can read and "
+"extend."
+msgstr ""
+"رمز بايت TVM غير متوافق مع Solidity. لا يمكنك لصق مخرجات مترجم Ethereum هنا. "
+"الهدف هو آلة صغيرة وواضحة يمكنك قراءتها وتوسيعها."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:14
+msgid "Deploy and call"
+msgstr "نشر والاتصال"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:16
+msgid ""
+"Deploy: an output of type contract_deploy carries bytecode in payload. After "
+"the block is applied, the contract id is derived from the transaction id and "
+"output index."
+msgstr ""
+"النشر: يحمل الإخراج من النوع Contract_deploy الرمز الثانوي في الحمولة. بعد "
+"تطبيق الكتلة، يتم اشتقاق معرف العقد من معرف المعاملة ومؤشر الإخراج."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:17
+msgid ""
+"Call: a contract_call output points at that id and passes calldata. The VM "
+"runs when the block is applied and may update storage."
+msgstr ""
+"الاتصال: يشير إخراج Contract_call إلى هذا المعرف ويمرر بيانات الاتصال. يعمل "
+"الجهاز الظاهري عند تطبيق الكتلة وقد يقوم بتحديث مساحة التخزين."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:18
+msgid ""
+"Fees: many contract outputs have value zero. The miner still collects fees "
+"from the difference between inputs and outputs, like normal transfers."
+msgstr ""
+"الرسوم: العديد من مخرجات العقود قيمتها صفر. لا يزال القائم بالتعدين يجمع "
+"الرسوم من الفرق بين المدخلات والمخرجات، مثل التحويلات العادية."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:21
+msgid "Gas and limits"
+msgstr "الغاز والحدود"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:22
+msgid ""
+"Each opcode costs gas. Storage writes cost more. If gas runs out, the call "
+"fails and storage does not stay in a half-updated state for that call."
+msgstr ""
+"كل رمز تشغيل يكلف الغاز. تكاليف كتابة التخزين أكثر. في حالة نفاد الوقود، "
+"تفشل المكالمة ولا يبقى التخزين في حالة نصف محدثة لتلك المكالمة."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:24
+msgid "Execution context"
+msgstr "سياق التنفيذ"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:25
+msgid ""
+"Contracts can read block time from an opcode and the caller hash from the "
+"first input’s public key script. This is similar in idea to msg.sender and "
+"block.timestamp on Ethereum."
+msgstr ""
+"يمكن للعقود قراءة وقت الحظر من كود التشغيل وتجزئة المتصل من البرنامج النصي "
+"للمفتاح العام للإدخال الأول. وهذا مشابه في الفكرة لـ msg.sender "
+"وblock.timestamp على Ethereum."
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:27
+msgid "Testing"
+msgstr "اختبار"
+
+#: frontend/documentation/templates/documentation/smart_contracts.html:28
+msgid ""
+"Deploy with POST /api/contracts/deploy/, then mine a block. List contracts "
+"with GET /api/contracts/. Call with POST /api/contracts/call/ and hex "
+"calldata."
+msgstr ""
+"انشر باستخدام POST /api/contracts/deploy/، ثم استخرج كتلة. قائمة العقود مع "
+"GET /api/contracts/. اتصل باستخدام POST /api/contracts/call/ وبيانات الاتصال "
+"السداسية."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:5
+msgid "Payments, mining, and wallet"
+msgstr "المدفوعات والتعدين والمحفظة"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:7
+msgid ""
+"Use the wallet page for a full graphical flow. This page explains the same "
+"ideas with the API and Python for people who integrate systems."
+msgstr ""
+"استخدم صفحة المحفظة للحصول على تدفق رسومي كامل. تشرح هذه الصفحة نفس الأفكار "
+"مع API وPython للأشخاص الذين يقومون بدمج الأنظمة."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:8
+msgid "Open the wallet"
+msgstr "افتح المحفظة"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:13
+msgid "Units"
+msgstr "الوحدات"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:13
+msgid ""
+"All amounts in the API are satoshis. One TAN is one hundred million satoshis."
+msgstr ""
+"جميع المبالغ الموجودة في واجهة برمجة التطبيقات هي ساتوشي. TAN الواحد يساوي "
+"مائة مليون ساتوشي."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:16
+msgid "How money moves"
+msgstr "كيف يتحرك المال"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:17
+msgid ""
+"Your balance is the sum of unspent outputs that pay your address. A payment "
+"spends those outputs and creates new outputs for the receiver and usually "
+"change back to you. The miner fee is the difference between input total and "
+"output total."
+msgstr ""
+"رصيدك هو مجموع المخرجات غير المنفقة التي تدفع لعنوانك. تنفق الدفعة تلك "
+"المخرجات وتنشئ مخرجات جديدة للمتلقي وعادةً ما تعود إليك. رسوم التعدين هي "
+"الفرق بين إجمالي المدخلات وإجمالي المخرجات."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:21
+msgid "Wallet: create, store, restore"
+msgstr "المحفظة: إنشاء وتخزين واستعادة"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:22
+msgid "Create"
+msgstr "يخلق"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:24
+msgid ""
+"The response includes address and wif. The wif is a full spend secret. Store "
+"it encrypted."
+msgstr "يتضمن الرد العنوان وwif. Wif هو سر الإنفاق الكامل. تخزينها مشفرة."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:25
+msgid "Restore in Python"
+msgstr "استعادة في بايثون"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:29
+#: frontend/wallet_gui/templates/wallet_gui/app.html:284
+msgid "Balance"
+msgstr "توازن"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:31
+msgid "Explorer: open /address/your_address/"
+msgstr "المستكشف: افتح /address/your_address/"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:32
+msgid "API: GET /api/chain/utxo/your_address/"
+msgstr "واجهة برمجة التطبيقات: احصل على /api/chain/utxo/your_address/"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:35
+msgid "Making a payment"
+msgstr "إجراء الدفع"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:36
+msgid "Signing is implemented in Python today. Typical steps:"
+msgstr "يتم تنفيذ التوقيع في بايثون اليوم. الخطوات النموذجية:"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:38
+msgid "Confirm the sender has UTXOs on chain."
+msgstr "تأكد من أن المرسل لديه UTXOs على السلسلة."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:39
+msgid "Pick inputs that cover amount plus fee."
+msgstr "اختر المدخلات التي تغطي المبلغ بالإضافة إلى الرسوم."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:40
+msgid "Call Chain.create_transfer then POST /api/chain/tx/submit/."
+msgstr "اتصل بـ Chain.create_transfer ثم POST /api/chain/tx/submit/."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:41
+msgid "Run POST /api/chain/mine/ or wait for a miner."
+msgstr "قم بتشغيل POST /api/chain/mine/ أو انتظر عامل التعدين."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:43
+msgid "Django shell example"
+msgstr "مثال قذيفة جانغو"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:70
+msgid ""
+"After mining, Bob sees a new output. Alice receives change as a new output."
+msgstr "بعد التعدين، يرى بوب ناتجًا جديدًا. تتلقى أليس التغيير كمخرج جديد."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:72
+#: frontend/documentation/templates/documentation/visual_guide.html:65
+msgid "Mining"
+msgstr "التعدين"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:73
+msgid ""
+"Mining does not run in the background here. Whoever POSTs to /api/chain/"
+"mine/ builds the block, does proof of work, and clears the mempool."
+msgstr ""
+"التعدين لا يعمل في الخلفية هنا. كل من يقوم بالنشر على /api/chain/mine/ يبني "
+"الكتلة، ويقوم بإثبات العمل، ويمسح مجمع الذاكرة."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:77
+msgid ""
+"You may omit the body in local demos so fees go to the genesis wallet. Lock "
+"this down in production."
+msgstr ""
+"يمكنك حذف الجثة في العروض التوضيحية المحلية حتى تذهب الرسوم إلى محفظة "
+"Genesis. قفل هذا في الإنتاج."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:79
+msgid "Day to day"
+msgstr "يوما بعد يوم أو من يوم إلى آخر"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:81
+msgid "Receive: share your address."
+msgstr "تلقي: مشاركة عنوانك."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:82
+msgid "Send: never type a WIF on a site you do not trust."
+msgstr "إرسال: لا تكتب أبدًا ملف WIF على موقع لا تثق به."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:83
+msgid "Backup: keep encrypted copies of keys and data folder."
+msgstr "النسخ الاحتياطي: احتفظ بنسخ مشفرة من المفاتيح ومجلد البيانات."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:84
+msgid "Many wallets: generate as many keys as you need."
+msgstr "العديد من المحافظ: قم بإنشاء العديد من المفاتيح التي تحتاجها."
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:87
+msgid "Flow diagram"
+msgstr "مخطط التدفق"
+
+#: frontend/documentation/templates/documentation/user_guide_payments.html:91
+msgid "See also"
+msgstr "انظر أيضا"
+
+#: frontend/documentation/templates/documentation/using_system.html:7
+msgid ""
+"This chapter is for anyone who uses the public explorer or runs a demo node. "
+"You do not need programming experience for the first sections."
+msgstr ""
+"هذا الفصل مخصص لأي شخص يستخدم المستكشف العام أو يقوم بتشغيل عقدة تجريبية. لا "
+"تحتاج إلى خبرة برمجية للأقسام الأولى."
+
+#: frontend/documentation/templates/documentation/using_system.html:11
+msgid "What the explorer shows"
+msgstr "ما يظهره المستكشف"
+
+#: frontend/documentation/templates/documentation/using_system.html:12
+msgid ""
+"The home page shows chain height, the latest block hash, mempool size, and a "
+"reference price in US dollars. That price is not a live market feed. It is a "
+"simple field for demos. Replace it with a real feed in production."
+msgstr ""
+"تعرض الصفحة الرئيسية ارتفاع السلسلة وأحدث تجزئة الكتلة وحجم الذاكرة والسعر "
+"المرجعي بالدولار الأمريكي. هذا السعر ليس تغذية السوق الحية. إنه مجال بسيط "
+"للعروض التوضيحية. استبدله بخلاصة حقيقية في الإنتاج."
+
+#: frontend/documentation/templates/documentation/using_system.html:13
+msgid ""
+"The blocks page lists every block from newest to oldest. Each row opens a "
+"block page with all transactions inside. The first transaction in most "
+"blocks is the coinbase. It has no inputs and pays the miner the reward plus "
+"fees."
+msgstr ""
+"تسرد صفحة الكتل كل كتلة من الأحدث إلى الأقدم. يفتح كل صف صفحة كتلة تحتوي على "
+"جميع المعاملات بداخلها. المعاملة الأولى في معظم الكتل هي قاعدة العملات. ليس "
+"لديها مدخلات وتدفع لعامل التعدين المكافأة بالإضافة إلى الرسوم."
+
+#: frontend/documentation/templates/documentation/using_system.html:14
+msgid ""
+"The transactions page lists every transaction the node knows. Mempool items "
+"appear first. Confirmed items follow, newest first. Open a row to see a "
+"clear flow view of inputs and outputs."
+msgstr ""
+"تسرد صفحة المعاملات كل معاملة تعرفها العقدة. تظهر عناصر Mempool أولاً. تتبع "
+"العناصر المؤكدة، الأحدث أولاً. افتح صفًا لرؤية عرض تدفق واضح للمدخلات "
+"والمخرجات."
+
+#: frontend/documentation/templates/documentation/using_system.html:15
+msgid ""
+"The address page lists unspent outputs for that address and a simple history "
+"of outputs that paid it. For full history of spends, follow links into each "
+"transaction."
+msgstr ""
+"تسرد صفحة العنوان المخرجات غير المنفقة لهذا العنوان وتاريخًا بسيطًا للمخرجات "
+"التي دفعت له. للحصول على سجل كامل للإنفاق، اتبع الروابط الموجودة في كل "
+"معاملة."
+
+#: frontend/documentation/templates/documentation/using_system.html:17
+msgid "Mempool and confirmed"
+msgstr "ميمبول وأكد"
+
+#: frontend/documentation/templates/documentation/using_system.html:18
+msgid ""
+"When someone submits a signed transaction through the API, it enters the "
+"mempool until a miner adds it to a block. The explorer labels these as "
+"unconfirmed. After mining, they become confirmed and show a block height and "
+"time."
+msgstr ""
+"عندما يرسل شخص ما معاملة موقعة من خلال واجهة برمجة التطبيقات، فإنه يدخل إلى "
+"مجمع الذاكرة حتى يضيفها عامل التعدين إلى الكتلة. يصنفها المستكشف على أنها "
+"غير مؤكدة. بعد التعدين، يتم تأكيدها وتظهر ارتفاع الكتلة ووقتها."
+
+#: frontend/documentation/templates/documentation/using_system.html:19
+msgid ""
+"On this reference node, mining is started by hand with a POST request or "
+"your own script. There is no automatic global miner network unless you add "
+"one."
+msgstr ""
+"في هذه العقدة المرجعية، يبدأ التعدين يدويًا بطلب POST أو البرنامج النصي الخاص "
+"بك. لا توجد شبكة تعدين عالمية تلقائية إلا إذا قمت بإضافة واحدة."
+
+#: frontend/documentation/templates/documentation/using_system.html:21
+msgid "Bar chart on the home page"
+msgstr "مخطط شريطي على الصفحة الرئيسية"
+
+#: frontend/documentation/templates/documentation/using_system.html:22
+msgid ""
+"The chart shows how many transactions were in each recent block. Taller bars "
+"mean more activity. It uses plain CSS so it stays light and easy to audit."
+msgstr ""
+"يوضح الرسم البياني عدد المعاملات التي تمت في كل كتلة حديثة. القضبان الأطول "
+"تعني المزيد من النشاط. يستخدم CSS عاديًا بحيث يظل خفيفًا وسهل التدقيق."
+
+#: frontend/documentation/templates/documentation/using_system.html:24
+msgid "For operators"
+msgstr "للمشغلين"
+
+#: frontend/documentation/templates/documentation/using_system.html:25
+msgid ""
+"Chain data lives under TANCOIN_DATA_DIR, usually data/chain.json and data/"
+"genesis_wallet.json. Back up this folder if you care about continuity. "
+"Deleting it starts a new chain from genesis."
+msgstr ""
+"تعيش بيانات السلسلة ضمن TANCOIN_DATA_DIR، عادةً data/chain.json وdata/"
+"genesis_wallet.json. قم بعمل نسخة احتياطية من هذا المجلد إذا كنت تهتم "
+"بالاستمرارية. يؤدي حذفها إلى بدء سلسلة جديدة من التكوين."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:9
+msgid ""
+"Visual overview of the main ideas. Each illustration is decorative; follow "
+"the links for the full text guides. You can replace these SVG files in "
+"static/img/ with high-resolution art exported from Figma."
+msgstr ""
+"نظرة مرئية على الأفكار الرئيسية. كل رسم توضيحي زخرفي؛ اتبع الروابط للأدلة "
+"النصية الكاملة. يمكنك استبدال ملفات SVG هذه في static/img/ بفن عالي الدقة "
+"مُصدَّر من Figma."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:15
+msgid "Full-site background"
+msgstr "خلفية الموقع بالكامل"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:17
+msgid ""
+"Every page uses a fixed ambient layer behind the header and content: a wide "
+"vector scene plus the existing grid, orbs, and shine. The image slowly "
+"drifts for depth; motion is reduced automatically when the browser requests "
+"less animation."
+msgstr ""
+"تستخدم كل صفحة طبقة جو ثابتة خلف الرأس والمحتوى: مشهد متجه عريض مع الشبكة "
+"والدوائر واللمعان الحالي. تتحرك الصورة ببطء لإضفاء عمق؛ ويُخفَّض الحركي "
+"تلقائيًا عندما يطلب المتصفح حركة أقل."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:20
+msgid ""
+"To use a Figma export instead, save a WebP or PNG (for example 1920×1080 or "
+"wider) as frontend/static/img/site-bg-ambient.webp or .png and point the img "
+"src in common/base.html to that file, or swap the path in CSS if you prefer "
+"a pure background-image rule."
+msgstr ""
+"لاستخدام تصدير من Figma بدلاً من ذلك، احفظ WebP أو PNG (مثلاً 1920×1080 أو "
+"أعرض) كـ frontend/static/img/site-bg-ambient.webp أو .png ووجّه src للصورة "
+"في common/base.html إلى ذلك الملف، أو بدّل المسار في CSS إذا فضّلت قاعدة "
+"background-image فقط."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:31
+msgid "Illustration: wallet device and verification motif"
+msgstr "رسم توضيحي: جهاز محفظة وعنصر تحقق"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:34
+msgid ""
+"Keys live in the wallet program; the explorer wallet page helps you create "
+"addresses and move coins when the node allows it."
+msgstr ""
+"تعيش المفاتيح في برنامج المحفظة؛ تساعدك صفحة محفظة المستكشف على إنشاء "
+"العناوين وتحريك العملات عندما يسمح العقد بذلك."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:35
+#: frontend/explorer/templates/explorer/participate.html:16
+msgid "Open wallet"
+msgstr "افتح المحفظة"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:48
+msgid "Illustration: network nodes and value flow"
+msgstr "رسم توضيحي: عقد الشبكة وتدفّق القيمة"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:50
+msgid "Payments"
+msgstr "المدفوعات"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:51
+msgid ""
+"Transactions propagate across the network until they are included in a block."
+msgstr ""
+"تنتشر المعاملات عبر الشبكة حتى تُدرَج في كتلة."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:63
+msgid "Illustration: stacked blocks and mining motif"
+msgstr "رسم توضيحي: كتل مكدّسة وعنصر تعدين"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:66
+msgid ""
+"Miners assemble candidate blocks and compete to extend the chain the node "
+"follows."
+msgstr ""
+"يجمع المُعدِّنون كتلًا مرشحة ويتنافسون على تمديد السلسلة التي يتبعها العقد."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:78
+msgid "Illustration: explorer dashboard abstraction"
+msgstr "رسم توضيحي: لوحة مستكشف مجرّدة"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:81
+msgid ""
+"Browse blocks, transactions, and mempool state in the browser without "
+"logging in."
+msgstr ""
+"تصفح الكتل والمعاملات وحالة الذاكرة في المتصفح دون تسجيل الدخول."
+
+#: frontend/documentation/templates/documentation/visual_guide.html:93
+msgid "Illustration: structured lines suggesting JSON API"
+msgstr "رسم توضيحي: خطوط منظّمة توحي بواجهة JSON"
+
+#: frontend/documentation/templates/documentation/visual_guide.html:96
+msgid ""
+"Integrate with the same JSON routes the explorer uses for automation and "
+"backends."
+msgstr ""
+"ادمج مع مسارات JSON نفسها التي يستخدمها المستكشف للأتمتة والخلفيات."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:7
+msgid ""
+"How wallet programs and wallet files fit together on UTXO-style chains like "
+"Bitcoin and similar designs. The same ideas help you understand keys, "
+"addresses, and what the Tancoin explorer and HTTP API expose."
+msgstr ""
+"كيف تتلاءم برامج المحفظة وملفات المحفظة معًا في سلاسل على طراز UTXO مثل "
+"Bitcoin والتصميمات المشابهة. تساعدك نفس الأفكار على فهم المفاتيح والعناوين "
+"وما يكشفه مستكشف Tancoin وHTTP API."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:11
+#: frontend/documentation/templates/documentation/wallet_architecture.html:12
+msgid "On this page"
+msgstr "في هذه الصفحة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:14
+#: frontend/documentation/templates/documentation/wallet_architecture.html:33
+msgid "Introduction"
+msgstr "مقدمة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:15
+#: frontend/documentation/templates/documentation/wallet_architecture.html:37
+msgid "Wallet programs"
+msgstr "برامج المحفظة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:16
+#: frontend/documentation/templates/documentation/wallet_architecture.html:43
+msgid "Full-service wallets"
+msgstr "محافظ الخدمة الكاملة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:17
+#: frontend/documentation/templates/documentation/wallet_architecture.html:47
+msgid "Signing-only wallets"
+msgstr "محافظ للتوقيع فقط"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:18
+#: frontend/documentation/templates/documentation/wallet_architecture.html:52
+msgid "Offline wallets"
+msgstr "محافظ غير متصل"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:19
+#: frontend/documentation/templates/documentation/wallet_architecture.html:57
+msgid "Hardware wallets"
+msgstr "محافظ الأجهزة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:20
+#: frontend/documentation/templates/documentation/wallet_architecture.html:61
+msgid "Distributing-only wallets"
+msgstr "محافظ التوزيع فقط"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:21
+#: frontend/documentation/templates/documentation/wallet_architecture.html:65
+msgid "Wallet files"
+msgstr "ملفات المحفظة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:22
+#: frontend/documentation/templates/documentation/wallet_architecture.html:68
+msgid "Private key formats"
+msgstr "تنسيقات المفاتيح الخاصة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:23
+#: frontend/documentation/templates/documentation/wallet_architecture.html:71
+msgid "Wallet Import Format (WIF)"
+msgstr "تنسيق استيراد المحفظة (WIF)"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:24
+#: frontend/documentation/templates/documentation/wallet_architecture.html:83
+msgid "Mini private key format"
+msgstr "تنسيق المفتاح الخاص المصغر"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:25
+#: frontend/documentation/templates/documentation/wallet_architecture.html:86
+msgid "Public key formats"
+msgstr "تنسيقات المفاتيح العامة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:26
+#: frontend/documentation/templates/documentation/wallet_architecture.html:90
+msgid "Hierarchical deterministic (HD) keys"
+msgstr "مفاتيح الحتمية الهرمية (HD)."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:27
+#: frontend/documentation/templates/documentation/wallet_architecture.html:98
+msgid "Storing root seeds (BIP39)"
+msgstr "تخزين بذور الجذر (BIP39)"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:28
+#: frontend/documentation/templates/documentation/wallet_architecture.html:102
+msgid "Loose-key (JBOK) wallets"
+msgstr "محافظ المفتاح السائب (JBOK)."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:29
+#: frontend/documentation/templates/documentation/wallet_architecture.html:105
+msgid "Tancoin reference stack"
+msgstr "المكدس المرجعي Tancoin"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:34
+msgid ""
+"The word wallet can mean a wallet program or a wallet file. Wallet programs "
+"create public keys to receive value and use private keys to spend it. Wallet "
+"files store private keys and optionally metadata about transactions for the "
+"program."
+msgstr ""
+"يمكن أن تعني كلمة Wallet برنامج محفظة أو ملف محفظة. تقوم برامج المحفظة "
+"بإنشاء مفاتيح عامة لتلقي القيمة واستخدام المفاتيح الخاصة لإنفاقها. تقوم "
+"ملفات المحفظة بتخزين المفاتيح الخاصة والبيانات التعريفية الاختيارية حول "
+"المعاملات الخاصة بالبرنامج."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:35
+msgid ""
+"This page separates programs and files and uses those words consistently."
+msgstr "تفصل هذه الصفحة البرامج والملفات وتستخدم تلك الكلمات بشكل متسق."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:38
+msgid ""
+"Receiving and spending native units is the essential job of wallet software, "
+"but one program does not have to do both. Two programs can cooperate: one "
+"distributes public information used to receive funds, and another signs "
+"spends."
+msgstr ""
+"يعد تلقي الوحدات الأصلية وإنفاقها الوظيفة الأساسية لبرنامج المحفظة، ولكن لا "
+"يتعين على برنامج واحد القيام بالأمرين معًا. يمكن أن يتعاون برنامجان: أحدهما "
+"يوزع المعلومات العامة المستخدمة لتلقي الأموال، والآخر ينفق."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:39
+msgid ""
+"Programs also need chain data and a path to broadcast new transactions. In "
+"practice many stacks split responsibilities into three parts: a public-key "
+"distribution component, a signing component, and a networked component that "
+"talks to peers or to services that mirror chain state."
+msgstr ""
+"تحتاج البرامج أيضًا إلى بيانات متسلسلة ومسار لبث المعاملات الجديدة. من "
+"الناحية العملية، تقسم العديد من المكدسات المسؤوليات إلى ثلاثة أجزاء: مكون "
+"توزيع المفتاح العام، ومكون التوقيع، ومكون شبكي يتحدث مع أقرانه أو مع الخدمات "
+"التي تعكس حالة السلسلة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:40
+msgid ""
+"Often what is shared publicly is a hash-based address (for example P2PKH or "
+"P2SH), not a raw public key; full public keys may appear only when outputs "
+"are spent."
+msgstr ""
+"غالبًا ما يكون ما تتم مشاركته علنًا هو عنوان قائم على التجزئة (على سبيل المثال "
+"P2PKH أو P2SH)، وليس مفتاحًا عامًا أوليًا؛ قد تظهر المفاتيح العامة الكاملة فقط "
+"عند إنفاق المخرجات."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:41
+msgid ""
+"A networked program is what powers experiences like a mempool dashboard: it "
+"follows unconfirmed transactions, fee levels, and confirmation depth. The "
+"Tancoin explorer lists mempool and confirmed transactions over HTTP; it is "
+"not a substitute for a full peer-to-peer wallet backend unless you add one."
+msgstr ""
+"البرنامج المتصل بالشبكة هو ما يعزز التجارب مثل لوحة معلومات mempool: فهو "
+"يتتبع المعاملات غير المؤكدة ومستويات الرسوم وعمق التأكيد. يسرد مستكشف "
+"Tancoin مجمع الذاكرة والمعاملات المؤكدة عبر HTTP؛ فهو ليس بديلاً عن الواجهة "
+"الخلفية الكاملة لمحفظة نظير إلى نظير ما لم تقم بإضافة واحدة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:41
+msgid "Open transactions"
+msgstr "المعاملات المفتوحة"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:44
+msgid ""
+"A full-service wallet generates keys, derives receive addresses, tracks "
+"outputs paid to those addresses, builds and signs transactions, and "
+"broadcasts them. Most consumer wallets behave this way because it is simple "
+"for the user."
+msgstr ""
+"تقوم المحفظة كاملة الخدمة بإنشاء المفاتيح، واشتقاق عناوين الاستقبال، وتتبع "
+"المخرجات المدفوعة لتلك العناوين، وإنشاء المعاملات وتوقيعها، وبثها. تتصرف "
+"معظم محافظ المستهلكين بهذه الطريقة لأنها بسيطة بالنسبة للمستخدم."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:45
+msgid ""
+"The trade-off is that private keys live on an Internet-connected device. If "
+"the device is compromised, keys can be exfiltrated. Encrypting the wallet "
+"file helps when the wallet is idle, but it does not stop malware that "
+"captures the passphrase or memory while the wallet is open."
+msgstr ""
+"والمقايضة هي أن المفاتيح الخاصة تعيش على جهاز متصل بالإنترنت. إذا تم اختراق "
+"الجهاز، يمكن استخراج المفاتيح. يساعد تشفير ملف المحفظة عندما تكون المحفظة في "
+"وضع الخمول، ولكنه لا يمنع البرامج الضارة التي تلتقط عبارة المرور أو الذاكرة "
+"أثناء فتح المحفظة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:48
+msgid ""
+"For better security, private keys can live in a separate program in a safer "
+"environment. That signing-only wallet pairs with a networked wallet that has "
+"chain connectivity but not the private material needed to sign."
+msgstr ""
+"للحصول على أمان أفضل، يمكن أن تعيش المفاتيح الخاصة في برنامج منفصل في بيئة "
+"أكثر أمانًا. تقترن هذه المحفظة المخصصة للتوقيع فقط بمحفظة شبكية ذات اتصال "
+"متسلسل ولكن ليس المواد الخاصة اللازمة للتوقيع."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:49
+msgid ""
+"Signing-only setups often use deterministic key derivation so one parent key "
+"can spawn many child keys without repeated manual transfer of secrets."
+msgstr ""
+"غالبًا ما تستخدم إعدادات التوقيع فقط اشتقاق مفتاح حتمي بحيث يمكن لمفتاح أصل "
+"واحد إنتاج العديد من المفاتيح الفرعية دون النقل اليدوي المتكرر للأسرار."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:50
+msgid ""
+"Typical flow: the signing wallet creates a parent private key and gives the "
+"matching extended public information to the networked wallet. The networked "
+"wallet derives child receive addresses, watches the chain, and builds "
+"unsigned spends. It passes unsigned transactions to the signer. After "
+"optional review, the signer derives the right child private keys, signs, and "
+"returns signed transactions for broadcast."
+msgstr ""
+"التدفق النموذجي: تقوم محفظة التوقيع بإنشاء مفتاح خاص أصلي وتعطي المعلومات "
+"العامة الموسعة المطابقة للمحفظة المتصلة بالشبكة. تستمد المحفظة المتصلة "
+"بالشبكة عناوين استقبال الأطفال وتراقب السلسلة وتبني عمليات إنفاق غير موقعة. "
+"يقوم بتمرير المعاملات غير الموقعة إلى الموقع. بعد المراجعة الاختيارية، "
+"يستخرج المُوقع المفاتيح الخاصة الفرعية الصحيحة، ويوقع، ويعيد المعاملات "
+"الموقعة للبث."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:53
+msgid ""
+"Offline (cold) signing is a common pattern: one machine runs disconnected as "
+"the signer; another connected machine is the watch-only networked wallet. "
+"The user moves data with removable media or QR codes."
+msgstr ""
+"يُعد التوقيع غير المتصل بالإنترنت (البارد) نمطًا شائعًا: حيث يتم تشغيل جهاز "
+"واحد بدون اتصال باعتباره الموقّع؛ جهاز آخر متصل هو المحفظة المتصلة بالشبكة "
+"للساعة فقط. يقوم المستخدم بنقل البيانات باستخدام الوسائط القابلة للإزالة أو "
+"رموز QR."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:54
+msgid ""
+"A careful workflow reduces the risk that malware on the online machine "
+"tricks the user into signing a payment to an attacker: review outputs and "
+"amounts on the offline device before signing."
+msgstr ""
+"يقلل سير العمل الدقيق من خطر قيام البرامج الضارة الموجودة على الجهاز المتصل "
+"بالإنترنت بخداع المستخدم لتوقيع دفعة إلى مهاجم: قم بمراجعة المخرجات والمبالغ "
+"على الجهاز غير المتصل بالإنترنت قبل التوقيع."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:55
+msgid ""
+"Security improves at the cost of operational friction: you need physical "
+"steps every time you spend."
+msgstr ""
+"يتحسن الأمان على حساب الاحتكاك التشغيلي: فأنت تحتاج إلى خطوات فعلية في كل "
+"مرة تنفق فيها."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:58
+msgid ""
+"A hardware wallet is a dedicated signer. It limits attack surface compared "
+"with a general-purpose operating system and can show transaction details on "
+"its own screen before signing. The networked wallet sends a proposed "
+"transaction; the device signs and returns it."
+msgstr ""
+"محفظة الأجهزة هي موقع مخصص. إنه يحد من سطح الهجوم مقارنة بنظام التشغيل "
+"للأغراض العامة ويمكنه عرض تفاصيل المعاملة على شاشته الخاصة قبل التوقيع. ترسل "
+"المحفظة المتصلة بالشبكة معاملة مقترحة؛ يقوم الجهاز بالتوقيع عليه وإعادته."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:59
+msgid ""
+"You still carry a device and depend on vendor firmware quality, but day-to-"
+"day use is easier than pure air-gapped file transfer for many people."
+msgstr ""
+"لا تزال تحمل جهازًا وتعتمد على جودة البرامج الثابتة الخاصة بالمورد، ولكن "
+"الاستخدام اليومي أسهل من نقل الملفات عبر الهواء النقي للعديد من الأشخاص."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:62
+msgid ""
+"A server that must never hold spend authority can pre-generate or "
+"deterministically derive receive addresses only. Two common patterns: keep a "
+"pool of unused addresses in a database and hand them out once, or derive "
+"child addresses from a parent public key and track the next index so keys "
+"are never reused."
+msgstr ""
+"يمكن للخادم الذي لا يجب أن يمتلك مطلقًا سلطة الإنفاق أن يقوم بإنشاء عناوين "
+"الاستلام مسبقًا أو اشتقاقها بشكل حتمي فقط. هناك نمطان شائعان: الاحتفاظ "
+"بمجموعة من العناوين غير المستخدمة في قاعدة بيانات وتوزيعها مرة واحدة، أو "
+"اشتقاق عناوين فرعية من مفتاح عام أصل وتتبع الفهرس التالي بحيث لا يتم إعادة "
+"استخدام المفاتيح أبدًا."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:63
+msgid ""
+"HD extended public keys make the second pattern practical for e-commerce "
+"style payment tracking without putting private keys on the web tier."
+msgstr ""
+"تجعل المفاتيح العامة الموسعة عالية الدقة النمط الثاني عمليًا لتتبع الدفع "
+"بأسلوب التجارة الإلكترونية دون وضع مفاتيح خاصة على طبقة الويب."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:66
+msgid ""
+"At core, a wallet file is a collection of private keys and related metadata. "
+"It can live on disk or even on paper as encoded secrets."
+msgstr ""
+"في الأساس، ملف المحفظة عبارة عن مجموعة من المفاتيح الخاصة والبيانات "
+"التعريفية ذات الصلة. يمكن أن يعيش على القرص أو حتى على الورق كأسرار مشفرة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:69
+msgid ""
+"A secp256k1 private key is a 256-bit integer in a fixed valid range for "
+"ECDSA. Implementations treat it as 32 bytes with range checks, not as free-"
+"form text."
+msgstr ""
+"المفتاح الخاص secp256k1 هو عدد صحيح 256 بت في نطاق صالح ثابت لـ ECDSA. "
+"تتعامل معه التطبيقات على أنه 32 بايت مع عمليات التحقق من النطاق، وليس كنص حر "
+"الشكل."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:72
+msgid ""
+"WIF encodes a private key in Base58Check so humans copy it with fewer "
+"mistakes, similar in spirit to classic address encoding."
+msgstr ""
+"يقوم WIF بتشفير مفتاح خاص في Base58Check بحيث يقوم البشر بنسخه بأخطاء أقل، "
+"وهو ما يشبه في جوهره تشفير العناوين الكلاسيكي."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:74
+msgid "Start from the raw private key bytes."
+msgstr "ابدأ من بايتات المفتاح الخاص الخام."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:75
+msgid "Prefix 0x80 on mainnet or 0xef on testnet."
+msgstr "البادئة 0x80 على الشبكة الرئيسية أو 0xef على testnet."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:76
+msgid ""
+"Append 0x01 if the key is meant for compressed public keys; omit for legacy "
+"uncompressed keys."
+msgstr ""
+"إلحاق 0x01 إذا كان المفتاح مخصصًا للمفاتيح العامة المضغوطة؛ تجاهل المفاتيح "
+"القديمة غير المضغوطة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:77
+msgid ""
+"Hash the extended key with SHA-256, then hash that result again with SHA-256."
+msgstr ""
+"قم بتجزئة المفتاح الممتد باستخدام SHA-256، ثم قم بتجزئة النتيجة مرة أخرى "
+"باستخدام SHA-256."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:78
+msgid ""
+"Take the first four bytes of the second hash as a checksum and append them."
+msgstr "خذ البايتات الأربع الأولى من التجزئة الثانية كمجموع اختباري وألحقها."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:79
+msgid "Encode the byte string with Base58Check to produce the WIF string."
+msgstr "قم بتشفير سلسلة البايت باستخدام Base58Check لإنتاج سلسلة WIF."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:81
+msgid ""
+"Decoding reverses the steps. The same underlying key material can map to "
+"different addresses depending on compressed versus uncompressed public keys, "
+"so scripts and imports must agree on format."
+msgstr ""
+"فك التشفير يعكس الخطوات. يمكن تعيين نفس المادة الأساسية الأساسية إلى عناوين "
+"مختلفة اعتمادًا على المفاتيح العامة المضغوطة مقابل المفاتيح العامة غير "
+"المضغوطة، لذلك يجب أن تتفق البرامج النصية وعمليات الاستيراد على التنسيق."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:84
+msgid ""
+"Mini keys encode a private key in a very short printable form for physical "
+"tokens or compact QR codes. They traditionally start with the letter S. A "
+"quick integrity check appends a question mark, hashes with SHA-256, and "
+"requires the first byte to be 0x00. The full private key is another SHA-256 "
+"of the original mini string. Implementations often forbid the character 1 "
+"because it looks like the letter l."
+msgstr ""
+"تقوم المفاتيح المصغرة بتشفير مفتاح خاص في شكل قصير جدًا قابل للطباعة للرموز "
+"المادية أو رموز QR المدمجة. وهي تبدأ تقليديًا بالحرف S. ويؤدي التحقق السريع "
+"من التكامل إلى إضافة علامة استفهام وتجزئة باستخدام SHA-256، ويتطلب أن يكون "
+"البايت الأول 0x00. المفتاح الخاص الكامل هو SHA-256 آخر من السلسلة المصغرة "
+"الأصلية. غالبًا ما تحظر التطبيقات استخدام الحرف 1 لأنه يشبه الحرف l."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:87
+msgid ""
+"Uncompressed secp256k1 public keys use a 0x04 prefix plus X and Y "
+"coordinates. Compressed keys drop Y and use 0x02 or 0x03 plus X, with a bit "
+"that disambiguates the two possible Y values. Compressed keys save space and "
+"are the modern default."
+msgstr ""
+"تستخدم المفاتيح العامة secp256k1 غير المضغوطة البادئة 0x04 بالإضافة إلى "
+"إحداثيات X وY. تقوم المفاتيح المضغوطة بإسقاط Y واستخدام 0x02 أو 0x03 "
+"بالإضافة إلى X، مع القليل الذي يزيل الغموض عن قيمتي Y المحتملة. توفر "
+"المفاتيح المضغوطة المساحة وهي المفاتيح الافتراضية الحديثة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:88
+msgid ""
+"Older software that mixed compressed and uncompressed keys produced "
+"different address hashes for the same secret; spend paths must supply the "
+"matching public key form."
+msgstr ""
+"أنتجت البرامج القديمة التي خلطت المفاتيح المضغوطة وغير المضغوطة تجزئات عنوان "
+"مختلفة لنفس السر؛ يجب أن توفر مسارات الإنفاق نموذج المفتاح العام المطابق."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:91
+msgid ""
+"HD wallets (BIP32 family) derive a tree of keys from one seed. ECDSA lets "
+"you derive a child public key from a parent public key plus public data "
+"derived from a chain code and index, without touching the parent private key—"
+"this is what makes watch-only branches possible."
+msgstr ""
+"تستمد محافظ HD (عائلة BIP32) شجرة مفاتيح من بذرة واحدة. يتيح لك ECDSA اشتقاق "
+"مفتاح عام فرعي من مفتاح عام أصلي بالإضافة إلى البيانات العامة المشتقة من رمز "
+"السلسلة والفهرس، دون لمس المفتاح الخاص الأصلي - وهذا ما يجعل فروع المراقبة "
+"فقط ممكنة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:92
+msgid ""
+"Derivation mixes the parent chain code, a parent key point, and a 32-bit "
+"index through HMAC-SHA512. Half of the output becomes a new chain code; the "
+"other half combines with the parent key to form child keys. Different "
+"indices produce unrelated-looking children."
+msgstr ""
+"يمزج الاشتقاق رمز السلسلة الأصلية ونقطة المفتاح الأصلية وفهرس 32 بت من خلال "
+"HMAC-SHA512. نصف الناتج يصبح رمز سلسلة جديد؛ يتحد النصف الآخر مع المفتاح "
+"الأصلي لتكوين مفاتيح فرعية. تنتج المؤشرات المختلفة أطفالًا لا علاقة لهم "
+"بمظهرهم."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:93
+msgid "Hardened derivation"
+msgstr "تصلب الاشتقاق"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:94
+msgid ""
+"Normal (non-hardened) derivation has a security caveat: if an attacker "
+"learns a parent extended public key together with a parent chain code, they "
+"can explore the non-hardened branch. If they also capture any descendant "
+"private key, they can sometimes walk back up the tree. Hardened derivation "
+"mixes the parent private key into the HMAC input so extended public keys "
+"cannot derive hardened children; that breaks the attack path at the cost of "
+"requiring the private parent to derive child addresses."
+msgstr ""
+"الاشتقاق العادي (غير المقوى) له تحذير أمني: إذا تعلم المهاجم مفتاحًا عامًا "
+"ممتدًا أصليًا مع رمز السلسلة الأصلية، فيمكنه استكشاف الفرع غير المقوى. إذا "
+"تمكنوا أيضًا من التقاط أي مفتاح خاص تابع، فيمكنهم في بعض الأحيان العودة إلى "
+"الشجرة. يمزج الاشتقاق المعزز المفتاح الخاص الأصل في مدخلات HMAC بحيث لا يمكن "
+"للمفاتيح العامة الموسعة اشتقاق المفاتيح الفرعية المعززة؛ الذي يكسر مسار "
+"الهجوم على حساب مطالبة الوالد الخاص باستخلاص عناوين الطفل."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:95
+msgid ""
+"Indices from 0 through 2^31 minus 1 are normal; indices from 2^31 through "
+"2^32 minus 1 are hardened. Notation like m / 0' / 0 / 122' marks hardened "
+"steps with a prime."
+msgstr ""
+"المؤشرات من 0 إلى 2^31 ناقص 1 هي مؤشرات عادية؛ يتم تقوية المؤشرات من 2^31 "
+"إلى 2^32 ناقص 1. يشير التدوين مثل m / 0' / 0 / 122' إلى الخطوات المتصلبة "
+"برمز أولي."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:96
+msgid ""
+"BIP32-compliant wallets typically use hardened children directly under the "
+"master private key so a leaked child cannot trivially unwind the master."
+msgstr ""
+"عادةً ما تستخدم المحافظ المتوافقة مع BIP32 الأطفال المحصنين مباشرة تحت "
+"المفتاح الخاص الرئيسي، لذا لا يمكن للطفل المسرب أن يقوم بفك المفتاح بشكل "
+"تافه."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:99
+msgid ""
+"The HD seed can be backed up as 128 to 256 bits of entropy mapped to a "
+"mnemonic word list. An optional passphrase mixes into the PBKDF2-based seed "
+"derivation. More words mean more entropy: twelve words for 128 bits is "
+"common."
+msgstr ""
+"يمكن عمل نسخة احتياطية من بذرة HD على هيئة 128 إلى 256 بت من الإنتروبيا "
+"المعينة لقائمة الكلمات التذكيرية. يتم دمج عبارة المرور الاختيارية في "
+"الاشتقاق الأساسي المستند إلى PBKDF2. المزيد من الكلمات يعني المزيد من "
+"الإنتروبيا: من الشائع اثنتي عشرة كلمة مقابل 128 بت."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:100
+msgid ""
+"Different wallets historically disagreed on passphrase and coin-type "
+"defaults. Use one program and documented settings per seed, or verify "
+"compatibility before moving seeds between products."
+msgstr ""
+"اختلفت المحافظ المختلفة تاريخيًا حول عبارة المرور والافتراضيات الخاصة بنوع "
+"العملة. استخدم برنامجًا واحدًا وإعدادات موثقة لكل بذرة، أو تحقق من التوافق قبل "
+"نقل البذور بين المنتجات."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:103
+msgid ""
+"Older clients generated independent keys from a pool (just a bunch of keys). "
+"Backups had to catch every new key before use or funds could become "
+"unrecoverable. HD seeds replaced that model for most new software."
+msgstr ""
+"قام العملاء الأقدم بإنشاء مفاتيح مستقلة من مجموعة (مجرد مجموعة من المفاتيح). "
+"كان على النسخ الاحتياطية التقاط كل مفتاح جديد قبل الاستخدام وإلا فقد تصبح "
+"الأموال غير قابلة للاسترداد. استبدلت بذور HD هذا النموذج لمعظم البرامج "
+"الجديدة."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:106
+msgid ""
+"The bundled wallet UI and JSON API help you create keys, see balances, and "
+"submit signed transfers against the reference node. Operational hardening—"
+"where files live, DEBUG routes, CSRF policy, and production checklist—is "
+"covered on the security page."
+msgstr ""
+"تساعدك واجهة مستخدم المحفظة المجمعة وواجهة برمجة تطبيقات JSON على إنشاء "
+"المفاتيح والاطلاع على الأرصدة وإرسال التحويلات الموقعة مقابل العقدة "
+"المرجعية. تتم تغطية التعزيز التشغيلي - حيث توجد الملفات، ومسارات DEBUG، "
+"وسياسة CSRF، وقائمة التحقق من الإنتاج - في صفحة الأمان."
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:107
+msgid "Wallets and security (operations)"
+msgstr "المحافظ والأمن (العمليات)"
+
+#: frontend/documentation/templates/documentation/wallet_architecture.html:107
+msgid "Open the wallet app"
+msgstr "افتح تطبيق المحفظة"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:7
+msgid ""
+"A wallet is a key pair. The address is safe to share. The WIF is a secret "
+"that can spend everything. Protect it like a password."
+msgstr ""
+"المحفظة هي زوج المفاتيح. العنوان آمن للمشاركة. WIF هو سر يمكنه قضاء كل شيء. "
+"حمايته مثل كلمة المرور."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:11
+msgid ""
+"For how wallet programs split signing, networking, and key distribution—and "
+"for HD and BIP39 concepts—see the architecture guide."
+msgstr ""
+"لمعرفة كيف تقسم برامج المحافظ التوقيع والشبكة وتوزيع المفاتيح—ومفاهيم HD "
+"وBIP39—راجع دليل البنية المعمارية."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:13
+msgid "Protecting secrets"
+msgstr "حماية الأسرار"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:15
+msgid "Never store WIF in git, screenshots, or chat."
+msgstr "لا تقم مطلقًا بتخزين WIF في git أو لقطات الشاشة أو الدردشة."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:16
+msgid "Use environment variables or a secrets manager in production."
+msgstr "استخدام متغيرات البيئة أو مدير الأسرار في الإنتاج."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:17
+msgid "If a key leaks, move funds to a new address with a new key."
+msgstr ""
+"في حالة تسرب أحد المفاتيح، انقل الأموال إلى عنوان جديد باستخدام مفتاح جديد."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:20
+msgid "Genesis wallet"
+msgstr "محفظة سفر التكوين"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:21
+msgid ""
+"On first start the node writes data/genesis_wallet.json. The /api/dev/"
+"genesis-wallet/ route only works when DEBUG is True. Turn DEBUG off in "
+"production and block that route."
+msgstr ""
+"عند البدء لأول مرة، تكتب العقدة data/genesis_wallet.json. يعمل المسار /api/"
+"dev/genesis-wallet/ فقط عندما يكون DEBUG صحيحًا. قم بإيقاف تشغيل DEBUG في "
+"الإنتاج وحظر هذا المسار."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:22
+msgid ""
+"The genesis wallet receives the first large reward. Treat it as a mint key "
+"with very high privilege."
+msgstr ""
+"تحصل محفظة Genesis على أول مكافأة كبيرة. تعامل معه كمفتاح نعناع بامتياز عالٍ "
+"جدًا."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:24
+msgid "CSRF and browser clients"
+msgstr "CSRF وعملاء المتصفح"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:25
+msgid ""
+"Some JSON POST routes skip CSRF so command-line tools work. Browser apps "
+"that talk to the same routes should use CSRF tokens or send writes through "
+"your own backend."
+msgstr ""
+"تتخطى بعض مسارات JSON POST CSRF حتى تعمل أدوات سطر الأوامر. يجب أن تستخدم "
+"تطبيقات المتصفح التي تتحدث إلى نفس المسارات رموز CSRF المميزة أو ترسل عمليات "
+"الكتابة من خلال الواجهة الخلفية الخاصة بك."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:27
+msgid "Network"
+msgstr "شبكة"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:28
+msgid ""
+"Use HTTPS in production, set ALLOWED_HOSTS correctly, and put the node "
+"behind a proxy with rate limits. This build has no peer-to-peer layer."
+msgstr ""
+"استخدم HTTPS في الإنتاج، وقم بتعيين ALLOWED_HOSTS بشكل صحيح، ثم ضع العقدة "
+"خلف وكيل مع حدود المعدل. لا يحتوي هذا البناء على طبقة نظير إلى نظير."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:30
+msgid "Checklist"
+msgstr "قائمة التحقق"
+
+#: frontend/documentation/templates/documentation/wallets_security.html:32
+msgid "DEBUG off, strong SECRET_KEY, real database if you add accounts."
+msgstr ""
+"تم إيقاف تصحيح الأخطاء، ومفتاح SECRET_KEY القوي، وقاعدة بيانات حقيقية إذا "
+"قمت بإضافة حسابات."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:33
+msgid "Encrypt backups of TANCOIN_DATA_DIR."
+msgstr "تشفير النسخ الاحتياطية لـ TANCOIN_DATA_DIR."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:34
+msgid "Watch /api/chain/mine/ for abuse."
+msgstr "شاهد /api/chain/mine/ لإساءة الاستخدام."
+
+#: frontend/documentation/templates/documentation/wallets_security.html:35
+msgid "Scale reads separately if the explorer grows."
+msgstr "يُقرأ المقياس بشكل منفصل إذا كان المستكشف ينمو."
+
+#: frontend/explorer/services/explorer_data.py:479
+msgid "Other miners"
+msgstr ""
+
+#: frontend/explorer/services/explorer_data.py:489
+msgid "No blocks yet"
+msgstr "لا توجد كتل حتى الآن."
+
+#: frontend/explorer/services/explorer_data.py:513
+msgid "Transfer outputs"
+msgstr "نقل UTXO"
+
+#: frontend/explorer/services/explorer_data.py:514
+msgid "Contract deploy outputs"
+msgstr "إجمالي الناتج"
+
+#: frontend/explorer/services/explorer_data.py:515
+msgid "Contract call outputs"
+msgstr "إجمالي الناتج"
+
+#: frontend/explorer/services/explorer_data.py:527
+msgid "Block fees: none"
+msgstr "حظر الوقت"
+
+#: frontend/explorer/services/explorer_data.py:528
+msgid "Block fees: moderate"
+msgstr "حظر الوقت"
+
+#: frontend/explorer/services/explorer_data.py:529
+msgid "Block fees: high"
+msgstr ""
+
+#: frontend/explorer/services/explorer_data.py:546
+#: frontend/explorer/templates/explorer/transaction_detail.html:33
+msgid "Coinbase"
+msgstr "كوين بيس"
+
+#: frontend/explorer/services/explorer_data.py:546
+msgid "Transfers"
+msgstr "نقل UTXO"
+
+#: frontend/explorer/services/explorer_data.py:572
+msgid "1 transaction per block"
+msgstr "متوسط المعاملات لكل كتلة"
+
+#: frontend/explorer/services/explorer_data.py:573
+msgid "2–3 transactions per block"
+msgstr "متوسط المعاملات لكل كتلة"
+
+#: frontend/explorer/services/explorer_data.py:574
+msgid "4–6 transactions per block"
+msgstr "متوسط المعاملات لكل كتلة"
+
+#: frontend/explorer/services/explorer_data.py:575
+msgid "7+ transactions per block"
+msgstr "متوسط المعاملات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/address_detail.html:4
+#: frontend/explorer/templates/explorer/address_detail.html:7
+#: frontend/wallet_gui/templates/wallet_gui/app.html:253
+#: frontend/wallet_gui/templates/wallet_gui/app.html:278
+#: frontend/wallet_gui/views.py:256
+msgid "Address"
+msgstr "عنوان"
+
+#: frontend/explorer/templates/explorer/address_detail.html:15
+msgid "Unspent outputs (UTXO)"
+msgstr "المخرجات غير المنفقة (UTXO)"
+
+#: frontend/explorer/templates/explorer/address_detail.html:16
+msgid ""
+"Coins this address can still spend. After spending, they leave this list but "
+"stay visible in past transactions."
+msgstr ""
+"لا يزال بإمكان هذا العنوان إنفاق العملات المعدنية. وبعد الإنفاق، يغادرون هذه "
+"القائمة ولكنهم يظلون مرئيين في المعاملات السابقة."
+
+#: frontend/explorer/templates/explorer/address_detail.html:19
+#: frontend/explorer/templates/explorer/address_detail.html:41
+#: frontend/explorer/templates/explorer/block_detail.html:79
+#: frontend/explorer/templates/explorer/charts.html:426
+#: frontend/explorer/templates/explorer/home.html:155
+#: frontend/explorer/templates/explorer/mempool.html:32
+#: frontend/explorer/templates/explorer/transaction_detail.html:10
+#: frontend/explorer/templates/explorer/transactions_list.html:17
+#: frontend/wallet_gui/templates/wallet_gui/app.html:360
+msgid "Transaction id"
+msgstr "معرف المعاملة"
+
+#: frontend/explorer/templates/explorer/address_detail.html:19
+msgid "Index"
+msgstr "فِهرِس"
+
+#: frontend/explorer/templates/explorer/address_detail.html:19
+#: frontend/explorer/templates/explorer/address_detail.html:41
+msgid "Value (TAN)"
+msgstr "القيمة (تان)"
+
+#: frontend/explorer/templates/explorer/address_detail.html:19
+#: frontend/explorer/templates/explorer/address_detail.html:41
+msgid "Kind"
+msgstr "عطوف"
+
+#: frontend/explorer/templates/explorer/address_detail.html:29
+msgid "No unspent outputs (empty or fully spent)."
+msgstr "لا توجد مخرجات غير منفقة (فارغة أو مستهلكة بالكامل)."
+
+#: frontend/explorer/templates/explorer/address_detail.html:37
+msgid "Receiving history"
+msgstr "تلقي التاريخ"
+
+#: frontend/explorer/templates/explorer/address_detail.html:38
+msgid ""
+"Every output on the public chain that paid this address. Spends appear on "
+"each linked transaction under inputs."
+msgstr ""
+"كل مخرجات على السلسلة العامة التي دفعت لهذا العنوان. تظهر عمليات الإنفاق على "
+"كل معاملة مرتبطة ضمن المدخلات."
+
+#: frontend/explorer/templates/explorer/address_detail.html:41
+#: frontend/explorer/templates/explorer/charts.html:368
+#: frontend/explorer/templates/explorer/charts.html:401
+#: frontend/explorer/templates/explorer/charts.html:427
+#: frontend/explorer/templates/explorer/charts.html:471
+#: frontend/explorer/templates/explorer/home.html:155
+#: frontend/explorer/templates/explorer/transaction_detail.html:17
+#: frontend/explorer/templates/explorer/transactions_list.html:17
+#: frontend/wallet_gui/templates/wallet_gui/app.html:323
+#: frontend/wallet_gui/views.py:275
+msgid "Block"
+msgstr "حاجز"
+
+#: frontend/explorer/templates/explorer/address_detail.html:41
+msgid "Output #"
+msgstr "الإخراج #"
+
+#: frontend/explorer/templates/explorer/address_detail.html:52
+msgid "No matching outputs found."
+msgstr "لم يتم العثور على مخرجات مطابقة."
+
+#: frontend/explorer/templates/explorer/api_help.html:7
+msgid "Developer JSON API"
+msgstr "المطور JSON API"
+
+#: frontend/explorer/templates/explorer/api_help.html:9
+msgid ""
+"These routes return JSON for tests, apps, and backends. Same chain as this "
+"explorer. Longer explanations are under the documentation hub."
+msgstr ""
+"تُرجع هذه المسارات JSON للاختبارات والتطبيقات والواجهات الخلفية. نفس السلسلة "
+"مثل هذا المستكشف. توجد تفسيرات أطول ضمن مركز التوثيق."
+
+#: frontend/explorer/templates/explorer/api_help.html:14
+msgid "Base URL"
+msgstr "عنوان URL الأساسي"
+
+#: frontend/explorer/templates/explorer/api_help.html:15
+msgid "Same host as the website. Paths are from the domain root."
+msgstr "نفس المضيف للموقع. المسارات من جذر المجال."
+
+#: frontend/explorer/templates/explorer/api_help.html:20
+msgid "Method"
+msgstr "طريقة"
+
+#: frontend/explorer/templates/explorer/api_help.html:20
+msgid "Path"
+msgstr "طريق"
+
+#: frontend/explorer/templates/explorer/api_help.html:20
+msgid "Purpose"
+msgstr "غاية"
+
+#: frontend/explorer/templates/explorer/api_help.html:22
+msgid "Height, tip, mempool count, reference price in USD"
+msgstr "الارتفاع، الحافة، عدد الذاكرة، السعر المرجعي بالدولار الأمريكي"
+
+#: frontend/explorer/templates/explorer/api_help.html:23
+msgid "Recent blocks as JSON"
+msgstr "الكتل الأخيرة كـ JSON"
+
+#: frontend/explorer/templates/explorer/api_help.html:24
+msgid "One block"
+msgstr "كتلة واحدة"
+
+#: frontend/explorer/templates/explorer/api_help.html:25
+msgid "Transaction and confirmed flag"
+msgstr "المعاملة والعلم المؤكد"
+
+#: frontend/explorer/templates/explorer/api_help.html:26
+msgid "Spendable outputs"
+msgstr "مخرجات قابلة للإنفاق"
+
+#: frontend/explorer/templates/explorer/api_help.html:27
+#: frontend/explorer/templates/explorer/charts.html:83
+#: frontend/explorer/templates/explorer/mempool.html:19
+msgid "Pending transactions"
+msgstr "المعاملات المعلقة"
+
+#: frontend/explorer/templates/explorer/api_help.html:28
+msgid "Generate address and WIF (development)"
+msgstr "إنشاء عنوان وWIF (تطوير)"
+
+#: frontend/explorer/templates/explorer/api_help.html:29
+msgid "Body: signed transaction JSON"
+msgstr "الجسم: المعاملة الموقعة JSON"
+
+#: frontend/explorer/templates/explorer/api_help.html:30
+msgid "Optional miner_wif"
+msgstr "عامل منجم اختياري_wif"
+
+#: frontend/explorer/templates/explorer/api_help.html:31
+msgid "Set reference price in USD"
+msgstr "تحديد السعر المرجعي بالدولار الأمريكي"
+
+#: frontend/explorer/templates/explorer/api_help.html:32
+msgid "List deployed contracts"
+msgstr "قائمة العقود المنشورة"
+
+#: frontend/explorer/templates/explorer/api_help.html:33
+msgid "Deploy TVM bytecode"
+msgstr "نشر رمز بايت TVM"
+
+#: frontend/explorer/templates/explorer/api_help.html:34
+msgid "Call contract"
+msgstr "عقد الدعوة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:5
+#, python-format
+msgid "Block %(h)s"
+msgstr "كتلة %(h)s"
+
+#: frontend/explorer/templates/explorer/block_detail.html:8
+#, python-format
+msgid "Block #%(h)s"
+msgstr "كتلة #%(h)s"
+
+#: frontend/explorer/templates/explorer/block_detail.html:10
+msgid ""
+"Header, proof-of-work fields, and every transaction in this block. Links "
+"open in this explorer."
+msgstr ""
+"رأس الكتلة وحقول إثبات العمل وكل المعاملات فيها. الروابط تُفتح في هذا "
+"المستكشف."
+
+#: frontend/explorer/templates/explorer/block_detail.html:15
+msgid "Block summary"
+msgstr "ملخص الكتلة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:17
+msgid "Tancoin block"
+msgstr "كتلة تانكوين"
+
+#: frontend/explorer/templates/explorer/block_detail.html:19
+msgid "Copy hash"
+msgstr "نسخ التجزئة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:20
+msgid "On chain"
+msgstr "على السلسلة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:24
+msgid "Miner (reward address)"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/block_detail.html:26
+msgid "Timestamp (Unix)"
+msgstr "الطابع الزمني"
+
+#: frontend/explorer/templates/explorer/block_detail.html:28
+#: frontend/wallet_gui/templates/wallet_gui/app.html:346
+msgid "Difficulty (bits)"
+msgstr "بتات الصعوبة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:29
+#: frontend/explorer/templates/explorer/block_detail.html:64
+msgid "Nonce"
+msgstr "نونس"
+
+#: frontend/explorer/templates/explorer/block_detail.html:31
+msgid "Seconds after previous block"
+msgstr "ثوانٍ بعد الكتلة السابقة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:35
+msgid "Adjacent blocks"
+msgstr "كتل مجاورة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:37
+#: frontend/explorer/templates/explorer/blocks_list.html:36
+#: frontend/explorer/templates/explorer/transactions_list.html:36
+msgid "Previous"
+msgstr "سابق"
+
+#: frontend/explorer/templates/explorer/block_detail.html:40
+#: frontend/explorer/templates/explorer/blocks_list.html:40
+#: frontend/explorer/templates/explorer/transactions_list.html:38
+msgid "Next"
+msgstr "التالية"
+
+#: frontend/explorer/templates/explorer/block_detail.html:47
+msgid "What this block contains"
+msgstr "ما تحتويه هذه الكتلة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:49
+#, python-format
+msgid ""
+"This is block %(h)s on your node. It includes %(n)s transaction(s) and was "
+"stamped at Unix time %(t)s. The first row is usually the coinbase, which "
+"pays the miner and claims fees from the other transactions."
+msgstr ""
+"هذه الكتلة رقم %(h)s على عقدتك. تتضمن %(n)s معاملة/معاملات وخُتمت في وقت Unix "
+"%(t)s. الصف الأول عادةً هو معاملة العملة الأساسية التي تدفع للمعدّن وتجمع "
+"الرسوم من المعاملات الأخرى."
+
+#: frontend/explorer/templates/explorer/block_detail.html:52
+msgid "In total, this block moves"
+msgstr "إجمالاً، تنقل هذه الكتلة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:54
+#, python-format
+msgid "across %(o)s outputs (including change and rewards)."
+msgstr "عبر %(o)s مخرجات (بما في ذلك الفائض والمكافآت)."
+
+#: frontend/explorer/templates/explorer/block_detail.html:59
+msgid "Header fields"
+msgstr "حقول الرأس"
+
+#: frontend/explorer/templates/explorer/block_detail.html:61
+msgid "Version"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/block_detail.html:62
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+msgid "Timestamp"
+msgstr "الطابع الزمني"
+
+#: frontend/explorer/templates/explorer/block_detail.html:63
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+msgid "Difficulty bits"
+msgstr "بتات الصعوبة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:65
+msgid "Merkle root"
+msgstr "جذر ميركل"
+
+#: frontend/explorer/templates/explorer/block_detail.html:66
+msgid "Previous block"
+msgstr "الكتلة السابقة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:66
+msgid "Invalid previous hash in stored block"
+msgstr "التجزئة السابقة غير صالحة في الكتلة المخزنة"
+
+#: frontend/explorer/templates/explorer/block_detail.html:66
+msgid "000…000 (genesis)"
+msgstr "000…000 (النشأة)"
+
+#: frontend/explorer/templates/explorer/block_detail.html:67
+msgid "Coinbase rows"
+msgstr "كوين بيس"
+
+#: frontend/explorer/templates/explorer/block_detail.html:68
+msgid "Transfer rows"
+msgstr "نقل UTXO"
+
+#: frontend/explorer/templates/explorer/block_detail.html:74
+#, python-format
+msgid "Transactions in this block (%(c)s)"
+msgstr "المعاملات في هذه المجموعة (%(c)s)"
+
+#: frontend/explorer/templates/explorer/block_detail.html:75
+msgid "Coinbase first, then user transactions. Tap a row for full details."
+msgstr ""
+"أولاً معاملة العملة الأساسية، ثم معاملات المستخدمين. اضغط صفاً للتفاصيل "
+"الكاملة."
+
+#: frontend/explorer/templates/explorer/block_detail.html:79
+msgid "Type"
+msgstr "يكتب"
+
+#: frontend/explorer/templates/explorer/block_detail.html:79
+#: frontend/explorer/templates/explorer/charts.html:362
+#: frontend/explorer/templates/explorer/charts.html:429
+#: frontend/explorer/templates/explorer/charts.html:466
+#: frontend/explorer/templates/explorer/mempool.html:34
+#: frontend/wallet_gui/templates/wallet_gui/app.html:362
+msgid "Outputs"
+msgstr "النواتج"
+
+#: frontend/explorer/templates/explorer/block_detail.html:79
+msgid "Output value (TAN)"
+msgstr "قيمة المخرجات (TAN)"
+
+#: frontend/explorer/templates/explorer/block_detail.html:86
+msgid "coinbase"
+msgstr "com.coinbase"
+
+#: frontend/explorer/templates/explorer/block_detail.html:86
+msgid "transfer or contract"
+msgstr "نقل أو عقد"
+
+#: frontend/explorer/templates/explorer/block_detail.html:98
+#: frontend/explorer/templates/explorer/transaction_detail.html:59
+msgid "Raw JSON"
+msgstr "JSON الخام"
+
+#: frontend/explorer/templates/explorer/block_detail.html:99
+msgid "Toggle block JSON"
+msgstr "إظهار/إخفاء JSON للكتلة"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:8
+#: frontend/explorer/templates/explorer/home.html:41
+msgid "All blocks"
+msgstr "جميع الكتل"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:9
+msgid ""
+"Public list from tip to genesis. Click a hash to see that block’s "
+"transactions."
+msgstr ""
+"القائمة العامة من الحافة إلى التكوين. انقر فوق التجزئة لرؤية معاملات تلك "
+"الكتلة."
+
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+#: frontend/explorer/templates/explorer/charts.html:360
+#: frontend/explorer/templates/explorer/charts.html:399
+#: frontend/explorer/templates/explorer/charts.html:464
+#: frontend/explorer/templates/explorer/home.html:131
+msgid "Height"
+msgstr "ارتفاع"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+#: frontend/explorer/templates/explorer/home.html:131
+msgid "Hash"
+msgstr "التجزئة"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+msgid "Miner (coinbase)"
+msgstr "com.coinbase"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:15
+msgid "Transaction count"
+msgstr "عدد المعاملات"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:28
+#: frontend/explorer/templates/explorer/home.html:141
+#: frontend/explorer/templates/explorer/home.html:175
+msgid "No blocks."
+msgstr "لا كتل."
+
+#: frontend/explorer/templates/explorer/blocks_list.html:34
+#: frontend/explorer/templates/explorer/transactions_list.html:35
+msgid "Pagination"
+msgstr "ترقيم الصفحات"
+
+#: frontend/explorer/templates/explorer/blocks_list.html:38
+#, python-format
+msgid "Page %(n)s of %(t)s"
+msgstr "الصفحة %(n)s من %(t)s"
+
+#: frontend/explorer/templates/explorer/charts.html:9
+msgid "Network charts & analysis"
+msgstr "مخططات الشبكة والتحليل"
+
+#: frontend/explorer/templates/explorer/charts.html:11
+msgid ""
+"Block throughput, intervals, output volume, fees, mempool pressure, and a "
+"per-block window computed from this node’s chain — same sources as the JSON "
+"API."
+msgstr ""
+"إنتاجية الكتل والفواصل الزمنية وحجم المخرجات والرسوم وضغط مجموعة الذاكرة "
+"المؤقتة، ونافذة لكل كتلة محسوبة من سلسلة هذه العقدة — نفس مصادر واجهة JSON."
+
+#: frontend/explorer/templates/explorer/charts.html:13
+#: frontend/explorer/templates/explorer/home.html:13
+msgid "Live"
+msgstr "مباشر"
+
+#: frontend/explorer/templates/explorer/charts.html:20
+msgid "Chain totals"
+msgstr "إجماليات السلسلة"
+
+#: frontend/explorer/templates/explorer/charts.html:22
+msgid "Asset"
+msgstr "الأصل"
+
+#: frontend/explorer/templates/explorer/charts.html:26
+#: frontend/explorer/templates/explorer/home.html:102
+#: frontend/explorer/templates/explorer/mempool.html:15
+#: frontend/wallet_gui/templates/wallet_gui/app.html:344
+msgid "Chain height"
+msgstr "ارتفاع السلسلة"
+
+#: frontend/explorer/templates/explorer/charts.html:30
+msgid "Transactions (all blocks)"
+msgstr "إجمالي المعاملات (كل الكتل)"
+
+#: frontend/explorer/templates/explorer/charts.html:34
+msgid "Transfer transactions (non-coinbase)"
+msgstr "معاملات التحويل (غير كوينبيس)"
+
+#: frontend/explorer/templates/explorer/charts.html:38
+msgid "Coinbase transactions"
+msgstr "معاملات كوينبيس"
+
+#: frontend/explorer/templates/explorer/charts.html:42
+msgid "Outputs (all txs)"
+msgstr "المخرجات (كل المعاملات)"
+
+#: frontend/explorer/templates/explorer/charts.html:46
+msgid "Input edges (all txs)"
+msgstr "حواف المدخلات (كل المعاملات)"
+
+#: frontend/explorer/templates/explorer/charts.html:50
+msgid "Total output value (chain)"
+msgstr "إجمالي قيمة المخرجات (السلسلة)"
+
+#: frontend/explorer/templates/explorer/charts.html:54
+msgid "Avg transactions per block"
+msgstr "متوسط المعاملات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:58
+msgid "Avg outputs per transaction"
+msgstr "متوسط المخرجات لكل معاملة"
+
+#: frontend/explorer/templates/explorer/charts.html:62
+msgid "UTXO count (tip)"
+msgstr "عدد UTXO (الطرف)"
+
+#: frontend/explorer/templates/explorer/charts.html:66
+msgid "Contracts (tip)"
+msgstr "العقود (الطرف)"
+
+#: frontend/explorer/templates/explorer/charts.html:70
+#: frontend/explorer/templates/explorer/home.html:114
+msgid "Reference price (USD)"
+msgstr "السعر المرجعي (بالدولار الأمريكي)"
+
+#: frontend/explorer/templates/explorer/charts.html:74
+#: frontend/explorer/templates/explorer/home.html:118
+msgid "Proof of work difficulty (bits)"
+msgstr "إثبات صعوبة العمل (بت)"
+
+#: frontend/explorer/templates/explorer/charts.html:80
+msgid "Mempool (this node)"
+msgstr "مجموعة الذاكرة المؤقتة (هذه العقدة)"
+
+#: frontend/explorer/templates/explorer/charts.html:87
+msgid "Pending inputs"
+msgstr "المدخلات المعلقة"
+
+#: frontend/explorer/templates/explorer/charts.html:91
+msgid "Pending outputs"
+msgstr "المخرجات المعلقة"
+
+#: frontend/explorer/templates/explorer/charts.html:95
+msgid "Pending output value"
+msgstr "قيمة المخرجات المعلقة"
+
+#: frontend/explorer/templates/explorer/charts.html:99
+msgid "Sum of known fees (mempool)"
+msgstr "مجموع الرسوم المعروفة (المجمّع)"
+
+#: frontend/explorer/templates/explorer/charts.html:103
+msgid "Non-coinbase txs with computable fee"
+msgstr "معاملات غير كوينبيس ذات رسوم قابلة للحساب"
+
+#: frontend/explorer/templates/explorer/charts.html:110
+msgid "Miners (coinbase reward addresses)"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:111
+msgid ""
+"Each block’s first transaction pays the miner; we group by that payout "
+"address across the full chain. Percent = blocks mined ÷ chain height."
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:114
+msgid "Share of blocks mined"
+msgstr "يتم مسحه عندما يتم تعدين الكتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:116
+msgid "Distribution of blocks among miner addresses"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:132
+msgid "Miner address"
+msgstr "عنوان المتلقي"
+
+#: frontend/explorer/templates/explorer/charts.html:133
+msgid "Blocks mined"
+msgstr "حظر الوقت"
+
+#: frontend/explorer/templates/explorer/charts.html:134
+msgid "Share of chain"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:145
+#: frontend/explorer/templates/explorer/charts.html:253
+#: frontend/explorer/templates/explorer/charts.html:269
+#: frontend/explorer/templates/explorer/charts.html:285
+#: frontend/explorer/templates/explorer/charts.html:304
+#: frontend/explorer/templates/explorer/charts.html:320
+#: frontend/explorer/templates/explorer/charts.html:385
+#: frontend/explorer/templates/explorer/charts.html:412
+#: frontend/explorer/templates/explorer/charts.html:472
+#: frontend/explorer/templates/explorer/home.html:64
+#: frontend/explorer/templates/explorer/home.html:79
+#: frontend/explorer/templates/explorer/home.html:94
+msgid "No blocks yet."
+msgstr "لا توجد كتل حتى الآن."
+
+#: frontend/explorer/templates/explorer/charts.html:154
+msgid "Distribution & composition"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:155
+msgid "Click a legend row to inspect a segment. Donuts refresh with live data."
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:158
+msgid "Transactions: coinbase vs transfers"
+msgstr "عدد المعاملات"
+
+#: frontend/explorer/templates/explorer/charts.html:160
+msgid "Coinbase versus transfer transaction counts on the full chain"
+msgstr ""
+"أولاً معاملة العملة الأساسية، ثم معاملات المستخدمين. اضغط صفاً للتفاصيل "
+"الكاملة."
+
+#: frontend/explorer/templates/explorer/charts.html:173
+msgid "Blocks by transaction count (window)"
+msgstr "إحصاءات الفاصل بين الكتل (النافذة)"
+
+#: frontend/explorer/templates/explorer/charts.html:175
+msgid "Histogram of how many blocks fall into each transaction-count bucket"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:188
+msgid "Output kinds (chain + mempool)"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:190
+msgid "Share of output kinds across all outputs"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:203
+msgid "Blocks by fee band (window)"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:205
+msgid "How many blocks in the window fall into each fee-sum bucket"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:221
+msgid "Per-block intensity strip"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:222
+msgid ""
+"Each column is one block height. Green: transactions; purple: output value; "
+"amber: known fees — heights scale together so you can spot outliers."
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:223
+msgid "Relative tx count, output value, and fees per block"
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:225
+#, python-format
+msgid "Height %(h)s"
+msgstr "الارتفاع %(h)s"
+
+#: frontend/explorer/templates/explorer/charts.html:236
+msgid "Tip block hash"
+msgstr "تجزئة كتلة الطرف"
+
+#: frontend/explorer/templates/explorer/charts.html:240
+msgid "Core block charts"
+msgstr "المخططات الأساسية للكتل"
+
+#: frontend/explorer/templates/explorer/charts.html:243
+#: frontend/explorer/templates/explorer/home.html:55
+msgid "Transactions per block"
+msgstr "المعاملات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:244
+#: frontend/explorer/templates/explorer/charts.html:276
+#, python-format
+msgid "Last %(n)s blocks"
+msgstr "آخر %(n)s كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:246
+#: frontend/explorer/templates/explorer/home.html:57
+msgid "Transaction count per block"
+msgstr "عدد المعاملات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:248
+#: frontend/explorer/templates/explorer/home.html:59
+#, python-format
+msgid "Height %(h)s: %(c)s transactions"
+msgstr "الارتفاع %(h)s: %(c)s معاملة"
+
+#: frontend/explorer/templates/explorer/charts.html:259
+#: frontend/explorer/templates/explorer/home.html:70
+msgid "Seconds between blocks"
+msgstr "ثوانٍ بين الكتل"
+
+#: frontend/explorer/templates/explorer/charts.html:260
+#, python-format
+msgid "Last %(n)s gaps"
+msgstr "آخر %(n)s فجوة"
+
+#: frontend/explorer/templates/explorer/charts.html:262
+#: frontend/explorer/templates/explorer/home.html:72
+msgid "Block interval in seconds"
+msgstr "الفاصل بين الكتل (ثوانٍ)"
+
+#: frontend/explorer/templates/explorer/charts.html:264
+#: frontend/explorer/templates/explorer/home.html:74
+#, python-format
+msgid "Height %(h)s: %(s)s s"
+msgstr "الارتفاع %(h)s: %(s)s ث"
+
+#: frontend/explorer/templates/explorer/charts.html:275
+#: frontend/explorer/templates/explorer/home.html:85
+msgid "Outputs per block"
+msgstr "المخرجات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:278
+#: frontend/explorer/templates/explorer/home.html:87
+msgid "Output count per block"
+msgstr "عدد المخرجات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:280
+#: frontend/explorer/templates/explorer/home.html:89
+#, python-format
+msgid "Height %(h)s: %(o)s outputs"
+msgstr "الارتفاع %(h)s: %(o)s مخرجات"
+
+#: frontend/explorer/templates/explorer/charts.html:291
+msgid "Fee and value charts"
+msgstr "مخططات الرسوم والقيم"
+
+#: frontend/explorer/templates/explorer/charts.html:294
+msgid "Fees per block (known)"
+msgstr "الرسوم لكل كتلة (معروفة)"
+
+#: frontend/explorer/templates/explorer/charts.html:295
+msgid "Satoshis summed where inputs resolve"
+msgstr "مجموع الساتوشي حيث تُحلّ المدخلات"
+
+#: frontend/explorer/templates/explorer/charts.html:297
+msgid "Fee sum per block"
+msgstr "مجموع الرسوم لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:299
+#, python-format
+msgid "Height %(h)s: %(f)s sat fees"
+msgstr "الارتفاع %(h)s: رسوم %(f)s ساتوشي"
+
+#: frontend/explorer/templates/explorer/charts.html:310
+#: frontend/explorer/templates/explorer/charts.html:313
+msgid "Output value per block"
+msgstr "قيمة المخرجات لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:311
+msgid "Total satoshis in outputs"
+msgstr "إجمالي الساتوشي في المخرجات"
+
+#: frontend/explorer/templates/explorer/charts.html:315
+#, python-format
+msgid "Height %(h)s: %(v)s sat outputs"
+msgstr "الارتفاع %(h)s: مخرجات %(v)s ساتوشي"
+
+#: frontend/explorer/templates/explorer/charts.html:327
+msgid "Block interval statistics (window)"
+msgstr "إحصاءات الفاصل بين الكتل (النافذة)"
+
+#: frontend/explorer/templates/explorer/charts.html:328
+#, python-format
+msgid ""
+"Positive intervals only, across the last %(n)s blocks on this chart page."
+msgstr "الفواصل الموجبة فقط، عبر آخر %(n)s كتلة في هذه الصفحة من المخططات."
+
+#: frontend/explorer/templates/explorer/charts.html:331
+msgid "Samples"
+msgstr "عينات"
+
+#: frontend/explorer/templates/explorer/charts.html:335
+msgid "Minimum (seconds)"
+msgstr "الحد الأدنى (ثوانٍ)"
+
+#: frontend/explorer/templates/explorer/charts.html:339
+msgid "Maximum (seconds)"
+msgstr "الحد الأقصى (ثوانٍ)"
+
+#: frontend/explorer/templates/explorer/charts.html:343
+msgid "Mean (seconds)"
+msgstr "المتوسط (ثوانٍ)"
+
+#: frontend/explorer/templates/explorer/charts.html:347
+msgid "Median (seconds)"
+msgstr "الوسيط (ثوانٍ)"
+
+#: frontend/explorer/templates/explorer/charts.html:354
+msgid "Per-block window"
+msgstr "نافذة لكل كتلة"
+
+#: frontend/explorer/templates/explorer/charts.html:355
+#, python-format
+msgid ""
+"One row per block for the last %(n)s heights. Fees are summed only where all "
+"inputs resolve on-chain."
+msgstr ""
+"صف لكل كتلة لآخر %(n)s ارتفاعًا. تُجمع الرسوم فقط حيث تُحلّ جميع المدخلات على "
+"السلسلة."
+
+#: frontend/explorer/templates/explorer/charts.html:361
+#: frontend/explorer/templates/explorer/charts.html:465
+msgid "Txs"
+msgstr "معاملات"
+
+#: frontend/explorer/templates/explorer/charts.html:363
+#: frontend/explorer/templates/explorer/charts.html:428
+#: frontend/explorer/templates/explorer/charts.html:467
+#: frontend/explorer/templates/explorer/mempool.html:33
+#: frontend/wallet_gui/templates/wallet_gui/app.html:361
+msgid "Inputs"
+msgstr "مدخلات"
+
+#: frontend/explorer/templates/explorer/charts.html:364
+#: frontend/explorer/templates/explorer/charts.html:468
+msgid "Output value"
+msgstr "قيمة المخرجات"
+
+#: frontend/explorer/templates/explorer/charts.html:365
+#: frontend/explorer/templates/explorer/charts.html:469
+msgid "Fees (known)"
+msgstr "رسوم (معروفة)"
+
+#: frontend/explorer/templates/explorer/charts.html:366
+#: frontend/explorer/templates/explorer/charts.html:470
+msgid "Gap (s)"
+msgstr "الفجوة (ث)"
+
+#: frontend/explorer/templates/explorer/charts.html:367
+#: frontend/explorer/templates/explorer/charts.html:473
+#: frontend/wallet_gui/templates/wallet_gui/app.html:89
+msgid "Miner"
+msgstr "المُنقّب"
+
+#: frontend/explorer/templates/explorer/charts.html:393
+msgid "Highest transaction counts"
+msgstr "أعلى أعداد المعاملات"
+
+#: frontend/explorer/templates/explorer/charts.html:394
+msgid "Top blocks on the full chain by number of transactions."
+msgstr "أعلى الكتل في السلسلة الكاملة بعدد المعاملات."
+
+#: frontend/explorer/templates/explorer/charts.html:420
+msgid "Recent transactions (feed)"
+msgstr "المعاملات المفتوحة"
+
+#: frontend/explorer/templates/explorer/charts.html:421
+msgid ""
+"Newest first: mempool first, then confirmed blocks toward genesis. Click any "
+"row to open the transaction."
+msgstr ""
+
+#: frontend/explorer/templates/explorer/charts.html:430
+#: frontend/explorer/templates/explorer/home.html:155
+#: frontend/explorer/templates/explorer/mempool.html:35
+#: frontend/explorer/templates/explorer/transactions_list.html:17
+#: frontend/wallet_gui/templates/wallet_gui/app.html:327
+#: frontend/wallet_gui/views.py:279
+msgid "Fee (TAN)"
+msgstr "الرسوم (تان)"
+
+#: frontend/explorer/templates/explorer/charts.html:437
+#: frontend/explorer/templates/explorer/charts.html:461
+#: frontend/explorer/templates/explorer/home.html:160
+#: frontend/explorer/templates/explorer/home.html:174
+msgid "mempool"
+msgstr "com.mempool"
+
+#: frontend/explorer/templates/explorer/charts.html:443
+#: frontend/explorer/templates/explorer/charts.html:462
+#: frontend/explorer/templates/explorer/home.html:164
+#: frontend/explorer/templates/explorer/home.html:176
+msgid "No transactions."
+msgstr "لا معاملات."
+
+#: frontend/explorer/templates/explorer/charts.html:451
+msgid "Related"
+msgstr "ذات صلة"
+
+#: frontend/explorer/templates/explorer/charts.html:453
+msgid "live overview"
+msgstr "نظرة مباشرة"
+
+#: frontend/explorer/templates/explorer/charts.html:463
+#: frontend/explorer/templates/explorer/home.html:177
+msgid "Updated"
+msgstr "تم التحديث"
+
+#: frontend/explorer/templates/explorer/dash_base.html:28
+msgid "Browse"
+msgstr "تصفح"
+
+#: frontend/explorer/templates/explorer/dash_base.html:50
+#: frontend/wallet_gui/templates/wallet_gui/app.html:256
+msgid "Actions"
+msgstr "إجراءات"
+
+#: frontend/explorer/templates/explorer/dash_base.html:60
+msgid "Developers"
+msgstr "المطوّرون"
+
+#: frontend/explorer/templates/explorer/dash_base.html:100
+#: frontend/explorer/templates/explorer/dash_base.html:102
+msgid "Search"
+msgstr "بحث"
+
+#: frontend/explorer/templates/explorer/dash_base.html:101
+msgid "Search by transaction id, block hash, or address"
+msgstr "ابحث برقم المعاملة أو تجزئة الكتلة أو العنوان"
+
+#: frontend/explorer/templates/explorer/home.html:10
+msgid "Network overview"
+msgstr "نظرة على الشبكة"
+
+#: frontend/explorer/templates/explorer/home.html:16
+msgid ""
+"Live chain and mempool from this node — same data as the JSON API under /"
+"api/."
+msgstr ""
+"سلسلة حية ومجمع الذاكرة من هذه العقدة — نفس بيانات واجهة JSON تحت ‎/api/‎."
+
+#: frontend/explorer/templates/explorer/home.html:21
+msgid "Principle"
+msgstr "مبدأ"
+
+#: frontend/explorer/templates/explorer/home.html:23
+msgid ""
+"A public ledger works when anyone can verify balances and transfers without "
+"asking permission. This explorer is that window into your node."
+msgstr ""
+"دفتر عام يعمل عندما يستطيع أي شخص التحقق من الأرصدة والتحويلات دون إذن. هذا "
+"المستكشف هو تلك النافذة إلى عقدتك."
+
+#: frontend/explorer/templates/explorer/home.html:27
+msgid "Network activity"
+msgstr "نشاط الشبكة"
+
+#: frontend/explorer/templates/explorer/home.html:29
+msgid "Activity map"
+msgstr "خريطة النشاط"
+
+#: frontend/explorer/templates/explorer/home.html:30
+msgid "Charts update below"
+msgstr "تُحدَّث المخططات أدناه"
+
+#: frontend/explorer/templates/explorer/home.html:32
+msgid "Transactions per recent block"
+msgstr "معاملات لكل كتلة حديثة"
+
+#: frontend/explorer/templates/explorer/home.html:37
+msgid "Shortcuts"
+msgstr "اختصارات"
+
+#: frontend/explorer/templates/explorer/home.html:52
+msgid "Block charts"
+msgstr "مخططات الكتل"
+
+#: frontend/explorer/templates/explorer/home.html:100
+msgid "Network summary"
+msgstr "ملخص الشبكة"
+
+#: frontend/explorer/templates/explorer/home.html:106
+msgid "Tip hash (short)"
+msgstr "تجزئة النصيحة (قصيرة)"
+
+#: frontend/explorer/templates/explorer/home.html:110
+#: frontend/wallet_gui/templates/wallet_gui/app.html:345
+msgid "Mempool transactions"
+msgstr "معاملات الذاكرة"
+
+#: frontend/explorer/templates/explorer/home.html:126
+msgid "Recent blocks"
+msgstr "الكتل الأخيرة"
+
+#: frontend/explorer/templates/explorer/home.html:127
+#: frontend/explorer/templates/explorer/home.html:151
+msgid "View all"
+msgstr "عرض الكل"
+
+#: frontend/explorer/templates/explorer/home.html:131
+#: frontend/wallet_gui/templates/wallet_gui/app.html:321
+msgid "Time (UTC)"
+msgstr "الوقت (التوقيت العالمي المنسق)"
+
+#: frontend/explorer/templates/explorer/home.html:150
+msgid "Latest transactions"
+msgstr "أحدث المعاملات"
+
+#: frontend/explorer/templates/explorer/mempool.html:7
+msgid "Mempool (pending)"
+msgstr "مجموعة الذاكرة المؤقتة (هذه العقدة)"
+
+#: frontend/explorer/templates/explorer/mempool.html:9
+msgid ""
+"Transactions waiting to be included in the next block on this node. They are "
+"not confirmed until a miner publishes a valid block."
+msgstr ""
+
+#: frontend/explorer/templates/explorer/mempool.html:13
+msgid "Mempool summary"
+msgstr "ملخص التقرير"
+
+#: frontend/explorer/templates/explorer/mempool.html:23
+msgid "Tip hash"
+msgstr "تجزئة كتلة الطرف"
+
+#: frontend/explorer/templates/explorer/mempool.html:47
+#: frontend/wallet_gui/views.py:286
+msgid "No pending transactions."
+msgstr "لا توجد معاملات معلّقة."
+
+#: frontend/explorer/templates/explorer/mempool.html:54
+msgid "Charts & mempool stats"
+msgstr "مخططات وإحصاءات مجموعة الذاكرة المؤقتة"
+
+#: frontend/explorer/templates/explorer/mempool.html:58
+msgid "To mine a block: open the wallet, sign in, then use the Miner tab."
+msgstr "لتعدين كتلة: افتح المحفظة، سجّل الدخول، ثم استخدم تبويب المُنقّب."
+
+#: frontend/explorer/templates/explorer/participate.html:7
+msgid "Send TAN, mine blocks, manage your wallet"
+msgstr "أرسل TAN، واستخرج الكتل، وقم بإدارة محفظتك"
+
+#: frontend/explorer/templates/explorer/participate.html:9
+msgid ""
+"This chain uses UTXO, like Bitcoin: you spend whole coins and receive "
+"change. There is no bank screen built in. You can use the wallet page, the "
+"JSON API, or Python to sign and send. Mining is started by hand on this demo "
+"node."
+msgstr ""
+"تستخدم هذه السلسلة UTXO، مثل Bitcoin: فأنت تنفق عملات معدنية كاملة وتتلقى "
+"التغيير. لا توجد شاشة بنك مدمجة. يمكنك استخدام صفحة المحفظة، أو JSON API، أو "
+"Python للتوقيع والإرسال. يبدأ التعدين يدويًا على هذه العقدة التجريبية."
+
+#: frontend/explorer/templates/explorer/participate.html:15
+msgid "Graphical wallet"
+msgstr "المحفظة الرسومية"
+
+#: frontend/explorer/templates/explorer/participate.html:16
+msgid ""
+"Open the wallet page to create keys, check balance, send TAN, and use the "
+"test faucet when debug mode is on."
+msgstr ""
+"افتح صفحة المحفظة لإنشاء المفاتيح والتحقق من الرصيد وإرسال TAN واستخدام "
+"صنبور الاختبار عند تشغيل وضع التصحيح."
+
+#: frontend/explorer/templates/explorer/participate.html:20
+msgid "Roles in one sentence"
+msgstr "الأدوار في جملة واحدة"
+
+#: frontend/explorer/templates/explorer/participate.html:22
+msgid ""
+"User: holds keys, builds a signed transaction that spends UTXOs and pays a "
+"receiver plus a fee to miners."
+msgstr ""
+"المستخدم: يحمل المفاتيح، ويبني معاملة موقعة تنفق UTXOs وتدفع للمستلم "
+"بالإضافة إلى رسوم لعمال المناجم."
+
+#: frontend/explorer/templates/explorer/participate.html:23
+msgid ""
+"Miner: collects mempool transactions, builds a block, finds proof of work, "
+"publishes the block, and collects the coinbase reward and fees."
+msgstr ""
+"عامل التعدين: يجمع معاملات mempool، ويبني كتلة، ويجد دليلاً على العمل، وينشر "
+"الكتلة، ويجمع مكافآت ورسوم قاعدة العملات."
+
+#: frontend/explorer/templates/explorer/participate.html:24
+msgid ""
+"Everyone: can read the public explorer at the home, transactions, and "
+"address pages."
+msgstr ""
+"الجميع: يمكنهم قراءة المستكشف العام في المنزل والمعاملات وصفحات العناوين."
+
+#: frontend/explorer/templates/explorer/participate.html:29
+msgid "Create or load a wallet"
+msgstr "إنشاء أو تحميل محفظة"
+
+#: frontend/explorer/templates/explorer/participate.html:30
+msgid ""
+"A wallet is a private key stored as WIF and a Base58 address you share to "
+"receive funds."
+msgstr ""
+"المحفظة عبارة عن مفتاح خاص يتم تخزينه كـ WIF وعنوان Base58 الذي تشاركه لتلقي "
+"الأموال."
+
+#: frontend/explorer/templates/explorer/participate.html:32
+msgid ""
+"Store address and WIF in a password manager. Anyone with the WIF can spend "
+"your coins."
+msgstr ""
+"عنوان المتجر وWIF في مدير كلمات المرور. يمكن لأي شخص لديه WIF أن ينفق عملاتك "
+"المعدنية."
+
+#: frontend/explorer/templates/explorer/participate.html:33
+msgid "Full payments guide"
+msgstr "دليل المدفوعات الكامل"
+
+#: frontend/explorer/templates/explorer/participate.html:37
+msgid "Make a payment"
+msgstr "قم بالدفع"
+
+#: frontend/explorer/templates/explorer/participate.html:39
+msgid "List spendable outputs with GET /api/chain/utxo/your_address/"
+msgstr ""
+"قم بإدراج المخرجات القابلة للإنفاق باستخدام GET /api/chain/utxo/your_address/"
+
+#: frontend/explorer/templates/explorer/participate.html:40
+msgid "Pick inputs that cover amount plus fee. Values use satoshis."
+msgstr ""
+"اختر المدخلات التي تغطي المبلغ بالإضافة إلى الرسوم. تستخدم القيم ساتوشي."
+
+#: frontend/explorer/templates/explorer/participate.html:41
+msgid ""
+"Sign with Python Chain.create_transfer and Wallet, then POST /api/chain/tx/"
+"submit/."
+msgstr ""
+"قم بالتسجيل باستخدام Python Chain.create_transfer وWallet، ثم POST /api/"
+"chain/tx/submit/."
+
+#: frontend/explorer/templates/explorer/participate.html:42
+msgid "Wait for a miner or mine yourself."
+msgstr "انتظر عامل منجم أو منجم بنفسك."
+
+#: frontend/explorer/templates/explorer/participate.html:44
+msgid "Detailed walkthrough"
+msgstr "تجول مفصل"
+
+#: frontend/explorer/templates/explorer/participate.html:48
+msgid "Act as a miner"
+msgstr "العمل كعامل منجم"
+
+#: frontend/explorer/templates/explorer/participate.html:49
+msgid ""
+"Mining builds the next block from the mempool and runs proof of work. Fees "
+"go to the miner_wif you send, or to the genesis wallet if you omit the body."
+msgstr ""
+"يقوم التعدين ببناء الكتلة التالية من مجمع الذاكرة ويقوم بإثبات العمل. تذهب "
+"الرسوم إلى عامل التعدين الذي ترسله، أو إلى محفظة التكوين إذا حذفت الجثة."
+
+#: frontend/explorer/templates/explorer/participate.html:53
+msgid "More on mining"
+msgstr "المزيد عن التعدين"
+
+#: frontend/explorer/templates/explorer/participate.html:58
+msgid "Full guide"
+msgstr "دليل كامل"
+
+#: frontend/explorer/templates/explorer/participate.html:59
+msgid "Payments, mining, wallet lifecycle, and security."
+msgstr "المدفوعات والتعدين ودورة حياة المحفظة والأمان."
+
+#: frontend/explorer/templates/explorer/participate.html:62
+msgid "API cheat sheet"
+msgstr "ورقة الغش API"
+
+#: frontend/explorer/templates/explorer/participate.html:63
+msgid "All JSON routes in one table."
+msgstr "جميع مسارات JSON في جدول واحد."
+
+#: frontend/explorer/templates/explorer/participate.html:67
+msgid "Keys, genesis wallet, production checklist."
+msgstr "المفاتيح، محفظة التكوين، قائمة مراجعة الإنتاج."
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:5
+#: frontend/explorer/templates/explorer/transaction_detail.html:8
+#: frontend/wallet_gui/templates/wallet_gui/app.html:322
+#: frontend/wallet_gui/views.py:274
+msgid "Transaction"
+msgstr "عملية"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:11
+#: frontend/explorer/templates/explorer/transactions_list.html:23
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:17
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:18
+msgid "Block time"
+msgstr "حظر الوقت"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:19
+msgid "Total input"
+msgstr "إجمالي المدخلات"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:20
+msgid "Total output"
+msgstr "إجمالي الناتج"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:21
+msgid "Fee (implicit)"
+msgstr "الرسوم (ضمنية)"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:21
+msgid "(inputs minus outputs; paid to miner in coinbase)"
+msgstr "(المدخلات ناقص المخرجات؛ المدفوعة لعمال المناجم في قاعدة العملات)"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:25
+msgid "Value flow"
+msgstr "تدفق القيمة"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:26
+msgid ""
+"Each input unlocks a previous output (UTXO). Each output creates a new UTXO. "
+"The fee is not assigned in outputs; the miner claims it in the block "
+"coinbase."
+msgstr ""
+"يفتح كل إدخال مخرجًا سابقًا (UTXO). يقوم كل مخرج بإنشاء UTXO جديد. لم يتم "
+"تعيين الرسوم في المخرجات؛ يدعي عامل المنجم أنه في قاعدة العملات المعدنية."
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:30
+#, python-format
+msgid "Inputs (%(c)s)"
+msgstr "المدخلات (%(c)s)"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:33
+msgid ""
+"No inputs — this transaction creates new coins as block reward plus fees."
+msgstr ""
+"لا توجد مدخلات — تُنشئ هذه المعاملة عملات معدنية جديدة كمكافأة جماعية "
+"بالإضافة إلى الرسوم."
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:39
+msgid "From"
+msgstr "من"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:40
+msgid "Spends"
+msgstr "ينفق"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:46
+#, python-format
+msgid "Outputs (%(c)s)"
+msgstr "النواتج (%(c)s)"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:50
+msgid "To"
+msgstr "ل"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:51
+msgid "payload"
+msgstr "حمولة"
+
+#: frontend/explorer/templates/explorer/transaction_detail.html:60
+msgid "Toggle raw transaction"
+msgstr "تبديل المعاملة الخام"
+
+#: frontend/explorer/templates/explorer/transactions_list.html:10
+#, python-format
+msgid ""
+"Public feed: unconfirmed first, then confirmed newest first. Total: "
+"%(total)s."
+msgstr ""
+"الموجز العام: غير مؤكد أولاً، ثم يتم تأكيد الأحدث أولاً. الإجمالي: %(total)s."
+
+#: frontend/explorer/templates/explorer/transactions_list.html:17
+msgid "Inputs / outputs"
+msgstr "المدخلات / المخرجات"
+
+#: frontend/explorer/templates/explorer/transactions_list.html:23
+msgid "Unconfirmed"
+msgstr "غير مؤكد"
+
+#: frontend/explorer/templates/explorer/transactions_list.html:29
+msgid "No transactions yet."
+msgstr "لا توجد معاملات حتى الآن."
+
+#: frontend/explorer/templates/explorer/transactions_list.html:37
+#, python-format
+msgid "Page %(p)s / %(tp)s"
+msgstr "الصفحة %(p)s / %(tp)s"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:20
+msgid "Set up your wallet"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:23
+msgid ""
+"Follow these short steps. Your keys stay in this browser session unless you "
+"send a transaction (then the WIF is sent once over HTTPS to sign). We never "
+"upload your profile photo to a server from this page."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:25
+msgid "Learn privacy basics"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:26
+msgid "Create or import a key"
+msgstr "إنشاء أو تحميل محفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:27
+msgid "Review your dashboard"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:30
+#: frontend/wallet_gui/templates/wallet_gui/app.html:38
+msgid "Continue"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:35
+msgid ""
+"For anonymity: use only addresses on-chain, avoid linking your real name to "
+"your keys, and be careful with photos (metadata and face recognition on "
+"other sites can reduce privacy)."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:37
+#: frontend/wallet_gui/templates/wallet_gui/app.html:55
+msgid "Back"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:43
+msgid "Choose how to add your first key to this browser."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:45
+msgid "Generate new keys"
+msgstr "توليد المفاتيح"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:46
+msgid "I already have a WIF"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:51
+msgid "Save key to this browser"
+msgstr "حفظ في هذا المتصفح"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:53
+msgid "Click below to call the server once to generate a keypair."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:56
+msgid "Generate now"
+msgstr "أنشئ الآن"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:61
+msgid ""
+"You are ready. Open the dashboard to see balance, super key, super public "
+"key, and all keys in this browser."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:63
+#: frontend/wallet_gui/templates/wallet_gui/app.html:431
+msgid "Open dashboard"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:71
+msgid "Wallet navigation"
+msgstr "الملاحة الرئيسية"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:73
+msgid "Wallet sections"
+msgstr "أقسام المحفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:76
+#: frontend/wallet_gui/templates/wallet_gui/app.html:135
+msgid "Account"
+msgstr "حساب"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:81
+msgid "Dashboard"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:85
+msgid "History"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:93
+msgid "Top up / Buy"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:97
+msgid "Cash out"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:101
+#: frontend/wallet_gui/templates/wallet_gui/app.html:414
+msgid "Send"
+msgstr "يرسل"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:105
+msgid "Add keys"
+msgstr "مفاتيح جديدة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:110
+msgid "Test coins"
+msgstr "عملات تجريبية"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:116
+msgid "Test faucet (debug)"
+msgstr "صنبور الاختبار متاح (وضع التصحيح)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:124
+msgid "Signed in — keys stay in this browser (sessionStorage) under your user."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:124
+msgid "Sign in on the Account tab to unlock the wallet."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:128
+msgid "Guided setup"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:138
+msgid ""
+"You are signed in. Wallet keys in this browser are stored under your user "
+"name in sessionStorage; wallet APIs on the server reject requests until you "
+"authenticate."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:139
+#: frontend/wallet_gui/templates/wallet_gui/login.html:25
+msgid "Username"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:142
+msgid "Log out"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:144
+msgid ""
+"After logging out, use \"Forget all keys\" on the dashboard if this device "
+"is shared."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:147
+msgid "How you appear on cards"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:149
+msgid "Display name (optional)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:150
+msgid "Shown on identity cards"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:152
+msgid "Account image (optional)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:153
+msgid ""
+"Image stays in this browser only. Below is a simple local check — not a "
+"cloud security scan."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:161
+msgid "Choose image"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:162
+msgid "Remove image"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:166
+msgid "Privacy and exposure hints"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:171
+msgid ""
+"Log in or create an account so private material (keys, WIF, balances) is "
+"only available after authentication. Wallet APIs are disabled until you sign "
+"in."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:173
+#: frontend/wallet_gui/templates/wallet_gui/login.html:4
+msgid "Log in"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:174
+#: frontend/wallet_gui/templates/wallet_gui/login.html:42
+msgid "Create an account"
+msgstr "إنشاء محفظة جديدة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:184
+msgid "No keys in this browser yet"
+msgstr "لا توجد محفظة في هذا المتصفح حتى الآن"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:185
+msgid ""
+"Add at least one key to see your dashboard. Use guided setup for step-by-"
+"step help, or add keys from the sidebar."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:187
+msgid "Start guided setup"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:188
+msgid "Add keys manually"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:196
+msgid "Wallet accounts"
+msgstr "حسابات المحفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:199
+msgid ""
+"Choose one key to open its summary, send, receive, or explorer. Pick "
+"“Overview” to see all keys and balances together."
+msgstr ""
+"اختر مفتاحاً واحداً لعرض ملخصه والإرسال والاستلام أو المستكشف. اختر «جميع "
+"المفاتيح — نظرة عامة» لرؤية كل المفاتيح والأرصدة معاً."
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:205
+msgid "Primary balance"
+msgstr "تحديث الرصيد"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:209
+msgid "Refresh"
+msgstr "تحديث الرصيد"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:214
+msgid "Identity cards"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:216
+msgid ""
+"Each card shows your public address and key fingerprint. Tap or press Enter "
+"to flip — back side has a QR code for the address and a copy button."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:221
+msgid "Super key and super public key"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:222
+msgid ""
+"Your primary key in this demo is the master secret (WIF) and its public key. "
+"Other keys you add are separate identities on-chain — each has its own WIF "
+"and public key."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:225
+msgid "Super key (master WIF)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:226
+msgid "Whoever holds this can spend from the primary address. Never share it."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:230
+#: frontend/wallet_gui/views.py:238
+msgid "Show"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:231
+msgid "Copy WIF"
+msgstr "انسخ ملف WIF"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:235
+msgid "Super public key (hex)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:236
+msgid "Used to receive P2PKH-style outputs for the primary address."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:238
+#: frontend/wallet_gui/views.py:252
+msgid "Copy public key"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:245
+msgid "All private keys in this session"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:246
+msgid "Add another key"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:252
+msgid "Label"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:254
+msgid "Balance (TAN)"
+msgstr "القيمة (تان)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:255
+#: frontend/wallet_gui/templates/wallet_gui/app.html:274
+#: frontend/wallet_gui/views.py:248
+msgid "Primary"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:265
+msgid "Forget all keys on this device"
+msgstr "ننسى المحفظة على هذا الجهاز"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:281
+#: frontend/wallet_gui/templates/wallet_gui/app.html:430
+#: frontend/wallet_gui/views.py:251
+msgid "Copy address"
+msgstr "انسخ العنوان"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:288
+msgid "Send from this account"
+msgstr "إرسال من هذا الحساب"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:289
+msgid "Receive / top up"
+msgstr "استلام / شحن"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:290
+msgid "Open in explorer"
+msgstr "فتح في المستكشف"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:299
+msgid "History & analysis"
+msgstr "مخططات الشبكة والتحليل"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:300
+msgid ""
+"Confirmed transfers that touch any address saved in this browser on this "
+"node. Refresh after you send or receive; links open the public explorer."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:302
+#: frontend/wallet_gui/views.py:271
+msgid "Refresh history"
+msgstr "تلقي التاريخ"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:303
+#: frontend/wallet_gui/templates/wallet_gui/app.html:385
+msgid "Send payment"
+msgstr "إرسال الدفع"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:307
+msgid "Summary"
+msgstr "ملخص الكتلة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:311
+msgid "Net flow over time (relative)"
+msgstr "صافي التدفق عبر الزمن (نسبي)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:312
+msgid ""
+"Line chart: oldest transactions on the left, newest on the right. Height is "
+"net amount (scaled to the largest |net| in view); the dashed line is zero. "
+"Green = net received, coral = net sent."
+msgstr ""
+"مخطط خطي: أقدم المعاملات يسارًا وأحدثها يمينًا. الارتفاع هو المبلغ الصافي "
+"(مقيسًا لأكبر |صافي| في العرض)؛ الخط المتقطع هو الصفر. الأخضر = صافي مستلم، "
+"المرجاني = صافي مرسل."
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:316
+msgid "Transaction list"
+msgstr "معرف المعاملة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:324
+#: frontend/wallet_gui/views.py:276
+msgid "In (TAN)"
+msgstr "الرسوم (تان)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:325
+#: frontend/wallet_gui/views.py:277
+msgid "Out (TAN)"
+msgstr "القيمة (تان)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:326
+#: frontend/wallet_gui/views.py:278
+msgid "Net (TAN)"
+msgstr "الرسوم (تان)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:338
+msgid "Mine a block"
+msgstr "تعدين كتلة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:339
+msgid ""
+"Run proof-of-work on this node: pending transactions go into the next block "
+"and the coinbase pays the miner address you select."
+msgstr ""
+"شغّل إثبات العمل على هذه العقدة: تُدرج المعاملات المعلّقة في الكتلة التالية "
+"وتُدفع مكافأة الكتلة (coinbase) إلى عنوان المُنقّب الذي تختاره."
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:342
+msgid "Network (this node)"
+msgstr "الشبكة (هذه العقدة)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:349
+msgid "Refresh mempool"
+msgstr "تحديث مجموعة الذاكرة المؤقتة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:350
+msgid "Open mempool page"
+msgstr "فتح صفحة مجموعة الذاكرة المؤقتة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:351
+msgid "Miner charts & leaderboard"
+msgstr "مخططات وترتيب المُنقّبين"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:355
+msgid "Pending transactions (mempool)"
+msgstr "معاملات معلّقة (mempool)"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:370
+#: frontend/wallet_gui/templates/wallet_gui/app.html:377
+msgid "Mine next block"
+msgstr "تعدين الكتلة التالية"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:371
+msgid ""
+"Choose which saved key receives the coinbase reward and fees for this block."
+msgstr "اختر المفتاح المحفوظ الذي يستلم مكافأة الكتلة والرسوم لهذه الكتلة."
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:373
+msgid "Miner signing key"
+msgstr "مفتاح توقيع المُنقّب"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:386
+#: frontend/wallet_gui/views.py:262
+msgid ""
+"Amounts are in TAN. Pick a saved signing key; the WIF field fills "
+"automatically. Paste a different WIF to override."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:388
+msgid "Signing key"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:392
+msgid "WIF (auto-filled from selection)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:393
+msgid "Paste another WIF only if overriding the selected key"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:396
+msgid "Receiver address"
+msgstr "عنوان المتلقي"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:400
+#: frontend/wallet_gui/templates/wallet_gui/app.html:505
+msgid "Amount in TAN"
+msgstr "المبلغ بالطن"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:404
+msgid "Fee in TAN"
+msgstr "الرسوم في تان"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:410
+msgid "Mine one block after sending"
+msgstr "منجم كتلة واحدة بعد الإرسال"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:416
+msgid "Send result"
+msgstr "إرسال النتيجة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:423
+msgid "Receive on-chain (top up)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:424
+msgid ""
+"Share your primary public address so someone (or another wallet of yours) "
+"can send TAN to you. Only the address is needed — never share your WIF to "
+"receive funds."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:426
+msgid "Receive address"
+msgstr "عنوان المتلقي"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:427
+msgid "Add a key on the dashboard first"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:435
+msgid "Buy or add test tokens"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:436
+msgid ""
+"On-chain TAN arrives only when a sender posts a valid transaction to the "
+"network. Card or mobile-money purchase requires a licensed partner — link "
+"below if your operator configured one."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:439
+msgid "Open buy page"
+msgstr "في هذه الصفحة"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:442
+msgid ""
+"Set WALLET_EXTERNAL_BUY_URL in the server environment to show a “Buy” button "
+"that opens your payment provider."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:446
+msgid "Get test coins (faucet)"
+msgstr "طلب عملات تجريبية"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:455
+msgid "Cash out (send TAN out)"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:456
+msgid ""
+"“Cash out” here means moving TAN to an address you control elsewhere "
+"(exchange deposit, hardware wallet, OTC counterparty). This wallet does not "
+"convert TAN to bank notes or mobile money automatically."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:458
+msgid ""
+"Use Send, pick the key that holds your balance, paste the destination "
+"address, set amount and fee, then confirm."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:459
+msgid ""
+"For fiat, you normally send to an exchange that lists TAN (or wraps it), "
+"complete their KYC, then withdraw to your bank from their app."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:462
+msgid "Go to Send"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:464
+msgid "Partner / help link"
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:473
+msgid "Generate another key"
+msgstr "توليد المفاتيح"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:474
+msgid ""
+"Creates a new independent keypair and adds it to this browser. Each key has "
+"its own address and balance."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:476
+msgid "Generate"
+msgstr "توليد المفاتيح"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:481
+msgid "Import WIF"
+msgstr "استيراد WIF"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:482
+msgid "Adds an existing key to this browser session."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:488
+msgid "Import"
+msgstr "يستورد"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:498
+msgid "Request test coins"
+msgstr "طلب عملات تجريبية"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:499
+msgid "Genesis sends demo TAN (debug only)."
+msgstr ""
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:501
+msgid "Receiving address"
+msgstr "عنوان الاستلام"
+
+#: frontend/wallet_gui/templates/wallet_gui/app.html:509
+msgid "Send test coins"
+msgstr "إرسال عملات الاختبار"
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:12
+#: frontend/wallet_gui/templates/wallet_gui/register.html:12
+msgid "Tancoin logo"
+msgstr "شعار تانكوين"
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:13
+msgid "Wallet login"
+msgstr "تسجيل الدخول إلى المحفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:14
+msgid ""
+"Sign in to unlock the dashboard, send TAN, and view your on-chain history on "
+"this device."
+msgstr ""
+"سجّل الدخول لفتح لوحة التحكم وإرسال TAN وعرض سجلّ معاملاتك على السلسلة على هذا "
+"الجهاز."
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:30
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:37
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: frontend/wallet_gui/templates/wallet_gui/login.html:44
+#: frontend/wallet_gui/templates/wallet_gui/register.html:41
+msgid "Back to wallet"
+msgstr "العودة إلى المحفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/register.html:4
+msgid "Register"
+msgstr "إنشاء حساب"
+
+#: frontend/wallet_gui/templates/wallet_gui/register.html:13
+msgid "Create wallet account"
+msgstr "إنشاء حساب المحفظة"
+
+#: frontend/wallet_gui/templates/wallet_gui/register.html:14
+msgid ""
+"Choose a username and password. This account only gates access on this site; "
+"keys still stay in your browser storage after you log in."
+msgstr ""
+"اختر اسم مستخدم وكلمة مرور. هذا الحساب يقيّد الدخول إلى هذا الموقع فقط؛ تبقى "
+"المفاتيح في تخزين المتصفح لديك بعد تسجيل الدخول."
+
+#: frontend/wallet_gui/templates/wallet_gui/register.html:34
+msgid "Create account"
+msgstr "إنشاء الحساب"
+
+#: frontend/wallet_gui/templates/wallet_gui/register.html:39
+msgid "Already have an account? Log in"
+msgstr "لديك حساب؟ سجّل الدخول"
+
+#: frontend/wallet_gui/views.py:136 frontend/wallet_gui/views.py:264
+msgid "Sign in required."
+msgstr "يجب تسجيل الدخول أولاً."
+
+#: frontend/wallet_gui/views.py:166
+msgid ""
+"Invalid Base58: your WIF or address contains a wrong character, an "
+"accidental space, or an incomplete copy. Use only Base58 letters and digits "
+"(not 0, O, I, or l). Paste one full line with no line breaks in the middle."
+msgstr ""
+"Base58 غير صالح: يحتوي مفتاح WIF أو العنوان على حرف غير مسموح أو مسافة زائدة "
+"أو نسخ غير كامل. استخدم أحرفاً وأرقام Base58 فقط (ليس 0 أو O أو I أو l). الصق "
+"سطراً واحداً كاملاً دون فواصل في المنتصف."
+
+#: frontend/wallet_gui/views.py:170
+msgid ""
+"This private key (WIF) is not the right length for this network. Export or "
+"paste the WIF from this wallet or a compatible backup."
+msgstr ""
+"طول مفتاح WIF هذا غير مناسب لهذه الشبكة. صدّر أو الصق WIF من هذه المحفظة أو "
+"من نسخة احتياطية متوافقة."
+
+#: frontend/wallet_gui/views.py:173
+msgid ""
+"Receiver address checksum failed: there is likely a typo. Compare the "
+"address character by character with the recipient."
+msgstr ""
+"فشل التحقق من العنوان: احتمال وجود خطأ مطبعي. قارن عنوان المستلم حرفاً بحرف."
+
+#: frontend/wallet_gui/views.py:175
+msgid "Receiver address looks too short or incomplete."
+msgstr "عنوان المستلم يبدو قصيراً جداً أو غير مكتمل."
+
+#: frontend/wallet_gui/views.py:176
+msgid "Receiver address format is not valid for this network."
+msgstr "تنسيق عنوان المستلم غير صالح لهذه الشبكة."
+
+#: frontend/wallet_gui/views.py:239
+msgid "Hide"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:240
+msgid ""
+"Remove all keys from this browser? Export each WIF first if you need them "
+"later."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:241
+msgid "UTXOs"
+msgstr "UTXOs"
+
+#: frontend/wallet_gui/views.py:242
+msgid ""
+"JPEG metadata (EXIF) often includes device or location. Strip metadata "
+"before sharing anywhere public."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:244
+msgid ""
+"Large images are unnecessary for a local avatar and can make fingerprinting "
+"easier if you reuse the same file elsewhere."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:246
+msgid ""
+"This page does not upload your image to the server; checks run only in your "
+"browser."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:247
+msgid ""
+"Using a real face photo can reduce anonymity if the same image appears on "
+"social networks."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:249
+msgid "Set primary"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:250
+msgid "Remove"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:253
+msgid "Remove this key from the list?"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:254
+msgid "Member since"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:255
+msgid "Public key"
+msgstr "تنسيقات المفاتيح العامة"
+
+#: frontend/wallet_gui/views.py:257
+msgid "Copy public address"
+msgstr "انسخ العنوان"
+
+#: frontend/wallet_gui/views.py:258
+msgid "Primary card"
+msgstr "تحديث الرصيد"
+
+#: frontend/wallet_gui/views.py:259
+msgid "Identity card"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:260
+msgid "WIF is required."
+msgstr "مطلوب واي فاي."
+
+#: frontend/wallet_gui/views.py:265
+msgid "Add a key first to copy a receive address."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:266
+msgid "Your on-chain history"
+msgstr ""
+
+#: frontend/wallet_gui/views.py:268
+msgid ""
+"Line chart: net amount per transaction in time order (oldest → newest on "
+"this node). Green = net in, coral = net out. Table links to the explorer."
+msgstr ""
+"مخطط خطي: المبلغ الصافي لكل معاملة بترتيب زمني (من الأقدم إلى الأحدث على هذه "
+"العقدة). الأخضر = صافي داخل، المرجاني = صافي خارج. الجدول يربط بالمستكشف."
+
+#: frontend/wallet_gui/views.py:270
+msgid "Line chart of net amount per matching transaction"
+msgstr "مخطط خطي للمبلغ الصافي لكل معاملة مطابقة"
+
+#: frontend/wallet_gui/views.py:272
+msgid "No matching transactions on this node yet."
+msgstr "لا توجد معاملات حتى الآن."
+
+#: frontend/wallet_gui/views.py:273
+msgid "When (UTC)"
+msgstr "الوقت (التوقيت العالمي المنسق)"
+
+#: frontend/wallet_gui/views.py:280
+msgid "Transactions found"
+msgstr "عدد المعاملات"
+
+#: frontend/wallet_gui/views.py:281
+msgid "Total received (TAN)"
+msgstr "القيمة (تان)"
+
+#: frontend/wallet_gui/views.py:282
+msgid "Total sent (TAN)"
+msgstr "القيمة (تان)"
+
+#: frontend/wallet_gui/views.py:283
+msgid "Net flow (TAN)"
+msgstr "الرسوم (تان)"
+
+#: frontend/wallet_gui/views.py:284
+msgid "All keys — overview"
+msgstr "جميع المفاتيح — نظرة عامة"
+
+#: frontend/wallet_gui/views.py:285
+msgid "Balances and address for this saved key on this node."
+msgstr "الرصيد والعنوان لهذا المفتاح المحفوظ على هذه العقدة."
+
+#: frontend/wallet_gui/views.py:322
+msgid "New wallet created. Save your WIF in a safe place."
+msgstr "تم إنشاء محفظة جديدة. احفظ ملف WIF الخاص بك في مكان آمن."
+
+#: frontend/wallet_gui/views.py:346
+msgid "Wallet imported. You can use Balance or Send."
+msgstr "المحفظة مستوردة. يمكنك استخدام الرصيد أو الإرسال."
+
+#: frontend/wallet_gui/views.py:417
+msgid "Balance calculated."
+msgstr "تم حساب الرصيد."
+
+#: frontend/wallet_gui/views.py:433
+msgid "Send a JSON object with an \"addresses\" array of base58 addresses."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:438
+msgid "At least one address is required."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:446
+msgid "On-chain activity for your addresses (this node)."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:464
+msgid ""
+"Choose a signing key (WIF) so the coinbase reward is credited to that "
+"address."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:478
+msgid "Block mined; mempool cleared on this node."
+msgstr ""
+
+#: frontend/wallet_gui/views.py:531
+msgid "Payment sent and confirmed in a new block."
+msgstr "تم إرسال الدفع وتأكيده في كتلة جديدة."
+
+#: frontend/wallet_gui/views.py:533
+msgid "Payment submitted. Wait for a miner to confirm it."
+msgstr "تم الدفع. انتظر عامل منجم لتأكيد ذلك."
+
+#: frontend/wallet_gui/views.py:580
+msgid "Test coins sent from the genesis wallet. Debug mode only."
+msgstr "العملات التجريبية المرسلة من محفظة Genesis. وضع التصحيح فقط."
+
+#~ msgid "Primary receive address"
+#~ msgstr "عنوان المتلقي"
+
+#~ msgid "Reports"
+#~ msgstr "التقارير"
+
+#~ msgid ""
+#~ "A short snapshot of this node. Numbers match the JSON API and the home "
+#~ "explorer."
+#~ msgstr ""
+#~ "لمحة قصيرة عن هذه العقدة. الأرقام مطابقة لواجهة JSON API وواجهة الاستكشاف "
+#~ "الرئيسية."
+
+#~ msgid "Where to dig deeper"
+#~ msgstr "للمزيد من التفاصيل"
+
+#~ msgid "charts and latest activity"
+#~ msgstr "الرسوم البيانية وأحدث النشاط"
+
+#~ msgid ""
+#~ "Your address and balance stay on this screen when you create or import a "
+#~ "wallet. The secret key never leaves your browser until you send a payment "
+#~ "(then it is sent once over HTTPS to sign). Close the tab to clear the "
+#~ "wallet from this browser."
+#~ msgstr ""
+#~ "يبقى عنوانك ورصيدك على هذه الشاشة عند إنشاء محفظة أو استيرادها. لا يغادر "
+#~ "المفتاح السري متصفحك أبدًا حتى ترسل دفعة (ثم يتم إرساله مرة واحدة عبر "
+#~ "HTTPS للتوقيع). أغلق علامة التبويب لمسح المحفظة من هذا المتصفح."
+
+#~| msgid "Balance"
+#~ msgid "Balance and keys"
+#~ msgstr "التوازن والمفاتيح"
+
+#~| msgid "Open wallet"
+#~ msgid "New wallet"
+#~ msgstr "محفظة جديدة"
+
+#~ msgid "From WIF"
+#~ msgstr "من واي فاي"
+
+#~ msgid "From genesis"
+#~ msgstr "من التكوين"
+
+#~ msgid ""
+#~ "Create a new wallet or import a WIF. Then you will see your balance, "
+#~ "address, and a safe way to view your private key here."
+#~ msgstr ""
+#~ "قم بإنشاء محفظة جديدة أو قم باستيراد WIF. بعد ذلك سترى رصيدك وعنوانك "
+#~ "وطريقة آمنة لعرض مفتاحك الخاص هنا."
+
+#~| msgid "Resolve address"
+#~ msgid "Your address"
+#~ msgstr "عنوانك"
+
+#~| msgid "Private key formats"
+#~ msgid "Private key (WIF)"
+#~ msgstr "المفتاح الخاص (WIF)"
+
+#~ msgid ""
+#~ "Anyone with this string can spend your coins. Do not share it or paste it "
+#~ "into untrusted sites."
+#~ msgstr ""
+#~ "يمكن لأي شخص لديه هذه السلسلة أن ينفق عملاتك المعدنية. لا تشاركه أو تلصقه "
+#~ "في مواقع غير موثوقة."
+
+#~| msgid "Mini private key format"
+#~ msgid "Show private key"
+#~ msgstr "إظهار المفتاح الخاص"
+
+#~| msgid ""
+#~| "Amounts are in TAN with decimals. A small fee goes to the miner when you "
+#~| "enable mining after send."
+#~ msgid ""
+#~ "Amounts are in TAN. A small fee goes to the miner when you enable mining "
+#~ "after send."
+#~ msgstr ""
+#~ "المبالغ في TAN. يتم دفع رسوم بسيطة إلى عامل التعدين عند تمكين التعدين بعد "
+#~ "الإرسال."
+
+#~ msgid "Sender WIF"
+#~ msgstr "المرسل واي فاي"
+
+#~ msgid "Paste WIF if you are not using Account wallet"
+#~ msgstr "الصق WIF إذا كنت لا تستخدم محفظة الحساب"
+
+#~ msgid ""
+#~ "Generates a new address and private key. We will save them only in this "
+#~ "browser tab session so you can use Account and Send."
+#~ msgstr ""
+#~ "يولد عنوان جديد ومفتاح خاص. سنقوم بحفظها فقط في جلسة علامة تبويب المتصفح "
+#~ "هذه حتى تتمكن من استخدام الحساب والإرسال."
+
+#~ msgid "Result"
+#~ msgstr "نتيجة"
+
+#~| msgid ""
+#~| "Paste a wallet import string. The server only converts it to an address "
+#~| "for this action. Do not use this on a network you do not trust."
+#~ msgid ""
+#~ "Paste your wallet import string. The server resolves it to an address for "
+#~ "this step; the key is also kept in this browser for balance and send."
+#~ msgstr ""
+#~ "الصق سلسلة استيراد محفظتك. يقوم الخادم بتحليلها إلى عنوان لهذه الخطوة؛ "
+#~ "يتم الاحتفاظ بالمفتاح أيضًا في هذا المتصفح لتحقيق التوازن والإرسال."
+
+#~ msgid ""
+#~ "This is not real money. The genesis wallet sends demo TAN to your address "
+#~ "and mines one block. Only enabled in debug mode."
+#~ msgstr ""
+#~ "هذه ليست أموال حقيقية. ترسل محفظة Genesis عرض TAN التجريبي إلى عنوانك "
+#~ "وتقوم بتعدين كتلة واحدة. تم تمكينه فقط في وضع التصحيح."
+
+#~| msgid "Mini private key format"
+#~ msgid "Hide private key"
+#~ msgstr "إخفاء المفتاح الخاص"
+
+#~ msgid "Using the wallet from Account. You can leave Sender WIF empty."
+#~ msgstr "استخدام المحفظة من الحساب. يمكنك ترك حقل Sender WIF فارغًا."
+
+#~ msgid ""
+#~ "Remove this wallet from the browser? You will need your WIF to load it "
+#~ "again."
+#~ msgstr ""
+#~ "هل تريد إزالة هذه المحفظة من المتصفح؟ سوف تحتاج إلى WIF الخاص بك لتحميله "
+#~ "مرة أخرى."
+
+#~ msgid "Enter a sender WIF or load a wallet on the Account tab."
+#~ msgstr "أدخل WIF للمرسل أو قم بتحميل المحفظة في علامة التبويب \"الحساب\"."
+
+#~ msgid ""
+#~ "Create keys, check your balance, send TAN, and optionally receive test "
+#~ "coins when debug mode is on. Everything runs in your browser using the "
+#~ "same node as the rest of the site."
+#~ msgstr ""
+#~ "أنشئ المفاتيح، وتحقق من رصيدك، وأرسل TAN، واستلم عملات الاختبار بشكل "
+#~ "اختياري عند تشغيل وضع التصحيح. يتم تشغيل كل شيء في متصفحك باستخدام نفس "
+#~ "العقدة مثل باقي الموقع."
+
+#~ msgid "Check funds"
+#~ msgstr "التحقق من الأموال"
+
+#~ msgid ""
+#~ "This creates a private key and a public address. The WIF is your secret. "
+#~ "Save it outside this screen."
+#~ msgstr ""
+#~ "يؤدي هذا إلى إنشاء مفتاح خاص وعنوان عام. WIF هو سرك. احفظه خارج هذه "
+#~ "الشاشة."
+
+#~ msgid "Base58 address"
+#~ msgstr "عنوان Base58"
+
+#~ msgid "Calculate"
+#~ msgstr "احسب"
+
+#~ msgid "Tancoin public blockchain"
+#~ msgstr "تانكوين blockchain العامة"
+
+#~ msgid "Bar height shows how many transactions were in each recent block."
+#~ msgstr "يُظهر ارتفاع الشريط عدد المعاملات التي تمت في كل كتلة حديثة."
+
+#~ msgid "Explore"
+#~ msgstr "يستكشف"
+
+#~ msgid "View all transactions"
+#~ msgstr "عرض كافة المعاملات"

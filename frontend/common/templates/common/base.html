@@ -1,0 +1,122 @@
+{% load static i18n tancoin_static %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      try {
+        var v = localStorage.getItem("tancoin_theme");
+        var root = document.documentElement;
+        if (!v || v === "dark") root.removeAttribute("data-theme");
+        else root.setAttribute("data-theme", v);
+      } catch (e) {}
+    })();
+  </script>
+  <title>{% block title %}{% trans "Tancoin" %}{% endblock %} — {% trans "Public chain" %}</title>
+  <link rel="icon" href="{% static 'img/tancoin.png' %}" type="image/png" sizes="any">
+  <link rel="apple-touch-icon" href="{% static 'img/tancoin.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static_v 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static_v 'css/themes.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="has-ambient-bg {% block body_class %}{% endblock %}">
+  {# Ambient stack: optional bitmap/WebP from Figma can replace the SVG; keep the same filename or update base.css. #}
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__photo">
+      <img class="site-bg__photo-img" src="{% static 'img/site-bg-ambient.svg' %}" alt="" width="1920" height="1080" decoding="async" fetchpriority="low">
+    </div>
+    <div class="site-bg__noise"></div>
+    <div class="site-bg__grid"></div>
+    <div class="site-bg__mesh"></div>
+    <div class="site-bg__orb site-bg__orb--a"></div>
+    <div class="site-bg__orb site-bg__orb--b"></div>
+    <div class="site-bg__orb site-bg__orb--c"></div>
+    <div class="site-bg__shine"></div>
+  </div>
+
+  <div class="site-canvas">
+  {% block app_layout %}
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{% url 'explorer:home' %}">
+        <img class="brand__mark" src="{% static 'img/tancoin.png' %}" alt="" width="32" height="32" decoding="async">
+        <span class="brand__wordmark">{% trans "Tancoin" %}<span class="brand-sub">{% trans "Explorer" %}</span></span>
+      </a>
+      <nav class="nav-main nav-main--site" id="site-nav-main" aria-label="{% trans 'Main navigation' %}">
+        <a href="{% url 'explorer:home' %}">{% trans "Home" %}</a>
+        <a href="{% url 'explorer:blocks' %}">{% trans "Blocks" %}</a>
+        <a href="{% url 'explorer:transactions' %}">{% trans "Transactions" %}</a>
+        <a href="{% url 'wallet_gui:app' %}" class="nav-wallet">{% trans "Wallet" %}</a>
+        <a href="{% url 'explorer:participate' %}">{% trans "Pay and mine" %}</a>
+        <a href="{% url 'documentation:hub' %}">{% trans "Documentation" %}</a>
+        <a href="{% url 'documentation:wallet_architecture' %}">{% trans "Wallet architecture" %}</a>
+        <a href="{% url 'explorer:api_help' %}" class="nav-api">{% trans "API (JSON)" %}</a>
+        <a href="{% url 'explorer:charts' %}">{% trans "Charts" %}</a>
+      </nav>
+      <button type="button" class="nav-menu-toggle" id="nav-menu-toggle" aria-controls="site-nav-main" aria-expanded="false" aria-label="{% trans 'Menu' %}">
+        <span class="nav-menu-toggle__bars" aria-hidden="true"></span>
+      </button>
+      <div class="header-tools">
+        {% include "common/theme_picker.html" %}
+        <form class="lang-switch" action="{% url 'set_language' %}" method="post" aria-label="{% trans 'Language' %}">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <label for="id_language" class="visually-hidden">{% trans "Language" %}</label>
+          <select name="language" id="id_language" class="lang-select" onchange="this.form.submit()">
+            {% get_current_language as LANG %}
+            {% get_available_languages as LANG_CHOICES %}
+            {% for code, name in LANG_CHOICES %}
+              <option value="{{ code }}" {% if code == LANG %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </form>
+      </div>
+    </div>
+    <button type="button" class="nav-scrim" id="nav-scrim" hidden aria-label="{% trans 'Close menu' %}"></button>
+  </header>
+
+  <main class="site-main">
+    <div class="wrap">
+      {% block page_header %}
+      <header class="page-header">
+        <h1>{% block page_title %}{% trans "Page" %}{% endblock %}</h1>
+        {% block page_subtitle %}{% endblock %}
+      </header>
+      {% endblock %}
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  {% endblock %}
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>{% trans "Tancoin reference node. Public blockchain data. No login required to browse." %}</p>
+      <p class="footer-links">
+        <a href="{% url 'documentation:hub' %}">{% trans "Documentation" %}</a>
+        <a href="{% url 'documentation:wallet_architecture' %}">{% trans "Wallet architecture" %}</a>
+        <a href="{% url 'documentation:user_guide_payments' %}">{% trans "Payments guide" %}</a>
+        <a href="{% url 'explorer:transactions' %}">{% trans "All transactions" %}</a>
+        <a href="{% url 'explorer:charts' %}">{% trans "Charts" %}</a>
+      </p>
+    </div>
+  </footer>
+  </div>
+
+  {% trans "Copied to clipboard" as copied_alert %}
+  {% trans "Close" as theme_close_backdrop %}
+  <script>
+    window.TANCOIN_I18N = { copied: "{{ copied_alert|escapejs }}" };
+    window.TANCOIN_THEME_I18N = { closeBackdrop: "{{ theme_close_backdrop|escapejs }}" };
+  </script>
+  <script src="{% static 'js/base.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

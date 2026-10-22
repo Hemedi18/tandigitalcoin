@@ -1,0 +1,97 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Payments and mining" %}{% endblock %}
+{% block docs_title %}{% trans "Payments, mining, and wallet" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}Use the wallet page for a full graphical flow. This page explains the same ideas with the API and Python for people who integrate systems.{% endblocktrans %}</p>
+<p class="lead"><a href="{% url 'wallet_gui:app' %}">{% trans "Open the wallet" %}</a></p>
+{% endblock %}
+
+{% block docs_content %}
+<div class="callout">
+  <strong>{% trans "Units" %}:</strong> {% blocktrans trimmed %}All amounts in the API are satoshis. One TAN is one hundred million satoshis.{% endblocktrans %}
+</div>
+
+<h2 id="model">{% trans "How money moves" %}</h2>
+<p>{% blocktrans trimmed %}Your balance is the sum of unspent outputs that pay your address. A payment spends those outputs and creates new outputs for the receiver and usually change back to you. The miner fee is the difference between input total and output total.{% endblocktrans %}</p>
+<pre><code>inputs → transaction → outputs (receiver + change)
+                              ↘ fee to miner</code></pre>
+
+<h2 id="wallet">{% trans "Wallet: create, store, restore" %}</h2>
+<h3>{% trans "Create" %}</h3>
+<pre><code>curl -s http://127.0.0.1:8000/api/wallet/new/</code></pre>
+<p>{% blocktrans trimmed %}The response includes address and wif. The wif is a full spend secret. Store it encrypted.{% endblocktrans %}</p>
+<h3>{% trans "Restore in Python" %}</h3>
+<pre><code>from tancoin_core.wallet import Wallet
+w = Wallet.from_wif("YOUR_WIF")
+print(w.address())</code></pre>
+<h3>{% trans "Balance" %}</h3>
+<ul>
+  <li>{% blocktrans trimmed %}Explorer: open /address/your_address/{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}API: GET /api/chain/utxo/your_address/{% endblocktrans %}</li>
+</ul>
+
+<h2 id="pay">{% trans "Making a payment" %}</h2>
+<p>{% trans "Signing is implemented in Python today. Typical steps:" %}</p>
+<ol>
+  <li>{% trans "Confirm the sender has UTXOs on chain." %}</li>
+  <li>{% trans "Pick inputs that cover amount plus fee." %}</li>
+  <li>{% trans "Call Chain.create_transfer then POST /api/chain/tx/submit/." %}</li>
+  <li>{% trans "Run POST /api/chain/mine/ or wait for a miner." %}</li>
+</ol>
+<h3>{% trans "Django shell example" %}</h3>
+<pre><code>import os, django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tancoin.settings")
+django.setup()
+
+from chain_api.services import node
+from tancoin_core.wallet import Wallet
+
+chain = node.get_chain()
+alice = Wallet.from_wif("ALICE_WIF")
+bob = Wallet.generate()
+
+utxos = chain.get_utxos_for_address(alice.address())
+u = max(utxos, key=lambda x: x["value"])
+txid = bytes.fromhex(u["txid"])
+idx = int(u["index"])
+
+amount = 1_000_000
+fee = 50_000
+prev_val = chain.utxo[(txid, idx)].value
+change = prev_val - amount - fee
+if change &lt; 0:
+    raise SystemExit("not enough funds")
+
+tx = chain.create_transfer(alice, bob.address(), amount, [(txid, idx)], change)
+node.submit_transaction(tx.to_dict())
+node.mine_block()</code></pre>
+<p>{% blocktrans trimmed %}After mining, Bob sees a new output. Alice receives change as a new output.{% endblocktrans %}</p>
+
+<h2 id="mine">{% trans "Mining" %}</h2>
+<p>{% blocktrans trimmed %}Mining does not run in the background here. Whoever POSTs to /api/chain/mine/ builds the block, does proof of work, and clears the mempool.{% endblocktrans %}</p>
+<pre><code>curl -s -X POST http://127.0.0.1:8000/api/chain/mine/ \
+  -H "Content-Type: application/json" \
+  -d '{"miner_wif":"MINER_WIF"}'</code></pre>
+<p>{% blocktrans trimmed %}You may omit the body in local demos so fees go to the genesis wallet. Lock this down in production.{% endblocktrans %}</p>
+
+<h2 id="manage">{% trans "Day to day" %}</h2>
+<ul>
+  <li>{% trans "Receive: share your address." %}</li>
+  <li>{% trans "Send: never type a WIF on a site you do not trust." %}</li>
+  <li>{% trans "Backup: keep encrypted copies of keys and data folder." %}</li>
+  <li>{% trans "Many wallets: generate as many keys as you need." %}</li>
+</ul>
+
+<h2 id="flow">{% trans "Flow diagram" %}</h2>
+<pre><code>Alice signs → POST submit → mempool
+Miner POST mine → new block → Bob sees coins</code></pre>
+
+<h2 id="next">{% trans "See also" %}</h2>
+<ul>
+  <li><a href="{% url 'explorer:participate' %}">{% trans "Pay and mine" %}</a></li>
+  <li><a href="{% url 'documentation:wallets_security' %}">{% trans "Wallets and security" %}</a></li>
+  <li><a href="{% url 'documentation:developer_api' %}">{% trans "Developer API" %}</a></li>
+</ul>
+{% endblock %}

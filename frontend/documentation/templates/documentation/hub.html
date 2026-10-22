@@ -1,0 +1,153 @@
+{% extends "common/base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "Documentation" %}{% endblock %}
+{% block body_class %}docs-hub-page{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_v 'css/documentation.css' %}">
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block content %}
+<div class="docs-hub">
+  <header class="docs-hub-hero" aria-labelledby="docs-hub-title">
+    <div class="docs-hub-hero__glow" aria-hidden="true"></div>
+    <div class="docs-hub-hero__inner">
+      <div class="docs-hub-hero__brand">
+        <img class="docs-hub-hero__logo" src="{% static 'img/tancoin.png' %}" width="96" height="96" decoding="async" alt="">
+      </div>
+      <div class="docs-hub-hero__copy">
+        <h1 id="docs-hub-title" class="docs-hub-hero__title">{% trans "Documentation" %}</h1>
+        <p class="docs-hub-hero__lead">{% trans "Guides for users, operators, and developers who work with the Tancoin node, explorer, and smart contracts." %}</p>
+        <p class="docs-hub-hero__sub">{% trans "Choose a topic below. Each page uses only the language you selected in the menu." %}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-hub-main">
+    <div class="docs-hub-grid" role="list">
+      <a class="docs-hub-card docs-hub-card--visualguide" href="{% url 'documentation:visual_guide' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark docs-hub-card__mark--scene" src="{% static 'img/docs-visual-explorer.svg' %}" width="72" height="54" decoding="async" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Picture guide" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Image-led tour of wallet, payments, mining, explorer, and API with links into the full guides." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--wallet" href="{% url 'wallet_gui:app' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Wallet" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Create keys, check balance, send TAN, and use the test faucet when debug mode is on." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--mine" href="{% url 'explorer:participate' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Pay and mine" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Short guide to sending coins, mining a block, and managing keys." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--payments" href="{% url 'documentation:user_guide_payments' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Payments and mining" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Full walkthrough: wallet, payment, miner role, and examples." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--explorer" href="{% url 'documentation:using_system' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Using the system" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Explorer, mempool, confirmed blocks, and the reference price field." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--api" href="{% url 'documentation:developer_api' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Developer API" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "JSON routes, bodies, errors, and how to call them from other apps." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--tvm" href="{% url 'documentation:smart_contracts' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Smart contracts" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "TVM model, deploy and call flow, and how it differs from Ethereum." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--arch" href="{% url 'documentation:wallet_architecture' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Wallet architecture" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Programs vs files, full-service and signing-only setups, HD keys, BIP39, and how they relate to the explorer." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--shield" href="{% url 'documentation:wallets_security' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Wallets and security" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "Keys, WIF storage, genesis wallet, CSRF, and production checklist." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--features" href="{% url 'documentation:features_architecture' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "Features" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "What the software includes and how the packages fit together." %}</p>
+        </div>
+      </a>
+
+      <a class="docs-hub-card docs-hub-card--routes" href="{% url 'explorer:api_help' %}" role="listitem">
+        <div class="docs-hub-card__visual" aria-hidden="true">
+          <span class="docs-hub-card__blob"></span>
+          <img class="docs-hub-card__mark" src="{% static 'img/tancoin.png' %}" width="56" height="56" alt="">
+        </div>
+        <div class="docs-hub-card__body">
+          <h2 class="docs-hub-card__title">{% trans "API list" %}</h2>
+          <p class="docs-hub-card__desc">{% trans "One-page table of HTTP methods and paths." %}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

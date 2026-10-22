@@ -1,0 +1,188 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+{% load explorer_extras %}
+
+{% block body_class %}explorer-dash explorer-dash-home{% endblock %}
+
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Network overview" %}{% endblock %}
+{% block page_subtitle %}
+<p class="dash-live-row">
+  <span class="live-pill" id="live-pill">{% trans "Live" %}</span>
+  <span class="live-hint" id="live-updated"></span>
+</p>
+<p class="page-lead page-lead--dash">{% blocktrans trimmed %}Live chain and mempool from this node — same data as the JSON API under /api/.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+<div class="dash-bento">
+  <article class="dash-panel dash-panel--quote" aria-label="{% trans 'Principle' %}">
+    <blockquote class="dash-quote">
+      <p>{% blocktrans trimmed %}A public ledger works when anyone can verify balances and transfers without asking permission. This explorer is that window into your node.{% endblocktrans %}</p>
+    </blockquote>
+  </article>
+
+  <section class="dash-panel dash-panel--heatmap" aria-label="{% trans 'Network activity' %}">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title">{% trans "Activity map" %}</h2>
+      <span class="dash-panel__hint">{% trans "Charts update below" %}</span>
+    </div>
+    <p class="dash-heatmap-lead">{% trans "Transactions per recent block" %}</p>
+  </section>
+
+  <section class="dash-panel dash-panel--side" aria-labelledby="quick-heading">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="quick-heading">{% trans "Shortcuts" %}</h2>
+    </div>
+    <ul class="dash-shortlist">
+      <li><a href="{% url 'explorer:transactions' %}"><span class="dash-shortlist__dot"></span>{% trans "All transactions" %}</a></li>
+      <li><a href="{% url 'explorer:blocks' %}"><span class="dash-shortlist__dot"></span>{% trans "All blocks" %}</a></li>
+      <li><a href="{% url 'explorer:charts' %}"><span class="dash-shortlist__dot"></span>{% trans "Charts" %}</a></li>
+      <li><a href="{% url 'wallet_gui:app' %}"><span class="dash-shortlist__dot"></span>{% trans "Wallet" %}</a></li>
+    </ul>
+    <div class="dash-mini-metric">
+      <span class="dash-mini-metric__label">{% trans "Mempool" %}</span>
+      <span class="dash-mini-metric__val" id="live-side-mempool">{{ summary.mempool_count }}</span>
+    </div>
+  </section>
+</div>
+
+<div class="dash-charts-row" aria-label="{% trans 'Block charts' %}">
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-tx-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-tx-title">{% trans "Transactions per block" %}</h2>
+    </div>
+    <div id="live-chart-tx" class="block-chart block-chart--dash" role="img" aria-label="{% trans 'Transaction count per block' %}">
+      {% for row in block_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height c=row.tx_count %}Height {{ h }}: {{ c }} transactions{% endblocktrans %}">
+          <div class="block-chart__bar"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-int-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-int-title">{% trans "Seconds between blocks" %}</h2>
+    </div>
+    <div id="live-chart-interval" class="block-chart block-chart--dash block-chart--interval" role="img" aria-label="{% trans 'Block interval in seconds' %}">
+      {% for row in interval_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height s=row.interval_s %}Height {{ h }}: {{ s }} s{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--interval"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-out-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-out-title">{% trans "Outputs per block" %}</h2>
+    </div>
+    <div id="live-chart-outputs" class="block-chart block-chart--dash block-chart--outputs" role="img" aria-label="{% trans 'Output count per block' %}">
+      {% for row in outputs_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height o=row.output_count %}Height {{ h }}: {{ o }} outputs{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--outputs"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<section class="dash-stat-strip" aria-label="{% trans 'Network summary' %}">
+  <div class="dash-stat">
+    <span class="dash-stat__label">{% trans "Chain height" %}</span>
+    <span class="dash-stat__value mono" id="live-stat-height">{{ summary.height }}</span>
+  </div>
+  <div class="dash-stat">
+    <span class="dash-stat__label">{% trans "Tip hash (short)" %}</span>
+    <span class="dash-stat__value mono" id="live-stat-tip">{{ summary.tip|short_hash:14 }}</span>
+  </div>
+  <div class="dash-stat">
+    <span class="dash-stat__label">{% trans "Mempool transactions" %}</span>
+    <span class="dash-stat__value mono" id="live-stat-mempool">{{ summary.mempool_count }}</span>
+  </div>
+  <div class="dash-stat">
+    <span class="dash-stat__label">{% trans "Reference price (USD)" %}</span>
+    <span class="dash-stat__value mono" id="live-stat-price">{{ summary.reference_price_usd }}</span>
+  </div>
+  <div class="dash-stat">
+    <span class="dash-stat__label">{% trans "Proof of work difficulty (bits)" %}</span>
+    <span class="dash-stat__value mono" id="live-stat-diff">{{ summary.initial_difficulty_bits }}</span>
+  </div>
+</section>
+
+<div class="dash-tables">
+  <section class="dash-panel dash-panel--table" aria-labelledby="blocks-heading">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="blocks-heading">{% trans "Recent blocks" %}</h2>
+      <a class="dash-panel__link" href="{% url 'explorer:blocks' %}">{% trans "View all" %}</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--compact">
+        <thead><tr><th>{% trans "Height" %}</th><th>{% trans "Hash" %}</th><th>{% trans "Transactions" %}</th><th>{% trans "Time (UTC)" %}</th></tr></thead>
+        <tbody id="live-blocks-body">
+          {% for height, block in recent_blocks %}
+          <tr>
+            <td class="mono">{{ height }}</td>
+            <td><a class="mono-link mono" href="{% url 'explorer:block' block.block_hash.hex %}">{{ block.block_hash.hex|short_hash:16 }}</a></td>
+            <td>{{ block.transactions|length }}</td>
+            <td class="mono">{{ block.timestamp }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="4">{% trans "No blocks." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dash-panel dash-panel--table" aria-labelledby="tx-heading">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="tx-heading">{% trans "Latest transactions" %}</h2>
+      <a class="dash-panel__link" href="{% url 'explorer:transactions' %}">{% trans "View all" %}</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--compact">
+        <thead><tr><th>{% trans "Transaction id" %}</th><th>{% trans "Block" %}</th><th>{% trans "Fee (TAN)" %}</th></tr></thead>
+        <tbody id="live-txs-body">
+          {% for row in recent_txs %}
+          <tr>
+            <td><a class="mono-link mono" href="{% url 'explorer:transaction' row.txid %}">{{ row.txid|short_hash:18 }}</a></td>
+            <td>{% if row.mempool %}<span class="badge badge-mempool">{% trans "mempool" %}</span>{% else %}#{{ row.block_height }}{% endif %}</td>
+            <td class="mono">{% if row.fee_satoshis is not None %}{{ row.fee_satoshis|tan_amount }}{% else %}—{% endif %}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="3">{% trans "No transactions." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% trans "mempool" as str_mempool %}
+{% trans "No blocks." as str_no_blocks %}
+{% trans "No transactions." as str_no_tx %}
+{% trans "Updated" as str_updated %}
+<script>
+  window.TANCOIN_LIVE_URL = "{% url 'explorer:live' %}";
+  window.TANCOIN_HOME_I18N = {
+    mempool: "{{ str_mempool|escapejs }}",
+    noBlocks: "{{ str_no_blocks|escapejs }}",
+    noTx: "{{ str_no_tx|escapejs }}",
+    updated: "{{ str_updated|escapejs }}"
+  };
+</script>
+<script src="{% static 'js/explorer.js' %}"></script>
+{% endblock %}

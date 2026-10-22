@@ -1,0 +1,61 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n explorer_extras tancoin_static %}
+
+{% block title %}{% trans "Address" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Address" %}{% endblock %}
+{% block page_subtitle %}<p class="page-lead mono">{{ address }}</p>{% endblock %}
+
+{% block content %}
+{% if error %}
+  <div class="flash flash-error">{{ error }}</div>
+{% else %}
+  <section class="card">
+    <h2>{% trans "Unspent outputs (UTXO)" %}</h2>
+    <p class="page-lead">{% trans "Coins this address can still spend. After spending, they leave this list but stay visible in past transactions." %}</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>{% trans "Transaction id" %}</th><th>{% trans "Index" %}</th><th>{% trans "Value (TAN)" %}</th><th>{% trans "Kind" %}</th></tr></thead>
+        <tbody>
+          {% for u in utxos %}
+          <tr>
+            <td><a class="mono-link mono" href="{% url 'explorer:transaction' u.txid %}">{{ u.txid|short_hash:18 }}</a></td>
+            <td class="mono">{{ u.index }}</td>
+            <td class="mono">{{ u.value|tan_amount }}</td>
+            <td><span class="badge badge-transfer">{{ u.kind }}</span></td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="4">{% trans "No unspent outputs (empty or fully spent)." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>{% trans "Receiving history" %}</h2>
+    <p class="page-lead">{% trans "Every output on the public chain that paid this address. Spends appear on each linked transaction under inputs." %}</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>{% trans "Transaction id" %}</th><th>{% trans "Block" %}</th><th>{% trans "Output #" %}</th><th>{% trans "Value (TAN)" %}</th><th>{% trans "Kind" %}</th></tr></thead>
+        <tbody>
+          {% for h in history %}
+          <tr>
+            <td><a class="mono-link mono" href="{% url 'explorer:transaction' h.txid %}">{{ h.txid|short_hash:18 }}</a></td>
+            <td class="mono"><a href="{% url 'explorer:block' h.block_hash %}">#{{ h.block_height }}</a></td>
+            <td class="mono">{{ h.output_index }}</td>
+            <td class="mono">{{ h.value|tan_amount }}</td>
+            <td>{{ h.kind }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="5">{% trans "No matching outputs found." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'js/explorer.js' %}"></script>{% endblock %}

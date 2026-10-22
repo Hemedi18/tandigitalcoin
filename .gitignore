@@ -1,0 +1,34 @@
+# Python & Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+*.py[cod]
+*$py.class
+__pycache__/
+
+# IDEs & Editors
+.cursor/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment & Sensitive Credentials
+.env
+.env.local
+*.pem
+*.key
+
+# Large Upload Archives & Caches
+*.zip
+*.tar.gz
+*.rar
+tancoin_cpanel_upload.zip
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Staticfiles collected (can be rebuilt via collectstatic)
+staticfiles/

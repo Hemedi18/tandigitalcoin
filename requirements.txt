@@ -1,0 +1,4 @@
+Django>=4.2,<6.1
+ecdsa>=0.18.0
+segno>=1.6.0
+whitenoise>=6.6.0

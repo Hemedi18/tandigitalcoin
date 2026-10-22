@@ -1,0 +1,43 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Features" %}{% endblock %}
+{% block docs_title %}{% trans "Features and architecture" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}The code is split so the chain core, HTTP API, and web front can evolve on their own.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<h2 id="packages">{% trans "Main packages" %}</h2>
+<ul>
+  <li>{% blocktrans trimmed %}tancoin_core: pure Python chain and TVM. No Django import.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}chain_api: JSON under /api/ and on-disk chain state.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}frontend.common: shared layout.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}frontend.explorer: block explorer pages.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}frontend.documentation: these guides.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}frontend.wallet_gui: wallet web UI.{% endblocktrans %}</li>
+</ul>
+
+<h2 id="features">{% trans "Feature matrix" %}</h2>
+<div class="table-wrap" style="margin-top:1rem">
+<table class="data-table">
+  <thead><tr><th>{% trans "Feature" %}</th><th>{% trans "Status" %}</th><th>{% trans "Notes" %}</th></tr></thead>
+  <tbody>
+    <tr><td>{% trans "UTXO transfers" %}</td><td>{% trans "Yes" %}</td><td>{% trans "Addresses and signatures" %}</td></tr>
+    <tr><td>{% trans "Proof of work" %}</td><td>{% trans "Yes" %}</td><td>{% trans "Local mining" %}</td></tr>
+    <tr><td>{% trans "Mempool" %}</td><td>{% trans "Yes" %}</td><td>{% trans "Cleared when a block is mined" %}</td></tr>
+    <tr><td>{% trans "Explorer" %}</td><td>{% trans "Yes" %}</td><td>{% trans "Blocks, transactions, addresses" %}</td></tr>
+    <tr><td>{% trans "JSON API" %}</td><td>{% trans "Yes" %}</td><td>{% trans "Same data as the explorer" %}</td></tr>
+    <tr><td>{% trans "Smart contracts" %}</td><td>TVM</td><td>{% trans "Not Solidity compatible" %}</td></tr>
+    <tr><td>{% trans "Peer to peer network" %}</td><td>{% trans "No" %}</td><td>{% trans "Single node demo" %}</td></tr>
+    <tr><td>{% trans "Market price" %}</td><td>{% trans "Mock field" %}</td><td>{% trans "reference_price_usd only" %}</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="static">{% trans "Static files" %}</h2>
+<p>{% blocktrans trimmed %}CSS and JavaScript live under frontend/static. In production run collectstatic and serve files with nginx or a CDN.{% endblocktrans %}</p>
+
+<h2 id="extend">{% trans "Extending" %}</h2>
+<p>{% blocktrans trimmed %}Add new apps under frontend for new screens. Keep chain rules inside tancoin_core or the node service instead of copying logic in views.{% endblocktrans %}</p>
+{% endblock %}

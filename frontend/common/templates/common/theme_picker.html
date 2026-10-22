@@ -1,0 +1,71 @@
+{% load i18n %}
+<div class="theme-picker" data-theme-picker>
+  <button
+    type="button"
+    class="theme-picker__trigger"
+    data-theme-trigger
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-controls="tancoin-theme-listbox"
+    title="{% trans 'Appearance' %}"
+  >
+    <svg class="theme-picker__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="12" cy="12" r="3.5"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+    <span class="visually-hidden">{% trans "Appearance" %}</span>
+  </button>
+  <div
+    id="tancoin-theme-listbox"
+    class="theme-picker__panel"
+    role="listbox"
+    aria-label="{% trans 'Choose appearance' %}"
+    hidden
+    data-theme-panel
+  >
+    <div class="theme-picker__head">
+      <p class="theme-picker__title" id="theme-picker-heading">{% trans "Themes" %}</p>
+      <button type="button" class="theme-picker__close" data-theme-close aria-label="{% trans 'Close' %}">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="theme-picker__grid" role="presentation">
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="dark" data-theme-set="dark" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="dark" aria-hidden="true"></span>
+        {% trans "Dark" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="light" data-theme-set="light" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="light" aria-hidden="true"></span>
+        {% trans "Light" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="gold" data-theme-set="gold" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="gold" aria-hidden="true"></span>
+        {% trans "Gold" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="ocean" data-theme-set="ocean" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="ocean" aria-hidden="true"></span>
+        {% trans "Ocean" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="pink" data-theme-set="pink" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="pink" aria-hidden="true"></span>
+        {% trans "Pink" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="aurora" data-theme-set="aurora" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="aurora" aria-hidden="true"></span>
+        {% trans "Aurora" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="sunset" data-theme-set="sunset" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="sunset" aria-hidden="true"></span>
+        {% trans "Sunset" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="midnight" data-theme-set="midnight" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="midnight" aria-hidden="true"></span>
+        {% trans "Midnight" %}
+      </button>
+      <button type="button" class="theme-picker__opt" role="option" data-theme-id="forest" data-theme-set="forest" aria-selected="false">
+        <span class="theme-picker__swatch" data-preview="forest" aria-hidden="true"></span>
+        {% trans "Forest" %}
+      </button>
+    </div>
+  </div>
+</div>

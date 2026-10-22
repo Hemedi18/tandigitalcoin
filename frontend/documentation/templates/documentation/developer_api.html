@@ -1,0 +1,42 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Developer API" %}{% endblock %}
+{% block docs_title %}{% trans "Developer API" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}The HTTP API under /api/ matches the explorer. Responses are JSON with an ok field when the call succeeds.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<h2 id="amounts">{% trans "Amounts and precision" %}</h2>
+<p>{% blocktrans trimmed %}All money fields use whole numbers in satoshis. One TAN is one hundred million satoshis. Do not use float types for money in your code.{% endblocktrans %}</p>
+<pre><code>tan = satoshis / 100_000_000</code></pre>
+
+<h2 id="read">{% trans "Read-only endpoints" %}</h2>
+<ul>
+  <li><code>GET /api/chain/status/</code> — {% trans "height, tip, mempool count, reference price, difficulty" %}</li>
+  <li><code>GET /api/chain/blocks/?limit=N</code> — {% trans "recent blocks as JSON" %}</li>
+  <li><code>GET /api/chain/block/&lt;hash&gt;/</code> — {% trans "one block with transactions" %}</li>
+  <li><code>GET /api/chain/tx/&lt;txid&gt;/</code> — {% trans "transaction plus confirmed flag" %}</li>
+  <li><code>GET /api/chain/utxo/&lt;address&gt;/</code> — {% trans "spendable outputs for an address" %}</li>
+  <li><code>GET /api/chain/mempool/</code> — {% trans "pending transactions" %}</li>
+  <li><code>GET /api/contracts/</code> — {% trans "deployed contracts list" %}</li>
+</ul>
+
+<h2 id="write">{% trans "Write endpoints (POST)" %}</h2>
+<p>{% blocktrans trimmed %}Submitting transactions and mining changes local data. In production, add authentication, rate limits, and network rules.{% endblocktrans %}</p>
+<ul>
+  <li><code>POST /api/chain/tx/submit/</code> — {% trans "body includes transaction object" %}</li>
+  <li><code>POST /api/chain/mine/</code> — {% trans "optional miner_wif for who receives fees" %}</li>
+  <li><code>POST /api/chain/price/</code> — {% trans "set reference_price_usd" %}</li>
+  <li><code>POST /api/contracts/deploy/</code> — {% trans "deployer_wif, fee_satoshis, bytecode_hex" %}</li>
+  <li><code>POST /api/contracts/call/</code> — {% trans "caller_wif, contract_id_hex, calldata_hex, fee_satoshis" %}</li>
+</ul>
+<div class="callout-warn">{% blocktrans trimmed %}POST routes use csrf_exempt for simple JSON tools. Real browser apps should send CSRF tokens or hide writes behind your own backend.{% endblocktrans %}</div>
+
+<h2 id="python">{% trans "Python integration" %}</h2>
+<p>{% blocktrans trimmed %}Inside the same Django project you can import chain_api.services.node and call get_chain() without HTTP. Remote services should use HTTPS and the JSON API.{% endblocktrans %}</p>
+
+<h2 id="errors">{% trans "Errors" %}</h2>
+<p>{% blocktrans trimmed %}Errors return HTTP 4xx with ok false and an error string you can show to users.{% endblocktrans %}</p>
+{% endblock %}

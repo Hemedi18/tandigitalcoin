@@ -1,0 +1,65 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+{% load explorer_extras %}
+
+{% block title %}{% trans "Transaction" %} {{ tx.txid.hex|short_hash:12 }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Transaction" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead mono">{% trans "Transaction id" %}: {{ tx.txid.hex }}
+  {% if info.mempool %}<span class="badge badge-mempool">{% trans "Mempool" %}</span>{% else %}<span class="badge badge-transfer">{% trans "Confirmed" %}</span>{% endif %}
+</p>
+{% endblock %}
+
+{% block content %}
+<div class="tx-meta-grid">
+  <div class="tx-meta-item"><span class="k">{% trans "Block" %}</span><div class="v">{% if info.block_height and info.block_hash %}<a href="{% url 'explorer:block' info.block_hash %}">#{{ info.block_height }}</a>{% elif info.block_height %}#{{ info.block_height }}{% else %}{% trans "Pending" %}{% endif %}</div></div>
+  <div class="tx-meta-item"><span class="k">{% trans "Block time" %}</span><div class="v">{{ info.block_timestamp|default:"—" }}</div></div>
+  <div class="tx-meta-item"><span class="k">{% trans "Total input" %}</span><div class="v">{{ total_in|tan_amount }} TAN</div></div>
+  <div class="tx-meta-item"><span class="k">{% trans "Total output" %}</span><div class="v">{{ total_out|tan_amount }} TAN</div></div>
+  <div class="tx-meta-item"><span class="k">{% trans "Fee (implicit)" %}</span><div class="v">{% if fee is not None %}{{ fee|tan_amount }} TAN{% else %}—{% endif %} <span class="page-lead" style="font-size:0.75rem">{% trans "(inputs minus outputs; paid to miner in coinbase)" %}</span></div></div>
+</div>
+
+<section class="card" style="margin-top:1.5rem" aria-labelledby="flow-heading">
+  <h2 id="flow-heading">{% trans "Value flow" %}</h2>
+  <p class="page-lead">{% blocktrans trimmed %}Each input unlocks a previous output (UTXO). Each output creates a new UTXO. The fee is not assigned in outputs; the miner claims it in the block coinbase.{% endblocktrans %}</p>
+
+  <div class="tx-flow">
+    <div class="tx-flow__column">
+      <h3>{% blocktrans with c=inputs|length %}Inputs ({{ c }}){% endblocktrans %}</h3>
+      {% if not inputs %}
+        <div class="tx-io-row">
+          <p><span class="badge badge-coinbase">{% trans "Coinbase" %}</span> {% trans "No inputs — this transaction creates new coins as block reward plus fees." %}</p>
+        </div>
+      {% endif %}
+      {% for row in inputs %}
+        <div class="tx-io-row">
+          <div class="amt">{{ row.amount_satoshis|tan_amount }} TAN</div>
+          <div class="addr">{% trans "From" %}: <a href="{% url 'explorer:address' row.from_address %}">{{ row.from_address }}</a></div>
+          <div class="addr mono" style="font-size:0.7rem">{% trans "Spends" %} {{ row.prev_txid|short_hash:16 }}:{{ row.prev_index }} <span class="badge badge-transfer">{{ row.kind }}</span></div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="tx-flow__arrow" aria-hidden="true">→</div>
+    <div class="tx-flow__column">
+      <h3>{% blocktrans with c=outputs|length %}Outputs ({{ c }}){% endblocktrans %}</h3>
+      {% for row in outputs %}
+        <div class="tx-io-row">
+          <div class="amt">{{ row.amount_satoshis|tan_amount }} TAN</div>
+          <div class="addr">{% trans "To" %}: <a href="{% url 'explorer:address' row.to_address %}">{{ row.to_address }}</a></div>
+          <div class="addr mono" style="font-size:0.7rem">#{{ row.index }} · <span class="badge {% if row.kind == 'transfer' %}badge-transfer{% else %}badge-contract{% endif %}">{{ row.kind }}</span>{% if row.payload_preview %} · {% trans "payload" %} {{ row.payload_preview }}{% endif %}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>{% trans "Raw JSON" %}</h2>
+  <button type="button" class="nav-api" data-toggle-next aria-expanded="false">{% trans "Toggle raw transaction" %}</button>
+  <pre class="toggle-panel mono" hidden style="margin-top:1rem;white-space:pre-wrap">{{ tx_json }}</pre>
+</section>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'js/explorer.js' %}"></script>{% endblock %}

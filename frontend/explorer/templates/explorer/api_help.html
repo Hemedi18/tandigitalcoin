@@ -1,0 +1,38 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+
+{% block title %}{% trans "JSON API" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Developer JSON API" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead">{% blocktrans trimmed %}These routes return JSON for tests, apps, and backends. Same chain as this explorer. Longer explanations are under the documentation hub.{% endblocktrans %} <a href="{% url 'documentation:hub' %}">/docs/</a></p>
+{% endblock %}
+
+{% block content %}
+<section class="card">
+  <h2>{% trans "Base URL" %}</h2>
+  <p class="mono">{% trans "Same host as the website. Paths are from the domain root." %}</p>
+</section>
+
+<div class="table-wrap">
+  <table class="data-table">
+    <thead><tr><th>{% trans "Method" %}</th><th>{% trans "Path" %}</th><th>{% trans "Purpose" %}</th></tr></thead>
+    <tbody>
+      <tr><td>GET</td><td class="mono">/api/chain/status/</td><td>{% trans "Height, tip, mempool count, reference price in USD" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/chain/blocks/?limit=</td><td>{% trans "Recent blocks as JSON" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/chain/block/&lt;hash&gt;/</td><td>{% trans "One block" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/chain/tx/&lt;txid&gt;/</td><td>{% trans "Transaction and confirmed flag" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/chain/utxo/&lt;address&gt;/</td><td>{% trans "Spendable outputs" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/chain/mempool/</td><td>{% trans "Pending transactions" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/wallet/new/</td><td>{% trans "Generate address and WIF (development)" %}</td></tr>
+      <tr><td>POST</td><td class="mono">/api/chain/tx/submit/</td><td>{% trans "Body: signed transaction JSON" %}</td></tr>
+      <tr><td>POST</td><td class="mono">/api/chain/mine/</td><td>{% trans "Optional miner_wif" %}</td></tr>
+      <tr><td>POST</td><td class="mono">/api/chain/price/</td><td>{% trans "Set reference price in USD" %}</td></tr>
+      <tr><td>GET</td><td class="mono">/api/contracts/</td><td>{% trans "List deployed contracts" %}</td></tr>
+      <tr><td>POST</td><td class="mono">/api/contracts/deploy/</td><td>{% trans "Deploy TVM bytecode" %}</td></tr>
+      <tr><td>POST</td><td class="mono">/api/contracts/call/</td><td>{% trans "Call contract" %}</td></tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

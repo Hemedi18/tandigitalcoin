@@ -1,0 +1,106 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n tancoin_static %}
+{% load explorer_extras %}
+
+{% block title %}{% blocktrans with h=height %}Block {{ h }}{% endblocktrans %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% blocktrans with h=height %}Block #{{ h }}{% endblocktrans %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead block-page__lead">{% blocktrans trimmed %}Header, proof-of-work fields, and every transaction in this block. Links open in this explorer.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+<div class="block-page">
+  <aside class="block-summary-card" aria-label="{% trans 'Block summary' %}">
+    <div class="block-summary-card__badge">#{{ height }}</div>
+    <h2 class="block-summary-card__title">{% trans "Tancoin block" %}</h2>
+    <p class="block-summary-card__hash mono" id="block-full-hash">{{ chain_block.block_hash.hex }}</p>
+    <button type="button" class="block-copy-btn" onclick="if(window.tancoinCopy)tancoinCopy(document.getElementById('block-full-hash').textContent)">{% trans "Copy hash" %}</button>
+    <span class="block-status-pill">{% trans "On chain" %}</span>
+
+    <dl class="block-summary-dl">
+      {% if miner_address %}
+      <div><dt>{% trans "Miner (reward address)" %}</dt><dd class="mono"><a class="mono-link" href="{% url 'explorer:address' address=miner_address %}">{{ miner_short }}</a></dd></div>
+      {% endif %}
+      <div><dt>{% trans "Timestamp (Unix)" %}</dt><dd class="mono">{{ chain_block.timestamp }}</dd></div>
+      <div><dt>{% trans "Transactions" %}</dt><dd>{{ n_tx }}</dd></div>
+      <div><dt>{% trans "Difficulty (bits)" %}</dt><dd class="mono">{{ chain_block.difficulty_bits }}</dd></div>
+      <div><dt>{% trans "Nonce" %}</dt><dd class="mono">{{ chain_block.nonce }}</dd></div>
+      {% if interval_after_prev_s is not None %}
+      <div><dt>{% trans "Seconds after previous block" %}</dt><dd class="mono">{{ interval_after_prev_s }}s</dd></div>
+      {% endif %}
+    </dl>
+
+    <nav class="block-neighbor-nav" aria-label="{% trans 'Adjacent blocks' %}">
+      {% if height > 1 and chain_block.prev_hash|length > 0 %}
+      <a class="block-neighbor-nav__btn" href="{% url 'explorer:block' chain_block.prev_hash.hex %}">← {% trans "Previous" %}</a>
+      {% endif %}
+      {% if next_height and next_hash_hex %}
+      <a class="block-neighbor-nav__btn" href="{% url 'explorer:block' next_hash_hex %}">{% trans "Next" %} →</a>
+      {% endif %}
+    </nav>
+  </aside>
+
+  <div class="block-detail-main">
+    <section class="block-narrative card card--block-detail">
+      <h2 class="block-narrative__h">{% trans "What this block contains" %}</h2>
+      <p class="page-lead block-narrative__p">
+        {% blocktrans with h=height n=n_tx t=chain_block.timestamp %}This is block {{ h }} on your node. It includes {{ n }} transaction(s) and was stamped at Unix time {{ t }}. The first row is usually the coinbase, which pays the miner and claims fees from the other transactions.{% endblocktrans %}
+      </p>
+      <p class="page-lead block-narrative__p">
+        {% trans "In total, this block moves" %}
+        <strong class="block-narrative__amt">{{ total_value_sat|tan_amount }} TAN</strong>
+        {% blocktrans with o=total_outputs %}across {{ o }} outputs (including change and rewards).{% endblocktrans %}
+      </p>
+    </section>
+
+    <section class="block-spec card card--block-detail" aria-labelledby="block-spec-h">
+      <h2 class="block-spec__h" id="block-spec-h">{% trans "Header fields" %}</h2>
+      <div class="block-spec-grid">
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Version" %}</span><span class="block-spec-v mono">{{ chain_block.version }}</span></div>
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Timestamp" %}</span><span class="block-spec-v mono">{{ chain_block.timestamp }}</span></div>
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Difficulty bits" %}</span><span class="block-spec-v mono">{{ chain_block.difficulty_bits }}</span></div>
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Nonce" %}</span><span class="block-spec-v mono">{{ chain_block.nonce }}</span></div>
+        <div class="block-spec-item block-spec-item--wide"><span class="block-spec-k">{% trans "Merkle root" %}</span><span class="block-spec-v mono">{{ chain_block.merkle_root.hex }}</span></div>
+        <div class="block-spec-item block-spec-item--wide"><span class="block-spec-k">{% trans "Previous block" %}</span><span class="block-spec-v mono">{% if height > 1 and chain_block.prev_hash|length > 0 %}<a class="mono-link" href="{% url 'explorer:block' chain_block.prev_hash.hex %}">{{ chain_block.prev_hash.hex }}</a>{% elif height > 1 %}<span class="page-lead">{% trans "Invalid previous hash in stored block" %}</span>{% else %}{% trans "000…000 (genesis)" %}{% endif %}</span></div>
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Coinbase rows" %}</span><span class="block-spec-v">{{ n_coinbase }}</span></div>
+        <div class="block-spec-item"><span class="block-spec-k">{% trans "Transfer rows" %}</span><span class="block-spec-v">{{ n_transfer }}</span></div>
+      </div>
+    </section>
+
+    <section class="block-tx-section card card--block-detail" aria-labelledby="block-tx-h">
+      <div class="block-tx-section__head">
+        <h2 class="block-tx-section__title" id="block-tx-h">{% blocktrans with c=chain_block.transactions|length %}Transactions in this block ({{ c }}){% endblocktrans %}</h2>
+        <p class="page-lead block-tx-section__hint">{% trans "Coinbase first, then user transactions. Tap a row for full details." %}</p>
+      </div>
+      <div class="table-wrap table-wrap--rounded">
+        <table class="data-table data-table--block-tx">
+          <thead><tr><th>#</th><th>{% trans "Transaction id" %}</th><th>{% trans "Type" %}</th><th>{% trans "Outputs" %}</th><th>{% trans "Output value (TAN)" %}</th></tr></thead>
+          <tbody>
+            {% for row in tx_rows %}
+            {% with tx=row.tx %}
+            <tr>
+              <td class="mono">{{ forloop.counter0 }}</td>
+              <td><a class="mono-link mono" href="{% url 'explorer:transaction' tx.txid.hex %}">{{ tx.txid.hex|short_hash:22 }}</a></td>
+              <td>{% if tx.inputs|length == 0 %}<span class="badge badge-coinbase">{% trans "coinbase" %}</span>{% else %}<span class="badge badge-transfer">{% trans "transfer or contract" %}</span>{% endif %}</td>
+              <td class="mono">{{ row.out_n }}</td>
+              <td class="mono">{{ row.out_value_sat|tan_amount }}</td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card card--block-detail">
+      <h2>{% trans "Raw JSON" %}</h2>
+      <button type="button" class="nav-api block-json-toggle" data-toggle-next aria-expanded="false">{% trans "Toggle block JSON" %}</button>
+      <pre class="toggle-panel mono" hidden style="margin-top:1rem;white-space:pre-wrap;max-height:min(70vh,520px);overflow:auto">{{ block_json }}</pre>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static 'js/explorer.js' %}"></script>{% endblock %}

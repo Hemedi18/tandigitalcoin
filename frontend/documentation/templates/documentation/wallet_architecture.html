@@ -1,0 +1,108 @@
+{% extends "documentation/base_docs.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Wallet architecture" %}{% endblock %}
+{% block docs_title %}{% trans "Wallet architecture" %}{% endblock %}
+{% block docs_lead %}
+<p class="lead">{% blocktrans trimmed %}How wallet programs and wallet files fit together on UTXO-style chains like Bitcoin and similar designs. The same ideas help you understand keys, addresses, and what the Tancoin explorer and HTTP API expose.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block docs_content %}
+<nav class="docs-onpage" aria-label="{% trans 'On this page' %}">
+  <strong>{% trans "On this page" %}</strong>
+  <ol>
+    <li><a href="#intro">{% trans "Introduction" %}</a></li>
+    <li><a href="#programs">{% trans "Wallet programs" %}</a></li>
+    <li><a href="#full-service">{% trans "Full-service wallets" %}</a></li>
+    <li><a href="#signing-only">{% trans "Signing-only wallets" %}</a></li>
+    <li><a href="#offline">{% trans "Offline wallets" %}</a></li>
+    <li><a href="#hardware">{% trans "Hardware wallets" %}</a></li>
+    <li><a href="#distributing-only">{% trans "Distributing-only wallets" %}</a></li>
+    <li><a href="#wallet-files">{% trans "Wallet files" %}</a></li>
+    <li><a href="#private-formats">{% trans "Private key formats" %}</a></li>
+    <li><a href="#wif">{% trans "Wallet Import Format (WIF)" %}</a></li>
+    <li><a href="#mini">{% trans "Mini private key format" %}</a></li>
+    <li><a href="#public-formats">{% trans "Public key formats" %}</a></li>
+    <li><a href="#hd">{% trans "Hierarchical deterministic (HD) keys" %}</a></li>
+    <li><a href="#bip39">{% trans "Storing root seeds (BIP39)" %}</a></li>
+    <li><a href="#loose-key">{% trans "Loose-key (JBOK) wallets" %}</a></li>
+    <li><a href="#tancoin">{% trans "Tancoin reference stack" %}</a></li>
+  </ol>
+</nav>
+
+<h2 id="intro">{% trans "Introduction" %}</h2>
+<p>{% blocktrans trimmed %}The word wallet can mean a wallet program or a wallet file. Wallet programs create public keys to receive value and use private keys to spend it. Wallet files store private keys and optionally metadata about transactions for the program.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}This page separates programs and files and uses those words consistently.{% endblocktrans %}</p>
+
+<h2 id="programs">{% trans "Wallet programs" %}</h2>
+<p>{% blocktrans trimmed %}Receiving and spending native units is the essential job of wallet software, but one program does not have to do both. Two programs can cooperate: one distributes public information used to receive funds, and another signs spends.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Programs also need chain data and a path to broadcast new transactions. In practice many stacks split responsibilities into three parts: a public-key distribution component, a signing component, and a networked component that talks to peers or to services that mirror chain state.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Often what is shared publicly is a hash-based address (for example P2PKH or P2SH), not a raw public key; full public keys may appear only when outputs are spent.{% endblocktrans %}</p>
+<div class="callout">{% blocktrans trimmed %}A networked program is what powers experiences like a mempool dashboard: it follows unconfirmed transactions, fee levels, and confirmation depth. The Tancoin explorer lists mempool and confirmed transactions over HTTP; it is not a substitute for a full peer-to-peer wallet backend unless you add one.{% endblocktrans %} <a href="{% url 'explorer:transactions' %}">{% trans "Open transactions" %}</a></div>
+
+<h2 id="full-service">{% trans "Full-service wallets" %}</h2>
+<p>{% blocktrans trimmed %}A full-service wallet generates keys, derives receive addresses, tracks outputs paid to those addresses, builds and signs transactions, and broadcasts them. Most consumer wallets behave this way because it is simple for the user.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}The trade-off is that private keys live on an Internet-connected device. If the device is compromised, keys can be exfiltrated. Encrypting the wallet file helps when the wallet is idle, but it does not stop malware that captures the passphrase or memory while the wallet is open.{% endblocktrans %}</p>
+
+<h2 id="signing-only">{% trans "Signing-only wallets" %}</h2>
+<p>{% blocktrans trimmed %}For better security, private keys can live in a separate program in a safer environment. That signing-only wallet pairs with a networked wallet that has chain connectivity but not the private material needed to sign.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Signing-only setups often use deterministic key derivation so one parent key can spawn many child keys without repeated manual transfer of secrets.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Typical flow: the signing wallet creates a parent private key and gives the matching extended public information to the networked wallet. The networked wallet derives child receive addresses, watches the chain, and builds unsigned spends. It passes unsigned transactions to the signer. After optional review, the signer derives the right child private keys, signs, and returns signed transactions for broadcast.{% endblocktrans %}</p>
+
+<h2 id="offline">{% trans "Offline wallets" %}</h2>
+<p>{% blocktrans trimmed %}Offline (cold) signing is a common pattern: one machine runs disconnected as the signer; another connected machine is the watch-only networked wallet. The user moves data with removable media or QR codes.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}A careful workflow reduces the risk that malware on the online machine tricks the user into signing a payment to an attacker: review outputs and amounts on the offline device before signing.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Security improves at the cost of operational friction: you need physical steps every time you spend.{% endblocktrans %}</p>
+
+<h2 id="hardware">{% trans "Hardware wallets" %}</h2>
+<p>{% blocktrans trimmed %}A hardware wallet is a dedicated signer. It limits attack surface compared with a general-purpose operating system and can show transaction details on its own screen before signing. The networked wallet sends a proposed transaction; the device signs and returns it.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}You still carry a device and depend on vendor firmware quality, but day-to-day use is easier than pure air-gapped file transfer for many people.{% endblocktrans %}</p>
+
+<h2 id="distributing-only">{% trans "Distributing-only wallets" %}</h2>
+<p>{% blocktrans trimmed %}A server that must never hold spend authority can pre-generate or deterministically derive receive addresses only. Two common patterns: keep a pool of unused addresses in a database and hand them out once, or derive child addresses from a parent public key and track the next index so keys are never reused.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}HD extended public keys make the second pattern practical for e-commerce style payment tracking without putting private keys on the web tier.{% endblocktrans %}</p>
+
+<h2 id="wallet-files">{% trans "Wallet files" %}</h2>
+<p>{% blocktrans trimmed %}At core, a wallet file is a collection of private keys and related metadata. It can live on disk or even on paper as encoded secrets.{% endblocktrans %}</p>
+
+<h2 id="private-formats">{% trans "Private key formats" %}</h2>
+<p>{% blocktrans trimmed %}A secp256k1 private key is a 256-bit integer in a fixed valid range for ECDSA. Implementations treat it as 32 bytes with range checks, not as free-form text.{% endblocktrans %}</p>
+
+<h2 id="wif">{% trans "Wallet Import Format (WIF)" %}</h2>
+<p>{% blocktrans trimmed %}WIF encodes a private key in Base58Check so humans copy it with fewer mistakes, similar in spirit to classic address encoding.{% endblocktrans %}</p>
+<ol>
+  <li>{% trans "Start from the raw private key bytes." %}</li>
+  <li>{% blocktrans trimmed %}Prefix 0x80 on mainnet or 0xef on testnet.{% endblocktrans %}</li>
+  <li>{% blocktrans trimmed %}Append 0x01 if the key is meant for compressed public keys; omit for legacy uncompressed keys.{% endblocktrans %}</li>
+  <li>{% trans "Hash the extended key with SHA-256, then hash that result again with SHA-256." %}</li>
+  <li>{% trans "Take the first four bytes of the second hash as a checksum and append them." %}</li>
+  <li>{% trans "Encode the byte string with Base58Check to produce the WIF string." %}</li>
+</ol>
+<p>{% blocktrans trimmed %}Decoding reverses the steps. The same underlying key material can map to different addresses depending on compressed versus uncompressed public keys, so scripts and imports must agree on format.{% endblocktrans %}</p>
+
+<h2 id="mini">{% trans "Mini private key format" %}</h2>
+<p>{% blocktrans trimmed %}Mini keys encode a private key in a very short printable form for physical tokens or compact QR codes. They traditionally start with the letter S. A quick integrity check appends a question mark, hashes with SHA-256, and requires the first byte to be 0x00. The full private key is another SHA-256 of the original mini string. Implementations often forbid the character 1 because it looks like the letter l.{% endblocktrans %}</p>
+
+<h2 id="public-formats">{% trans "Public key formats" %}</h2>
+<p>{% blocktrans trimmed %}Uncompressed secp256k1 public keys use a 0x04 prefix plus X and Y coordinates. Compressed keys drop Y and use 0x02 or 0x03 plus X, with a bit that disambiguates the two possible Y values. Compressed keys save space and are the modern default.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Older software that mixed compressed and uncompressed keys produced different address hashes for the same secret; spend paths must supply the matching public key form.{% endblocktrans %}</p>
+
+<h2 id="hd">{% trans "Hierarchical deterministic (HD) keys" %}</h2>
+<p>{% blocktrans trimmed %}HD wallets (BIP32 family) derive a tree of keys from one seed. ECDSA lets you derive a child public key from a parent public key plus public data derived from a chain code and index, without touching the parent private key—this is what makes watch-only branches possible.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Derivation mixes the parent chain code, a parent key point, and a 32-bit index through HMAC-SHA512. Half of the output becomes a new chain code; the other half combines with the parent key to form child keys. Different indices produce unrelated-looking children.{% endblocktrans %}</p>
+<h3>{% trans "Hardened derivation" %}</h3>
+<p>{% blocktrans trimmed %}Normal (non-hardened) derivation has a security caveat: if an attacker learns a parent extended public key together with a parent chain code, they can explore the non-hardened branch. If they also capture any descendant private key, they can sometimes walk back up the tree. Hardened derivation mixes the parent private key into the HMAC input so extended public keys cannot derive hardened children; that breaks the attack path at the cost of requiring the private parent to derive child addresses.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}Indices from 0 through 2^31 minus 1 are normal; indices from 2^31 through 2^32 minus 1 are hardened. Notation like m / 0' / 0 / 122' marks hardened steps with a prime.{% endblocktrans %}</p>
+<p>{% blocktrans trimmed %}BIP32-compliant wallets typically use hardened children directly under the master private key so a leaked child cannot trivially unwind the master.{% endblocktrans %}</p>
+
+<h2 id="bip39">{% trans "Storing root seeds (BIP39)" %}</h2>
+<p>{% blocktrans trimmed %}The HD seed can be backed up as 128 to 256 bits of entropy mapped to a mnemonic word list. An optional passphrase mixes into the PBKDF2-based seed derivation. More words mean more entropy: twelve words for 128 bits is common.{% endblocktrans %}</p>
+<div class="callout-warn">{% blocktrans trimmed %}Different wallets historically disagreed on passphrase and coin-type defaults. Use one program and documented settings per seed, or verify compatibility before moving seeds between products.{% endblocktrans %}</div>
+
+<h2 id="loose-key">{% trans "Loose-key (JBOK) wallets" %}</h2>
+<p>{% blocktrans trimmed %}Older clients generated independent keys from a pool (just a bunch of keys). Backups had to catch every new key before use or funds could become unrecoverable. HD seeds replaced that model for most new software.{% endblocktrans %}</p>
+
+<h2 id="tancoin">{% trans "Tancoin reference stack" %}</h2>
+<p>{% blocktrans trimmed %}The bundled wallet UI and JSON API help you create keys, see balances, and submit signed transfers against the reference node. Operational hardening—where files live, DEBUG routes, CSRF policy, and production checklist—is covered on the security page.{% endblocktrans %}</p>
+<p><a href="{% url 'documentation:wallets_security' %}">{% trans "Wallets and security (operations)" %}</a> · <a href="{% url 'wallet_gui:app' %}">{% trans "Open the wallet app" %}</a></p>
+{% endblock %}

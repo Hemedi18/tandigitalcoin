@@ -1,0 +1,61 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n explorer_extras tancoin_static %}
+
+{% block title %}{% trans "Mempool" %} — {% trans "Explorer" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Mempool (pending)" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead">{% blocktrans trimmed %}Transactions waiting to be included in the next block on this node. They are not confirmed until a miner publishes a valid block.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+<section class="stat-grid stat-grid--tight" aria-label="{% trans 'Mempool summary' %}">
+  <div class="stat-card">
+    <div class="label">{% trans "Chain height" %}</div>
+    <div class="value mono">{{ summary.height }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Pending transactions" %}</div>
+    <div class="value mono">{{ rows|length }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Tip hash" %}</div>
+    <div class="value mono">{{ summary.tip|short_hash:18 }}</div>
+  </div>
+</section>
+
+<div class="table-wrap table-wrap--rounded" style="margin-top:1.25rem">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th scope="col">{% trans "Transaction id" %}</th>
+        <th scope="col">{% trans "Inputs" %}</th>
+        <th scope="col">{% trans "Outputs" %}</th>
+        <th scope="col">{% trans "Fee (TAN)" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td><a class="mono-link mono" href="{% url 'explorer:transaction' txid=row.txid %}">{{ row.txid|short_hash:22 }}</a></td>
+        <td>{{ row.input_count }}</td>
+        <td>{{ row.output_count }}</td>
+        <td class="mono">{% if row.fee_sat is not None %}{{ row.fee_sat|tan_amount }}{% else %}—{% endif %}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4">{% trans "No pending transactions." %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p class="page-lead" style="margin-top:1.5rem">
+  <a href="{% url 'explorer:charts' %}">{% trans "Charts & mempool stats" %}</a>
+  ·
+  <a href="{% url 'wallet_gui:app' %}">{% trans "Wallet" %}</a>
+</p>
+<p class="page-lead page-lead--tight">{% trans "To mine a block: open the wallet, sign in, then use the Miner tab." %}</p>
+{% endblock %}
+
+{% block extra_js %}<script src="{% static_v 'js/explorer.js' %}"></script>{% endblock %}

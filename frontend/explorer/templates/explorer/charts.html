@@ -1,0 +1,493 @@
+{% extends "explorer/dash_base.html" %}
+{% load static i18n explorer_extras tancoin_static %}
+
+{% block body_class %}explorer-dash explorer-dash-charts{% endblock %}
+
+{% block title %}{% trans "Charts" %}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static_v 'css/explorer.css' %}">{% endblock %}
+
+{% block page_title %}{% trans "Network charts & analysis" %}{% endblock %}
+{% block page_subtitle %}
+<p class="page-lead page-lead--dash">{% blocktrans trimmed %}Block throughput, intervals, output volume, fees, mempool pressure, and a per-block window computed from this node’s chain — same sources as the JSON API.{% endblocktrans %}</p>
+<div class="dash-live-row charts-live-row" role="status" aria-live="polite">
+  <span class="live-pill" id="charts-live-pill">{% trans "Live" %}</span>
+  <span class="mono charts-live-updated" id="charts-live-updated"></span>
+  <span class="mono charts-live-tip" id="charts-live-tip"></span>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="stat-grid" aria-label="{% trans 'Chain totals' %}">
+  <div class="stat-card">
+    <div class="label">{% trans "Asset" %}</div>
+    <div class="value">{{ summary.coin }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Chain height" %}</div>
+    <div class="value charts-live-stat" data-stat="height">{{ analytics.height }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Transactions (all blocks)" %}</div>
+    <div class="value charts-live-stat" data-stat="total_transactions">{{ analytics.total_transactions }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Transfer transactions (non-coinbase)" %}</div>
+    <div class="value charts-live-stat" data-stat="transfer_transactions">{{ analytics.transfer_transactions }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Coinbase transactions" %}</div>
+    <div class="value charts-live-stat" data-stat="coinbase_transactions">{{ analytics.coinbase_transactions }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Outputs (all txs)" %}</div>
+    <div class="value charts-live-stat" data-stat="total_outputs">{{ analytics.total_outputs }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Input edges (all txs)" %}</div>
+    <div class="value charts-live-stat" data-stat="total_input_edges">{{ analytics.total_input_edges }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Total output value (chain)" %}</div>
+    <div class="value mono charts-live-stat" data-stat="total_output_value_tan">{{ analytics.total_output_value_sat|tan_amount }} TAN</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Avg transactions per block" %}</div>
+    <div class="value charts-live-stat" data-stat="avg_tx_per_block">{{ analytics.avg_transactions_per_block }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Avg outputs per transaction" %}</div>
+    <div class="value charts-live-stat" data-stat="avg_out_per_tx">{{ analytics.avg_outputs_per_transaction }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "UTXO count (tip)" %}</div>
+    <div class="value charts-live-stat" data-stat="utxo_count">{{ analytics.utxo_count }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Contracts (tip)" %}</div>
+    <div class="value charts-live-stat" data-stat="contract_count">{{ analytics.contract_count }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Reference price (USD)" %}</div>
+    <div class="value charts-live-stat" data-stat="reference_price_usd">{{ summary.reference_price_usd }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">{% trans "Proof of work difficulty (bits)" %}</div>
+    <div class="value charts-live-stat" data-stat="initial_difficulty_bits">{{ summary.initial_difficulty_bits }}</div>
+  </div>
+</section>
+
+<section class="card charts-mempool-card" aria-labelledby="mempool-analytics-heading">
+  <h2 id="mempool-analytics-heading">{% trans "Mempool (this node)" %}</h2>
+  <div class="stat-grid stat-grid--tight">
+    <div class="stat-card">
+      <div class="label">{% trans "Pending transactions" %}</div>
+      <div class="value charts-live-stat" data-stat="mempool_tx">{{ analytics.mempool.tx_count }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Pending inputs" %}</div>
+      <div class="value charts-live-stat" data-stat="mempool_inputs">{{ analytics.mempool.input_count }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Pending outputs" %}</div>
+      <div class="value charts-live-stat" data-stat="mempool_outputs">{{ analytics.mempool.output_count }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Pending output value" %}</div>
+      <div class="value mono charts-live-stat" data-stat="mempool_value_tan">{{ analytics.mempool.output_value_sat|tan_amount }} TAN</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Sum of known fees (mempool)" %}</div>
+      <div class="value mono charts-live-stat" data-stat="mempool_fee_tan">{{ analytics.mempool.fee_sum_sat|tan_amount }} TAN</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Non-coinbase txs with computable fee" %}</div>
+      <div class="value charts-live-stat" data-stat="mempool_fee_tx">{{ analytics.mempool.fee_tx_with_known_fee }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="card charts-miners-section" aria-labelledby="charts-miners-heading">
+  <h2 id="charts-miners-heading">{% trans "Miners (coinbase reward addresses)" %}</h2>
+  <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Each block’s first transaction pays the miner; we group by that payout address across the full chain. Percent = blocks mined ÷ chain height.{% endblocktrans %}</p>
+  <div class="charts-miners-row">
+    <div class="chart-donut-card" data-donut-id="miners">
+      <h3 class="chart-donut-card__title">{% trans "Share of blocks mined" %}</h3>
+      <div class="chart-donut-wrap">
+        <div class="chart-donut" role="img" aria-label="{% trans 'Distribution of blocks among miner addresses' %}">
+          <div class="chart-donut__ring" id="chart-ring-miners" style="background: {{ analytics.pie_miners.conic }}"></div>
+          <div class="chart-donut__hole" aria-hidden="true"></div>
+        </div>
+      </div>
+      <ul class="chart-donut__legend" id="chart-legend-miners">
+        {% for item in analytics.pie_miners.legend %}
+        <li><button type="button" class="chart-donut__seg" data-pct="{{ item.pct }}" data-value="{{ item.value }}" data-label="{{ item.label|escape }}" style="--seg-color: {{ item.color }}"><span class="chart-donut__swatch" aria-hidden="true"></span><span class="chart-donut__seg-txt">{{ item.label }} — {{ item.value }} ({{ item.pct }}%)</span></button></li>
+        {% endfor %}
+      </ul>
+      <p class="chart-donut__detail" id="chart-detail-miners" aria-live="polite"></p>
+    </div>
+    <div class="charts-table-wrap charts-table-wrap--miners" tabindex="0">
+      <table class="data-table charts-data-table">
+        <thead>
+          <tr>
+            <th scope="col">{% trans "Miner address" %}</th>
+            <th scope="col">{% trans "Blocks mined" %}</th>
+            <th scope="col">{% trans "Share of chain" %}</th>
+          </tr>
+        </thead>
+        <tbody id="charts-miners-body">
+          {% for row in analytics.miner_leaderboard %}
+          <tr>
+            <td><a class="mono-link mono" href="{% url 'explorer:address' address=row.address %}">{{ row.address_short }}</a></td>
+            <td>{{ row.blocks }}</td>
+            <td class="mono">{{ row.pct }}%</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="3">{% trans "No blocks yet." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="card charts-donut-section" aria-labelledby="charts-donut-heading">
+  <h2 id="charts-donut-heading">{% trans "Distribution & composition" %}</h2>
+  <p class="page-lead page-lead--tight">{% trans "Click a legend row to inspect a segment. Donuts refresh with live data." %}</p>
+  <div class="charts-donut-grid">
+    <div class="chart-donut-card" data-donut-id="tx-role">
+      <h3 class="chart-donut-card__title">{% trans "Transactions: coinbase vs transfers" %}</h3>
+      <div class="chart-donut-wrap">
+        <div class="chart-donut" role="img" aria-label="{% trans 'Coinbase versus transfer transaction counts on the full chain' %}">
+          <div class="chart-donut__ring" id="chart-ring-tx-role" style="background: {{ analytics.pie_tx_role.conic }}"></div>
+          <div class="chart-donut__hole" aria-hidden="true"></div>
+        </div>
+      </div>
+      <ul class="chart-donut__legend" id="chart-legend-tx-role">
+        {% for item in analytics.pie_tx_role.legend %}
+        <li><button type="button" class="chart-donut__seg" data-pct="{{ item.pct }}" data-value="{{ item.value }}" data-label="{{ item.label|escape }}" style="--seg-color: {{ item.color }}"><span class="chart-donut__swatch" aria-hidden="true"></span><span class="chart-donut__seg-txt">{{ item.label }} — {{ item.value }} ({{ item.pct }}%)</span></button></li>
+        {% endfor %}
+      </ul>
+      <p class="chart-donut__detail" id="chart-detail-tx-role" aria-live="polite"></p>
+    </div>
+    <div class="chart-donut-card" data-donut-id="tx-hist">
+      <h3 class="chart-donut-card__title">{% trans "Blocks by transaction count (window)" %}</h3>
+      <div class="chart-donut-wrap">
+        <div class="chart-donut" role="img" aria-label="{% trans 'Histogram of how many blocks fall into each transaction-count bucket' %}">
+          <div class="chart-donut__ring" id="chart-ring-tx-hist" style="background: {{ analytics.pie_tx_histogram.conic }}"></div>
+          <div class="chart-donut__hole" aria-hidden="true"></div>
+        </div>
+      </div>
+      <ul class="chart-donut__legend" id="chart-legend-tx-hist">
+        {% for item in analytics.pie_tx_histogram.legend %}
+        <li><button type="button" class="chart-donut__seg" data-pct="{{ item.pct }}" data-value="{{ item.value }}" data-label="{{ item.label|escape }}" style="--seg-color: {{ item.color }}"><span class="chart-donut__swatch" aria-hidden="true"></span><span class="chart-donut__seg-txt">{{ item.label }} — {{ item.value }} ({{ item.pct }}%)</span></button></li>
+        {% endfor %}
+      </ul>
+      <p class="chart-donut__detail" id="chart-detail-tx-hist" aria-live="polite"></p>
+    </div>
+    <div class="chart-donut-card" data-donut-id="out-kind">
+      <h3 class="chart-donut-card__title">{% trans "Output kinds (chain + mempool)" %}</h3>
+      <div class="chart-donut-wrap">
+        <div class="chart-donut" role="img" aria-label="{% trans 'Share of output kinds across all outputs' %}">
+          <div class="chart-donut__ring" id="chart-ring-out-kind" style="background: {{ analytics.pie_output_kinds.conic }}"></div>
+          <div class="chart-donut__hole" aria-hidden="true"></div>
+        </div>
+      </div>
+      <ul class="chart-donut__legend" id="chart-legend-out-kind">
+        {% for item in analytics.pie_output_kinds.legend %}
+        <li><button type="button" class="chart-donut__seg" data-pct="{{ item.pct }}" data-value="{{ item.value }}" data-label="{{ item.label|escape }}" style="--seg-color: {{ item.color }}"><span class="chart-donut__swatch" aria-hidden="true"></span><span class="chart-donut__seg-txt">{{ item.label }} — {{ item.value }} ({{ item.pct }}%)</span></button></li>
+        {% endfor %}
+      </ul>
+      <p class="chart-donut__detail" id="chart-detail-out-kind" aria-live="polite"></p>
+    </div>
+    <div class="chart-donut-card" data-donut-id="fee-bucket">
+      <h3 class="chart-donut-card__title">{% trans "Blocks by fee band (window)" %}</h3>
+      <div class="chart-donut-wrap">
+        <div class="chart-donut" role="img" aria-label="{% trans 'How many blocks in the window fall into each fee-sum bucket' %}">
+          <div class="chart-donut__ring" id="chart-ring-fee-bucket" style="background: {{ analytics.pie_fee_blocks.conic }}"></div>
+          <div class="chart-donut__hole" aria-hidden="true"></div>
+        </div>
+      </div>
+      <ul class="chart-donut__legend" id="chart-legend-fee-bucket">
+        {% for item in analytics.pie_fee_blocks.legend %}
+        <li><button type="button" class="chart-donut__seg" data-pct="{{ item.pct }}" data-value="{{ item.value }}" data-label="{{ item.label|escape }}" style="--seg-color: {{ item.color }}"><span class="chart-donut__swatch" aria-hidden="true"></span><span class="chart-donut__seg-txt">{{ item.label }} — {{ item.value }} ({{ item.pct }}%)</span></button></li>
+        {% endfor %}
+      </ul>
+      <p class="chart-donut__detail" id="chart-detail-fee-bucket" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="card charts-compare-section" aria-labelledby="charts-compare-heading">
+  <h2 id="charts-compare-heading">{% trans "Per-block intensity strip" %}</h2>
+  <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Each column is one block height. Green: transactions; purple: output value; amber: known fees — heights scale together so you can spot outliers.{% endblocktrans %}</p>
+  <div class="charts-comparison-strip" id="charts-comparison-strip" role="img" aria-label="{% trans 'Relative tx count, output value, and fees per block' %}">
+    {% for row in analytics.comparison_strip %}
+    <div class="charts-comparison-col" title="{% blocktrans with h=row.height %}Height {{ h }}{% endblocktrans %}">
+      <div class="charts-comparison-col__bar charts-comparison-col__bar--tx" style="flex-grow: {{ row.tx_bar }}"></div>
+      <div class="charts-comparison-col__bar charts-comparison-col__bar--out" style="flex-grow: {{ row.out_bar }}"></div>
+      <div class="charts-comparison-col__bar charts-comparison-col__bar--fee" style="flex-grow: {{ row.fee_bar }}"></div>
+      <span class="charts-comparison-col__lab mono">{{ row.height }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="card" aria-labelledby="tip-heading">
+  <h2 id="tip-heading">{% trans "Tip block hash" %}</h2>
+  <p class="page-lead mono" style="word-break:break-all">{{ summary.tip }}</p>
+</section>
+
+<div class="dash-charts-row" aria-label="{% trans 'Core block charts' %}">
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-tx-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-tx-title">{% trans "Transactions per block" %}</h2>
+      <span class="dash-panel__hint">{% blocktrans with n=72 %}Last {{ n }} blocks{% endblocktrans %}</span>
+    </div>
+    <div class="block-chart block-chart--dash" id="charts-live-tx" role="img" aria-label="{% trans 'Transaction count per block' %}">
+      {% for row in block_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height c=row.tx_count %}Height {{ h }}: {{ c }} transactions{% endblocktrans %}">
+          <div class="block-chart__bar"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-int-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-int-title">{% trans "Seconds between blocks" %}</h2>
+      <span class="dash-panel__hint">{% blocktrans with n=72 %}Last {{ n }} gaps{% endblocktrans %}</span>
+    </div>
+    <div class="block-chart block-chart--dash block-chart--interval" id="charts-live-interval" role="img" aria-label="{% trans 'Block interval in seconds' %}">
+      {% for row in interval_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height s=row.interval_s %}Height {{ h }}: {{ s }} s{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--interval"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-out-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-out-title">{% trans "Outputs per block" %}</h2>
+      <span class="dash-panel__hint">{% blocktrans with n=72 %}Last {{ n }} blocks{% endblocktrans %}</span>
+    </div>
+    <div class="block-chart block-chart--dash block-chart--outputs" id="charts-live-outputs" role="img" aria-label="{% trans 'Output count per block' %}">
+      {% for row in outputs_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height o=row.output_count %}Height {{ h }}: {{ o }} outputs{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--outputs"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<div class="dash-charts-row dash-charts-row--two" aria-label="{% trans 'Fee and value charts' %}">
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-fee-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-fee-title">{% trans "Fees per block (known)" %}</h2>
+      <span class="dash-panel__hint">{% trans "Satoshis summed where inputs resolve" %}</span>
+    </div>
+    <div class="block-chart block-chart--dash block-chart--fee" id="charts-live-fee" role="img" aria-label="{% trans 'Fee sum per block' %}">
+      {% for row in fee_chart %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height f=row.fee_sat %}Height {{ h }}: {{ f }} sat fees{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--fee"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="dash-panel dash-panel--chart" aria-labelledby="chart-val-title">
+    <div class="dash-panel__head">
+      <h2 class="dash-panel__title" id="chart-val-title">{% trans "Output value per block" %}</h2>
+      <span class="dash-panel__hint">{% trans "Total satoshis in outputs" %}</span>
+    </div>
+    <div class="block-chart block-chart--dash block-chart--value" id="charts-live-value" role="img" aria-label="{% trans 'Output value per block' %}">
+      {% for row in analytics.output_value_bars %}
+        <div class="block-chart__bar-wrap" data-bar-pct="{{ row.bar_pct }}" title="{% blocktrans with h=row.height v=row.value_sat %}Height {{ h }}: {{ v }} sat outputs{% endblocktrans %}">
+          <div class="block-chart__bar block-chart__bar--value"></div>
+          <span class="block-chart__label">{{ row.height }}</span>
+        </div>
+      {% empty %}
+        <p class="page-lead">{% trans "No blocks yet." %}</p>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<section class="card" aria-labelledby="interval-stats-heading">
+  <h2 id="interval-stats-heading">{% trans "Block interval statistics (window)" %}</h2>
+  <p class="page-lead">{% blocktrans with n=analytics.window_last_n %}Positive intervals only, across the last {{ n }} blocks on this chart page.{% endblocktrans %}</p>
+  <div class="stat-grid stat-grid--tight">
+    <div class="stat-card">
+      <div class="label">{% trans "Samples" %}</div>
+      <div class="value charts-live-interval" data-interval="samples">{{ analytics.interval_stats_window.samples }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Minimum (seconds)" %}</div>
+      <div class="value charts-live-interval" data-interval="min">{{ analytics.interval_stats_window.min }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Maximum (seconds)" %}</div>
+      <div class="value charts-live-interval" data-interval="max">{{ analytics.interval_stats_window.max }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Mean (seconds)" %}</div>
+      <div class="value charts-live-interval" data-interval="mean">{{ analytics.interval_stats_window.mean }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">{% trans "Median (seconds)" %}</div>
+      <div class="value charts-live-interval" data-interval="median">{{ analytics.interval_stats_window.median }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="window-table-heading">
+  <h2 id="window-table-heading">{% trans "Per-block window" %}</h2>
+  <p class="page-lead">{% blocktrans with n=analytics.window_last_n %}One row per block for the last {{ n }} heights. Fees are summed only where all inputs resolve on-chain.{% endblocktrans %}</p>
+  <div class="charts-table-wrap" tabindex="0">
+    <table class="data-table charts-data-table">
+      <thead>
+        <tr>
+          <th scope="col">{% trans "Height" %}</th>
+          <th scope="col">{% trans "Txs" %}</th>
+          <th scope="col">{% trans "Outputs" %}</th>
+          <th scope="col">{% trans "Inputs" %}</th>
+          <th scope="col">{% trans "Output value" %}</th>
+          <th scope="col">{% trans "Fees (known)" %}</th>
+          <th scope="col">{% trans "Gap (s)" %}</th>
+          <th scope="col">{% trans "Miner" %}</th>
+          <th scope="col">{% trans "Block" %}</th>
+        </tr>
+      </thead>
+      <tbody id="charts-window-body">
+        {% for row in analytics.window_rows reversed %}
+        <tr>
+          <td class="mono">{{ row.height }}</td>
+          <td>{{ row.tx_count }}</td>
+          <td>{{ row.output_count }}</td>
+          <td>{{ row.input_sum }}</td>
+          <td class="mono">{{ row.output_value_sat|tan_amount }}</td>
+          <td class="mono">{{ row.fee_sum_sat|tan_amount }}</td>
+          <td>{{ row.interval_s }}</td>
+          <td class="mono">{% if row.miner_address %}<a class="mono-link" href="{% url 'explorer:address' address=row.miner_address %}">{{ row.miner_short }}</a>{% else %}—{% endif %}</td>
+          <td><a class="mono" href="{% url 'explorer:block' block_hash=row.hash %}">{{ row.hash|short_hash:14 }}</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="9">{% trans "No blocks yet." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="top-blocks-heading">
+  <h2 id="top-blocks-heading">{% trans "Highest transaction counts" %}</h2>
+  <p class="page-lead">{% trans "Top blocks on the full chain by number of transactions." %}</p>
+  <div class="charts-table-wrap">
+    <table class="data-table charts-data-table">
+      <thead>
+        <tr>
+          <th scope="col">{% trans "Height" %}</th>
+          <th scope="col">{% trans "Transactions" %}</th>
+          <th scope="col">{% trans "Block" %}</th>
+        </tr>
+      </thead>
+      <tbody id="charts-top-blocks-body">
+        {% for row in analytics.top_blocks_by_tx %}
+        <tr>
+          <td class="mono">{{ row.height }}</td>
+          <td>{{ row.tx_count }}</td>
+          <td><a class="mono" href="{% url 'explorer:block' block_hash=row.hash %}">{{ row.hash|short_hash:14 }}</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">{% trans "No blocks yet." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card charts-recent-tx" aria-labelledby="charts-recent-tx-heading">
+  <h2 id="charts-recent-tx-heading">{% trans "Recent transactions (feed)" %}</h2>
+  <p class="page-lead page-lead--tight">{% blocktrans trimmed %}Newest first: mempool first, then confirmed blocks toward genesis. Click any row to open the transaction.{% endblocktrans %} <a href="{% url 'explorer:transactions' %}">{% trans "All transactions" %}</a></p>
+  <div class="charts-table-wrap charts-table-wrap--tx" tabindex="0">
+    <table class="data-table charts-data-table">
+      <thead>
+        <tr>
+          <th scope="col">{% trans "Transaction id" %}</th>
+          <th scope="col">{% trans "Block" %}</th>
+          <th scope="col">{% trans "Inputs" %}</th>
+          <th scope="col">{% trans "Outputs" %}</th>
+          <th scope="col">{% trans "Fee (TAN)" %}</th>
+        </tr>
+      </thead>
+      <tbody id="charts-recent-tx-body">
+        {% for row in recent_tx_feed %}
+        <tr>
+          <td><a class="mono-link mono" href="{% url 'explorer:transaction' txid=row.txid %}">{{ row.txid|short_hash:20 }}</a></td>
+          <td>{% if row.mempool %}<span class="badge badge-mempool">{% trans "mempool" %}</span>{% else %}#{{ row.block_height }}{% endif %}</td>
+          <td>{{ row.tx.inputs|length }}</td>
+          <td>{{ row.tx.outputs|length }}</td>
+          <td class="mono">{% if row.fee_satoshis is not None %}{{ row.fee_satoshis|tan_amount }}{% else %}—{% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">{% trans "No transactions." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2>{% trans "Related" %}</h2>
+  <ul class="page-lead" style="max-width:70ch">
+    <li><a href="{% url 'explorer:home' %}">{% trans "Home" %}</a> — {% trans "live overview" %}</li>
+    <li><a href="{% url 'explorer:transactions' %}">{% trans "All transactions" %}</a></li>
+    <li><a href="{% url 'explorer:api_help' %}">{% trans "API (JSON)" %}</a></li>
+  </ul>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+{% trans "mempool" as str_mempool %}
+{% trans "No transactions." as str_no_tx %}
+{% trans "Updated" as str_updated %}
+{% trans "Height" as str_height %}
+{% trans "Txs" as str_txs %}
+{% trans "Outputs" as str_outputs %}
+{% trans "Inputs" as str_inputs %}
+{% trans "Output value" as str_outval %}
+{% trans "Fees (known)" as str_fees %}
+{% trans "Gap (s)" as str_gap %}
+{% trans "Block" as str_block %}
+{% trans "No blocks yet." as str_no_blocks %}
+{% trans "Miner" as str_miner %}
+<script>
+  window.TANCOIN_CHARTS_LIVE_URL = "{% url 'explorer:charts_live' %}";
+  window.TANCOIN_CHARTS_I18N = {
+    mempool: "{{ str_mempool|escapejs }}",
+    noTx: "{{ str_no_tx|escapejs }}",
+    updated: "{{ str_updated|escapejs }}",
+    height: "{{ str_height|escapejs }}",
+    txs: "{{ str_txs|escapejs }}",
+    outputs: "{{ str_outputs|escapejs }}",
+    inputs: "{{ str_inputs|escapejs }}",
+    outval: "{{ str_outval|escapejs }}",
+    fees: "{{ str_fees|escapejs }}",
+    gap: "{{ str_gap|escapejs }}",
+    miner: "{{ str_miner|escapejs }}",
+    block: "{{ str_block|escapejs }}",
+    noBlocks: "{{ str_no_blocks|escapejs }}"
+  };
+</script>
+<script src="{% static_v 'js/explorer.js' %}"></script>
+{% endblock %}
